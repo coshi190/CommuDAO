@@ -36,9 +36,6 @@ import uiiABI from './jsons/uiiABI.json'
 import uswarABI from './jsons/uswarABI.json'
 import dunMoABI from './jsons/dunMoABI.json'
 import badgeClaimerABI from './jsons/badgeClaimerABI.json'
-import nftSlotABI from './jsons/nftSlotABI.json'
-import multichainSlotABI from './jsons/multichainSlotABI.json'
-import dunATVABI from './jsons/dunATVABI.json'
 import cmdaoMerchantABI from './jsons/cmdaoMerchantABI.json'
 import cmdaoMerchantV2ABI from './jsons/cmdaoMerchantV2ABI.json'
 import cmdaoMerchantKYCABI from './jsons/cmdaoMerchantKYCABI.json'
@@ -90,7 +87,6 @@ import tbridgeNFTABI from './jsons/tbridgeNFTABI.json'
 import nativeBridgeABI from './jsons/nativeBridgeABI.json'
 import uniTokensBridgeABI from './jsons/uniTokensBridgeABI.json'
 import uniNftBridgeABI from './jsons/uniNftBridgeABI.json'
-import multichainMallABI from './jsons/multichainMallABI.json'
 import veloPoolABI from './jsons/veloPoolABI.json'
 import velodromeRouterABI from './jsons/velodromeRouterABI.json'
 import velodromeCallerABI from './jsons/velodromeCallerABI.json'
@@ -130,8 +126,6 @@ const Daemonworld = React.lazy(() => import('./Dungeon-DaemonWorld'))
 const ApInn = React.lazy(() => import('./Dungeon-ApInn'))
 const CrypticCogs = React.lazy(() => import('./Dungeon-CrypticCogs'))
 const TdmRoboticsInc = React.lazy(() => import('./Dungeon-TdmRoboticsInc.js'))
-const OPDungeon = React.lazy(() => import('./OP-Dungeon'))
-const AbandonedTempleVault = React.lazy(() => import('./OP-Dungeon-AbandonedTempleVault.js'))
 const Community = React.lazy(() => import('./Community'))
 const CmCityLand = React.lazy(() => import('./Community-CmCityLand'))
 const CmCityCenter = React.lazy(() => import('./Community-CmCityCenter'))
@@ -140,7 +134,6 @@ const DungeonArena = React.lazy(() => import('./Community-DungeonArena'))
 const DumpsterHill = React.lazy(() => import('./Community-DumpsterHill'))
 const BigBroAnalytica = React.lazy(() => import('./Community-BigBroAnalytica.tsx'))
 const Mall = React.lazy(() => import('./Mall'))
-const OPMall = React.lazy(() => import('./OP-Mall'))
 const Mkp = React.lazy(() => import('./Mkp.tsx'))
 const GameSwap = React.lazy(() => import('./GameSwap'))
 const BKCGameSwap = React.lazy(() => import('./BKC-GameSwap'))
@@ -189,10 +182,10 @@ createAppKit({
         '--w3m-z-index': 1000, 
     },
     chainImages: {
-        56: '../chains/bafkreibujxj6b6i3n4xtdywo3dp33hhdf6yilwkx42cmm4goxpduy5mvte.png',
-        96: '../chains/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a.png',
-        8899: '../chains/bafkreihdmsnmmzhepcfxuvoflht2iqv5w73hg5kbgrc33jrhk7il5ddpgu.png',
-        10: '../chains/bafkreid53xlgsjlqosyyyxzbozfavoi2f4i6vnqxjwdxq32y7jsly3ckly.png',
+        56: '/chains/bafkreibujxj6b6i3n4xtdywo3dp33hhdf6yilwkx42cmm4goxpduy5mvte.png',
+        96: '/chains/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a.png',
+        8899: '/chains/bafkreihdmsnmmzhepcfxuvoflht2iqv5w73hg5kbgrc33jrhk7il5ddpgu.png',
+        10: '/chains/bafkreid53xlgsjlqosyyyxzbozfavoi2f4i6vnqxjwdxq32y7jsly3ckly.png',
     },
     features: {
         analytics: true,
@@ -286,12 +279,6 @@ const Main = () => {
                 } else if (modeText.toUpperCase() === "DUNGEON" && subModeText.toUpperCase() === "TDM-ROBOTICS-INC") {
                     preset = 38
                     document.title = "TDM Robotics Inc. | CommuDAO"
-                } else if (modeText.toUpperCase() === "DUNGEON" && subModeText.toUpperCase() === "OP") {
-                    preset = 31000
-                    document.title = "Dungeon [OP] | CommuDAO"
-                } else if (modeText.toUpperCase() === "DUNGEON" && subModeText.toUpperCase() === "ABANDONED-TEMPLE-VAULT") {
-                    preset = 31001
-                    document.title = "Abandoned Temple Vault | CommuDAO"
                 }
             } else {
                 preset = 3
@@ -324,10 +311,6 @@ const Main = () => {
             }
         } else if (modeText.toUpperCase() === "MALL") {
             if (subModeText !== undefined) {
-                if (modeText.toUpperCase() === "MALL" && subModeText.toUpperCase() === "OP") {
-                    preset = 52
-                    document.title = "Mall [OP] | CommuDAO"
-                }
             } else {
                 preset = 5
                 document.title = "Mall | CommuDAO"
@@ -416,8 +399,6 @@ const Main = () => {
                         {mode === 36 && <CrypticCogs config={wagmiAdapter.wagmiConfig} intrasubModetext={intrasubModetext} navigate={navigate} callMode={callMode} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc721Abi={erc721Abi} erc20Abi={erc20Abi} dunEEABI={dunEEABI} taoPfpABI={taoPfpABI} uiiABI={uiiABI} />}
                         {mode === 37 && <ApInn config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} navigate={navigate} callMode={callMode} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} acUpgradeABI={acUpgradeABI} uniEnchanterABI={uniEnchanterABI} erc721Abi={erc721Abi} erc20Abi={erc20Abi} questAmbassABI={questAmbassABI} cmdaoNameABI={cmdaoNameABI} dunAngbABI={dunAngbABI} />}
                         {mode === 38 && <TdmRoboticsInc config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} navigate={navigate} callMode={callMode} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} uniEnchanterABI={uniEnchanterABI} erc721Abi={erc721Abi} erc20Abi={erc20Abi} questAmbassABI={questAmbassABI} cmdaoNameABI={cmdaoNameABI} dunEEABI={dunEEABI} />}
-                        {mode === 31000 && <OPDungeon callMode={callMode} navigate={navigate} />}
-                        {mode === 31001 && <AbandonedTempleVault config={wagmiAdapter.wagmiConfig} intrasubModetext={intrasubModetext} navigate={navigate} callMode={callMode} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc721Abi={erc721Abi} erc20Abi={erc20Abi} nftSlotABI={nftSlotABI} multichainSlotABI={multichainSlotABI} dunATVABI={dunATVABI} />}
                         {mode === 4 && <Community config={wagmiAdapter.wagmiConfig} callMode={callMode} navigate={navigate} erc721Abi={erc721Abi} cmdaoNameABI={cmdaoNameABI} slot1ABI={slot1ABI} />}
                         {mode === 41 && <CmCityCenter config={wagmiAdapter.wagmiConfig} callMode={callMode} navigate={navigate} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} cmcityPointsABI={cmcityPointsABI} sx31voteABI={sx31voteABI} faucetABI={faucetABI} cmdaoNameABI={cmdaoNameABI} />}
                         {mode === 42 && <DungeonArena config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} erc721Abi={erc721Abi} questAmbassABI={questAmbassABI} dunJasperABI={dunJasperABI} pvp01ABI={pvp01ABI} salonABI={salonABI} />}
@@ -426,7 +407,6 @@ const Main = () => {
                         {mode === 45 && <CmCityLand config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} intrasubModetext={intrasubModetext} navigate={navigate} callMode={callMode} erc20Abi={erc20Abi} erc721Abi={erc721Abi} cmdaoNameABI={cmdaoNameABI} slot1ABI={slot1ABI} houseABI={houseABI} houseStakingABI={houseStakingABI} delegateOwner01ABI={delegateOwner01ABI} wlMkpABI={wlMkpABI} transportHubABI={transportHubABI} constructionABI={constructionABI} constructionStakingABI={constructionStakingABI} />}
                         {mode === 46 && <BigBroAnalytica config={wagmiAdapter.wagmiConfig} erc20Abi={erc20Abi} />}
                         {mode === 5 && <Mall config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} kycABI={kycABI} ctunaLabABI={ctunaLabABI} cmdaoMerchantABI={cmdaoMerchantABI} cmdaoMerchantV2ABI={cmdaoMerchantV2ABI} cmdaoMerchantKYCABI={cmdaoMerchantKYCABI} cmdaoMerchantWLABI={cmdaoMerchantWLABI} cmdaoGasha02ABI={cmdaoGasha02ABI} ammyStdABI={ammyStdABI} angeloStdABI={angeloStdABI} cmdaoAmmNpcABI={cmdaoAmmNpcABI} erc20Abi={erc20Abi} wjbcABI={wjbcABI} presaleABI={presaleABI} />}
-                        {mode === 52 && <OPMall config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} cmdaoAmmNpcABI={cmdaoAmmNpcABI} erc20Abi={erc20Abi} erc721Abi={erc721Abi} uniNftBridgeABI={uniNftBridgeABI} multichainMallABI={multichainMallABI} />}
                         {mode === 6 && <Mkp config={wagmiAdapter.wagmiConfig} subModeText={subModeText} callMode={callMode} navigate={navigate} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc721Abi={erc721Abi} erc20Abi={erc20Abi} aurora721ABI={aurora721ABI} cmdaoMkpABI={cmdaoMkpABI} houseStakingABI={houseStakingABI} />}
                         {mode === 7 && <GameSwap config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} exchangeABI={exchangeABI} exchangeJulpABI={exchangeJulpABI} farmJdaoABI={farmJdaoABI} swapABI={swapABI} swapJulpABI={swapJulpABI} bkcOracleABI={bkcOracleABI} cmdaoAmmNpcABI={cmdaoAmmNpcABI} />}
                         {mode === 700 && <BKCGameSwap config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} setTxupdate={setTxupdate} txupdate={txupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} diamonLpABI={diamonLpABI} farmCmosABI={farmCmosABI} bkcOracleABI={bkcOracleABI} />}
