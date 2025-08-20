@@ -143,7 +143,7 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                 const nftipfs = data1[i].result
                 let nft = {name: "", image: "", description: "", attributes: ""}
                 try {
-                    const response = await fetch(nftipfs.replace("ipfs://", "https://gateway.commudao.xyz/ipfs/"))
+                    const response = await fetch(nftipfs.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/"))
                     nft = await response.json()
                 } catch {}
                 _allDaily += Number(ethers.utils.formatEther(String(1 * 10**14)))
@@ -151,7 +151,7 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                 nfts.push({
                     Id: yournftstake[i].Id,
                     Name: nft.name + " [" + yournftstake[i].Id + "]",
-                    Image: nft.image.replace("ipfs://", "https://gateway.commudao.xyz/ipfs/"),
+                    Image: nft.image.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/"),
                     Description: nft.description,
                     Attribute: nft.attributes,
                     RewardPerSec: 1,
@@ -210,13 +210,13 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                 const nftipfs = data3[i].result
                 let nft = {name: "", image: "", description: "", attributes: ""}
                 try {
-                    const response = await fetch(nftipfs.replace("ipfs://", "https://gateway.commudao.xyz/ipfs/"))
+                    const response = await fetch(nftipfs.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/"))
                     nft = await response.json()
                 } catch {}
                 nfts.push({
                     Id: yournftwallet[i].Id,
                     Name: nft.name + " [" + yournftwallet[i].Id + "]",
-                    Image: nft.image.replace("ipfs://", "https://gateway.commudao.xyz/ipfs/"),
+                    Image: nft.image.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/"),
                     Description: nft.description,
                     Attribute: nft.attributes,
                     RewardPerSec: 1,
@@ -360,18 +360,18 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                     </div>
                 </div>
             }
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left",  backgroundImage: "url('https://gateway.commudao.xyz/ipfs/bafybeife7qt3dj7usydykw657jm6dabtgjfsyvkblb3h3be4rh5gr2sqga')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left",  backgroundImage: "url('/maps/bafybeife7qt3dj7usydykw657jm6dabtgjfsyvkblb3h3be4rh5gr2sqga.png')", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
                     <div className="pixel" style={{padding: "5px", width: "fit-content", color: "#fff", background: "rgb(0, 0, 0, 0.6)", backdropFilter: "blur(10px)"}}>The Heaven Land</div>
                 </div>
                 <div className="SubfieldBanner">
                     <img
-                        src="https://gateway.commudao.xyz/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq"
+                        src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png"
                         width="150"
                         alt="$JBC"
                     />
                     <img
-                        src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm"
+                        src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png"
                         width="150"
                         style={{marginLeft: "-50px"}}
                         alt="$GOLD"
@@ -400,14 +400,14 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                             <div style={{marginBottom: "20px"}}>TOTAL DAILY REWARD</div>
                             <div style={{fontSize: "24px", marginBottom: "20px"}}>
                                 {nft.length > 0 && nft[0] !== null ? allDaily.toFixed(2) : 0}
-                                <img style={{marginLeft: "10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="24" alt="$GOLD"/>
+                                <img style={{marginLeft: "10px"}} src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="24" alt="$GOLD"/>
                             </div>
                         </div>
                         <div className="headfield bold">
                             <div style={{marginBottom: "20px"}}>TOTAL PENDING REWARD</div>
                             <div style={{fontSize: "24px", marginBottom: "20px", display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "center"}}>
                                 {nft.length > 0 && nft[0] !== null ? allReward.toFixed(3) : 0}
-                                <img style={{margin: "0 10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="24" alt="$GOLD"/>
+                                <img style={{margin: "0 10px"}} src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="24" alt="$GOLD"/>
                                 {address !== null && intrasubModetext !== undefined ?
                                     <>
                                         {address.toUpperCase() === intrasubModetext.toUpperCase() && allReward > 0 ?
@@ -423,7 +423,7 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                             <div style={{marginBottom: "20px"}}>BALANCE</div>
                             <div style={{fontSize: "24px", marginBottom: "20px"}}>
                                 {nft.length > 0 ? Number(goldBalance).toFixed(3) : 0}
-                                <img style={{marginLeft: "10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="24" alt="$GOLD"/>
+                                <img style={{marginLeft: "10px"}} src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="24" alt="$GOLD"/>
                             </div>
                         </div>
                     </div>
@@ -451,18 +451,18 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                                                 <div>
                                                     Earn: {ethers.utils.formatEther(String(item.RewardPerSec * 86400 * 10**14))}
                                                     &nbsp;
-                                                    <img src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="12" style={{marginRight: "5px"}} alt="$GOLD"/>
+                                                    <img src="h/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="12" style={{marginRight: "5px"}} alt="$GOLD"/>
                                                     GOLD/DAY
                                                 </div>
                                                 <div style={{width: 300, padding: 20, border: "1px solid #dddade", borderRadius: 12, display: "flex", flexDirection: "row", alignItem: "center", justifyContent: "space-between"}}>
                                                     <div style={{lineHeight: 1.5, fontSize: "12px", textAlign: "left"}}>
                                                         Pending Rewards<br></br>
                                                         <div style={{display: "flex", alignItems: "center"}}>
-                                                            <img src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="12" style={{marginRight: "5px"}} alt="$GOLD"/>
+                                                            <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="12" style={{marginRight: "5px"}} alt="$GOLD"/>
                                                             {ethers.utils.formatEther(String(item.Reward))}
                                                         </div>
                                                         <div style={{display: "flex", alignItems: "center"}}>
-                                                            <img src="https://gateway.commudao.xyz/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" width="12" style={{marginRight: "5px"}} alt="$JBC"/>
+                                                            <img src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" width="12" style={{marginRight: "5px"}} alt="$JBC"/>
                                                             {!item.isJbcOut ?
                                                                 <>
                                                                     {Number(item.Reward2) < 86400 ? ((500 * Number(item.Reward2)) / 86400) + " [NOT YET CLAIMABLE]" : "500.000 [MAX; CLAIMABLE]"}
@@ -502,7 +502,7 @@ const TheHeavenLand = ({ config, intrasubModetext, navigate, callMode, setisLoad
                                     <div className="nftCard" style={{margin: "10px", padding: "30px 20px", justifyContent: "center"}}>
                                         {address !== null ?
                                             <>
-                                                <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                                <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                                 <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                             </> :
                                             <>
