@@ -552,12 +552,12 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                     </div>
                 </div>
             }
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('https://gateway.pinata.cloud/ipfs/bafybeiebkzeoydzwinuqixopu4atccmlttr7abpuyfrpjrdvqyzc55lpxi')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('/maps/bafybeiebkzeoydzwinuqixopu4atccmlttr7abpuyfrpjrdvqyzc55lpxi.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
                     <div className="pixel" style={{fontSize: "75px", color: "#fff", width: "fit-content"}}>Copper Mine</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" width="150" alt="$CU" />
+                    <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" width="150" alt="$CU" />
                 </div>
             </div>
 
@@ -616,14 +616,14 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     COPPER BALANCE
                                     <div style={{display: "flex", flexDirection: "row"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="20" alt="$COPPER"/>
+                                        <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="20" alt="$COPPER"/>
                                         <div style={{marginLeft: "5px"}}>{Number(cuBalance).toLocaleString('en-US', {maximumFractionDigits:0})}</div>
                                     </div>
                                 </div>
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     COPPER PENDING
                                     <div style={{display: "flex", flexDirection: "row", color: isStakeNow ? "#ff007a" : "#5f6476"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="20" alt="$COPPER"/>
+                                        <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="20" alt="$COPPER"/>
                                         <div style={{marginLeft: "5px"}}>{Number(cuPending).toLocaleString('en-US', {maximumFractionDigits:0})}</div>
                                     </div>
                                 </div>
@@ -634,7 +634,7 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                     </select>
                                     <div style={{display: "flex", flexDirection: "row"}}>
                                         {gasselected === "BBQ" &&
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="20" alt="$BBQ"/>
+                                            <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="20" alt="$BBQ"/>
                                         }
                                         <div style={{marginLeft: "5px"}}>{csIdEquip === '0' ? <>{Number(bbqBalance).toLocaleString('en-US', {maximumFractionDigits:1})}/5000</> : <>Free Gas Remain: {100 - csUsage}</>}</div>
                                     </div>
@@ -676,7 +676,7 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 20px 20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                                     {hatSlot !== null ?
                                         <img src={hatSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {hatSlotLevel !== null &&
                                         <div className="slotlevel2" style={{position: "absolute", top: "237.5px", padding: "2px", fontSize: "25px"}}>+{hatSlotLevel}</div>
@@ -698,7 +698,7 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                                         <img src="https://gateway.pinata.cloud/ipfs/bafkreif5fecf5rqrlixcxtpzplo7frtftt3yh2cmx6oca4l2jxuryjju2m" width="300px" alt="Can not load metadata." />
                                                     }
                                                 </> :
-                                                <img src="https://gateway.pinata.cloud/ipfs/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC" width="300px" alt="Can not load metadata." />
+                                                <img src="/elements/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC.png" width="300px" alt="Can not load metadata." />
                                             }
                                         </> :
                                         <div style={{width: "300px", height: "300px", borderRadius: "16px", border: "1px solid gray", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -709,13 +709,13 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                         <div style={{position: "absolute", top: "300px", right: "20px", padding: "2px", fontSize: "25px"}}>Lv.{characterSlotLevel}</div>
                                     }
                                     {(isOp && isStakeNow && !lastedSTOPT && isRunout) &&
-                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)", display: "flex", alignItems: "center"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e" height="18" alt="$stOPT"/></div>
+                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)", display: "flex", alignItems: "center"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png" height="18" alt="$stOPT"/></div>
                                     }
                                 </div>
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0 20px 20px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
                                     {clothSlot !== null ?
                                         <img src={clothSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {clothSlotLevel !== null &&
                                         <div className="slotlevel" style={{position: "absolute", top: "237.5px", padding: "2px", fontSize: "25px"}}>+{clothSlotLevel}</div>
@@ -768,7 +768,7 @@ const Coppermine = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{background: "#ffeceb", border: "none", justifyContent: "center", padding: "20px", margin: "10px"}} className="nftCard">
                                     {address !== null ?
                                         <>
-                                            <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                            <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                             <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                         </> :
                                         <>

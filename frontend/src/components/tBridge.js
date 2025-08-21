@@ -3,16 +3,11 @@ import { ethers } from 'ethers'
 import { readContracts, simulateContract, waitForTransactionReceipt, writeContract } from '@wagmi/core'
 import { useAccount } from 'wagmi'
 
-import TBridgeCMDAONFT from  './tBridge-CMDAONFT'
-import TBridgeCMDAONFT2 from  './tBridge-CMDAONFT-2'
-
 const jusdt = '0x24599b658b57f91E7643f4F154B16bcd2884f9ac'
 const kusdt = '0x7d984C24d2499D840eB3b7016077164e15E5faA6'
 const usdtBsc = '0x55d398326f99059ff775485246999027b3197955' 
-const cmj = '0xE67E280f5a354B4AcA15fA7f0ccbF667CF74F97b'
-const cmd = '0x399FE73Bb0Ee60670430FD92fE25A0Fdd308E142'
 
-const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setErrMsg, erc20Abi, erc721Abi, tbridgeNFTABI, nativeBridgeABI, uniTokensBridgeABI, uniNftBridgeABI }) => {
+const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setErrMsg, erc20Abi }) => {
     let { address, chain } = useAccount()
     if (address === undefined) {
         address = null
@@ -22,17 +17,13 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
     const [supply, setSupply] = React.useState(0)
     const [reserve2, setReserve2] = React.useState(0)
     const [supply2, setSupply2] = React.useState(0)
-    const [burnedCmj, setBurnedCmj] = React.useState(0)
     const [kusdtBalance, setKusdtBalance] = React.useState(0)
     const [jusdtBalance, setJusdtBalance] = React.useState(0)
     const [usdtBscBalance, setUsdtBscBalance] = React.useState(0)
-    const [cmjBalance, setCmjBalance] = React.useState(0)
-    const [cmdBalance, setCmdBalance] = React.useState(0)
     const [depositValue, setDepositValue] = React.useState(null)
     const [depositValueDis, setDepositValueDis] = React.useState('')
     const [withdrawValue, setWithdrawValue] = React.useState(null)
     const [withdrawValueDis, setWithdrawValueDis] = React.useState('')
-    const [depositCMJ, setDepositCMJ] = React.useState('')
     const [depositValue2, setDepositValue2] = React.useState('')
     const [withdrawValue2, setWithdrawValue2] = React.useState('')
 
@@ -71,13 +62,6 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
                         args: ['0x9E1baBFC65DA0eBFE11934b1277755Eb3A7d3063'],
                         chainId: 8899,
                     },
-                    {
-                        address: cmj,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0x0000000000000000000000000000000000000042'],
-                        chainId: 8899,
-                    },
                 ],
             })
             const data2 = address !== null ? await readContracts(config, {
@@ -97,20 +81,6 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
                         chainId: 8899,
                     },
                     {
-                        address: cmj,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: [address],
-                        chainId: 8899,
-                    },
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: [address],
-                        chainId: 10,
-                    },
-                    {
                         address: usdtBsc,
                         abi: erc20Abi,
                         functionName: 'balanceOf',
@@ -123,15 +93,12 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
             const Balance2 = data1[1]
             const Balance_2 = data1[2]
             const Balance2_2 = data1[3]
-            const _burnedCmj = data1[4]
             const kusdtBal = data2[0]
             const jusdtBal = data2[1]
-            const cmjBal = data2[2]
-            const cmdBal = data2[3]
-            const usdtBscBal = data2[4]
+            const usdtBscBal = data2[2]
 
             return [
-                Balance, Balance2, kusdtBal, jusdtBal, cmjBal, cmdBal, usdtBscBal, Balance_2, Balance2_2, _burnedCmj,
+                Balance, Balance2, kusdtBal, jusdtBal, usdtBscBal, usdtBscBal, usdtBscBal, Balance_2, Balance2_2, Balance2_2,
             ]
         }
 
@@ -149,12 +116,9 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
             setSupply(ethers.utils.formatEther(result[1].result))
             setKusdtBalance(Math.floor((ethers.utils.formatEther(result[2].result)) * 10000) / 10000)
             setJusdtBalance(Math.floor((ethers.utils.formatEther(result[3].result)) * 10000) / 10000)
-            setCmjBalance(Math.floor((ethers.utils.formatEther(result[4].result)) * 10000) / 10000)
-            setCmdBalance(Math.floor((ethers.utils.formatEther(result[5].result)) * 10000) / 10000)
             setUsdtBscBalance(Math.floor((ethers.utils.formatEther(result[6].result)) * 10000) / 10000)
             setReserve2(ethers.utils.formatEther(result[7].result))
             setSupply2(ethers.utils.formatEther(result[8].result))
-            setBurnedCmj(ethers.utils.formatEther(result[9].result))
         })
     }, [config, address, txupdate, erc20Abi])
 
@@ -198,26 +162,6 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
                 abi: erc20Abi,
                 functionName: 'transfer',
                 args: ["0xBb7A653509CDd8C4Ccd34D5834c817Ed3DFD6Fc7", withdrawValue],
-                chainId: 8899,
-            })
-            let h = await writeContract(config, request)
-            await waitForTransactionReceipt(config, { hash: h })
-            setTxupdate(h)
-        } catch (e) {
-            setisError(true)
-            setErrMsg(String(e))
-        }
-        setisLoading(false)
-    }
-
-    const depositCmjHandle = async () => {
-        setisLoading(true)
-        try {
-            let { request } = await simulateContract(config, {
-                address: cmj,
-                abi: erc20Abi,
-                functionName: 'transfer',
-                args: ["0x0000000000000000000000000000000000000042", ethers.utils.parseEther(String(depositCMJ))],
                 chainId: 8899,
             })
             let h = await writeContract(config, request)
@@ -277,74 +221,15 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
         <div style={{position: "relative", background: "#3a6ea5", width: "100%", height: "100%", minHeight: "100vh"}}>
             <div style={{width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexWrap: "wrap", color: "#fff", overflow: "scroll"}} className="noscroll pixel">
                 <div style={{marginTop: "120px", width: "70%", display: "flex", flexDirection: "column", textAlign: "left"}}>
-                    <div style={{color: "#bdc2c4", fontSize: "18px"}}>{'// CHOOSE TOKEN/NFTs TO BRIDGE'}</div>
-                    <div style={{width: "100%", padding: "20px 0", display: "flex", flexDirection: "row", fontSize: "16px", borderBottom: "2px solid #fff", overflow: "scroll"}} className='noscroll'>
-                        <div className='hashtag' style={{margin: "10px 10px 10px 0", color: "#fff"}} onClick={() => setMode(1)}>$USDT</div>
-                        <div className='hashtag' style={{color: "#fff"}} onClick={() => setMode(6)}>CMDAO NFT</div>
-                    </div>
                     {(mode === 1 || mode === 12) &&
                         <>
                             <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                <img style={{marginRight: "20px"}} height="40px" src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" alt="$JUSDT" />
+                                <img style={{marginRight: "20px"}} height="40px" src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" alt="$JUSDT" />
                                 JUSDT
                             </div>
                             <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(1)}><img src="https://gateway.pinata.cloud/ipfs/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a?img-height=50" width="25" alt="BKC" /></div>
-                                <div className='hashtag' style={{marginLeft: "10px", padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(12)}><img src="https://gateway.pinata.cloud/ipfs/bafkreibujxj6b6i3n4xtdywo3dp33hhdf6yilwkx42cmm4goxpduy5mvte?img-height=50" width="25" alt="BSC" /></div>
-                            </div>
-                        </>
-                    }
-                    {(mode === 2 || mode === 22) &&
-                        <>
-                            <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                <img style={{marginRight: "20px"}} height="40px" src="https://gateway.pinata.cloud/ipfs/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4" alt="$CMD" />
-                                CMD
-                            </div>
-                            <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(2)}><img src="https://gateway.pinata.cloud/ipfs/bafkreid53xlgsjlqosyyyxzbozfavoi2f4i6vnqxjwdxq32y7jsly3ckly?img-height=50" width="25" alt="OP" /></div>
-                            </div>
-                        </>
-                    }
-                    {mode === 3 &&
-                        <>
-                            <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                <img style={{marginRight: "20px"}} height="40px" src="https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm" alt="$TAO" />
-                                JTAO
-                            </div>
-                            <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(3)}><img src="https://gateway.pinata.cloud/ipfs/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a?img-height=50" width="25" alt="BKC" /></div>
-                            </div>
-                        </>
-                    }
-                    {mode === 4 &&
-                        <>
-                            <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                <img style={{marginRight: "20px"}} height="40px" src="https://gateway.pinata.cloud/ipfs/bafkreidzl5nc4rlh3kwa57jhnepqe5slnqcwsz5fcewaegoind4fnp4ogq" alt="TAODUM" />
-                                TAODUM NFT
-                            </div>
-                            <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(4)}><img src="https://gateway.pinata.cloud/ipfs/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a?img-height=50" width="25" alt="BKC" /></div>
-                            </div>
-                        </>
-                    }
-                    {mode === 5 &&
-                        <>
-                            <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                HRM SYSTEM
-                            </div>
-                            <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(5)}><img src="https://gateway.pinata.cloud/ipfs/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a?img-height=50" width="25" alt="BKC" /></div>
-                            </div>
-                        </>
-                    }
-                    {(mode === 6 || mode === 60) &&
-                        <>
-                            <div style={{width: "100%", marginTop: "30px", fontSize: "40px", letterSpacing: "2.5px", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                                CommuDAO NFT
-                            </div>
-                            <div style={{width: "100%", padding: "20px 0", display: "flex", flexFlow: "row wrap", fontSize: "16px", borderBottom: "2px solid #fff"}}>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(6)}><img src="https://gateway.pinata.cloud/ipfs/bafkreihdmsnmmzhepcfxuvoflht2iqv5w73hg5kbgrc33jrhk7il5ddpgu?img-height=50" width="25" alt="JBC" /></div>
-                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(60)}><img src="https://gateway.pinata.cloud/ipfs/bafkreid53xlgsjlqosyyyxzbozfavoi2f4i6vnqxjwdxq32y7jsly3ckly?img-height=50" width="25" alt="OP" /></div>
+                                <div className='hashtag' style={{padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(1)}><img src="/chains/bafkreien2xny3ki3a4qqfem74vvucreppp6rpe7biozr4jiaom7shmv47a.png" width="25" alt="BKC" /></div>
+                                <div className='hashtag' style={{marginLeft: "10px", padding: "10px", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px"}} onClick={() => setMode(12)}><img src="/chains/bafkreibujxj6b6i3n4xtdywo3dp33hhdf6yilwkx42cmm4goxpduy5mvte.png" width="25" alt="BSC" /></div>
                             </div>
                         </>
                     }
@@ -485,79 +370,6 @@ const TBridge = ({ config, setisLoading, txupdate, setTxupdate, setisError, setE
                         </div>
                     </>
                 }
-                {mode === 2 &&
-                    <>
-                        <div style={{width: "70%", padding: "40px 45px 40px 0", margin: "10px 0", background: "transparent", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", overflow: "scroll", fontSize: "16px"}} className='noscroll'>
-                            <div style={{height: "80%", padding: "40px", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center"}}>
-                                <div style={{width: "300px", marginBottom: "15px", textAlign: "initial", color: "#bdc2c4"}}>
-                                    Burned CMJ
-                                </div>
-                                <div style={{fontSize: "30px", textAlign: "left"}}>{Number(burnedCmj).toLocaleString('en-US', {maximumFractionDigits:2})} CMJ ({Number((burnedCmj*100)/1000000).toFixed(2)}%)</div>
-                            </div>
-                            <div style={{height: "80%", padding: "40px", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center"}}>
-                                <div style={{width: "300px", marginBottom: "15px", textAlign: "initial", color: "#bdc2c4"}}>
-                                    Burned JDAO
-                                </div>
-                                <div style={{fontSize: "30px"}}>Not Open Yet</div>
-                            </div>
-                            <div style={{height: "80%", padding: "40px", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center"}}>
-                                <div style={{width: "300px", marginBottom: "20px", textAlign: "initial", color: "#bdc2c4"}}>Bridging Fee</div>
-                                <div style={{fontSize: "30px"}}>80 CMD/TX</div>
-                            </div>
-                        </div>
-                        <div style={{height: "420px", marginBottom: "20px", width: "1200px", maxWidth: "90%", display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", overflow: "scroll", fontSize: "16px"}} className='noscroll'>
-                            <div style={{minWidth: "500px", maxWidth: "500px", padding: "40px 10px", background: "rgb(206, 208, 207)", boxShadow: "rgba(0, 0, 0, 0.35) 4px 4px 10px 0px, rgb(255, 255, 255) 1px 1px 0px 1px inset, rgb(136, 140, 143) -1px -1px 0px 1px inset", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap"}}>
-                                <input
-                                    style={{width: "250px", maxWidth: "70%", padding: "10px", margin: "10px 0", backgroundColor: "#fff", color: "#000", border: "2px solid", borderColor: "rgb(136, 140, 143) rgb(255, 255, 255) rgb(255, 255, 255) rgb(136, 140, 143)"}}
-                                    type="number"
-                                    step="1"
-                                    min="1"
-                                    placeholder="0.0 CMJ"
-                                    value={depositCMJ}
-                                    onChange={(event) => setDepositCMJ(event.target.value)}
-                                ></input>
-                                {(chain !== undefined && address !== null) ? 
-                                    <>
-                                        {chain.id === 8899 ? 
-                                            <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", borderRadius: "0", fontSize: "12px"}} className="button" onClick={depositCmjHandle}>BRIDGE TO OP MAINNET</div> : 
-                                            <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px", borderRadius: "0", color: "rgb(136, 140, 143)", cursor: "not-allowed", fontSize: "12px"}} className="button">BRIDGE TO OP MAINNET</div>
-                                        }
-                                    </> :
-                                    <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px", borderRadius: "0", color: "rgb(136, 140, 143)", cursor: "not-allowed", fontSize: "12px"}} className="button">BRIDGE TO OP MAINNET</div>
-                                }
-                                <div style={{width: "92%", margin: "20px 0", color: "#000", textAlign: "left", cursor: "pointer"}} onClick={() => setDepositCMJ(cmjBalance)}>Balance: {Number(cmjBalance).toFixed(4)} CMJ</div>
-                                <div style={{width: "92%", margin: "10px 0", color: "gray", textAlign: "left", paddingBottom: "5px", borderBottom: "1px dotted gray"}}>Will receive: {depositCMJ >= 80 ? Number((depositCMJ * 80 - 80)).toFixed(3) : 0} CMD</div>
-                                <div style={{width: "92%", margin: "10px 0", color: "gray", textAlign: "left", paddingBottom: "5px", borderBottom: "1px dotted gray"}}>OP Mainnet Balance: {cmdBalance} CMD</div>
-                                <div style={{width: "92%", margin: "10px 0 20px 0", textAlign: "left", color: "red"}}>⚠️ WARN: This operation is one-way bridging!</div>
-                            </div>
-                            <div style={{minWidth: "500px", maxWidth: "500px", padding: "40px 10px", background: "rgb(206, 208, 207)", boxShadow: "rgba(0, 0, 0, 0.35) 4px 4px 10px 0px, rgb(255, 255, 255) 1px 1px 0px 1px inset, rgb(136, 140, 143) -1px -1px 0px 1px inset", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around", flexWrap: "wrap"}}>
-                                <input
-                                    style={{width: "250px", maxWidth: "70%", padding: "10px", margin: "10px 0", backgroundColor: "#fff", color: "#000", border: "2px solid", borderColor: "rgb(136, 140, 143) rgb(255, 255, 255) rgb(255, 255, 255) rgb(136, 140, 143)"}}
-                                    type="number"
-                                    step="1"
-                                    min="1"
-                                    placeholder="0.0 JDAO"
-                                    disabled
-                                ></input>
-                                {(chain !== undefined && address !== null) ? 
-                                    <>
-                                        {(false && chain.id === 8899) ?
-                                            <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", borderRadius: "0", fontSize: "12px"}} className="button" onClick={depositCmjHandle}>BRIDGE TO OP MAINNET</div> : 
-                                            <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px", borderRadius: "0", color: "rgb(136, 140, 143)", cursor: "not-allowed", fontSize: "12px"}} className="button">BRIDGE TO OP MAINNET</div>
-                                        }
-                                    </> :
-                                    <div style={{maxHeight: "47px", maxWidth: "fit-content", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", background: "rgb(206, 208, 207)", border: "2px solid", borderColor: "rgb(255, 255, 255) rgb(5, 6, 8) rgb(5, 6, 8) rgb(255, 255, 255)", textShadow: "rgb(255, 255, 255) 1px 1px", borderRadius: "0", color: "rgb(136, 140, 143)", cursor: "not-allowed", fontSize: "12px"}} className="button">BRIDGE TO OP MAINNET</div>
-                                }
-                                <div style={{width: "92%", margin: "17.5px 0", color: "gray", textAlign: "left", paddingBottom: "5px", borderBottom: "1px dotted gray"}}>Not open yet</div>
-                                <div style={{width: "92%", margin: "10px 0", color: "gray", textAlign: "left", paddingBottom: "5px", borderBottom: "1px dotted gray"}}>Will receive: {0} CMD</div>
-                                <div style={{width: "92%", margin: "10px 0", color: "gray", textAlign: "left", paddingBottom: "5px", borderBottom: "1px dotted gray"}}>OP Mainnet Balance: {cmdBalance} CMD</div>
-                                <div style={{width: "92%", margin: "10px 0 20px 0", textAlign: "left", color: "red"}}>⚠️ WARN: This operation is one-way bridging!</div>
-                            </div>
-                        </div>
-                    </>
-                }
-                {mode === 6 && <TBridgeCMDAONFT config={config} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc721Abi={erc721Abi} tbridgeNFTABI={tbridgeNFTABI} />}
-                {mode === 60 && <TBridgeCMDAONFT2 config={config} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc721Abi={erc721Abi} tbridgeNFTABI={tbridgeNFTABI} uniNftBridgeABI={uniNftBridgeABI} />}
                 <div style={{width: "1200px", maxWidth: "90%", textAlign: "left", fontSize: "18px", letterSpacing: "1px", marginBottom: "200px"}}>🛟 <a style={{textDecoration: "underline", color: "#fff"}} href="https://discord.com/invite/k92ReT5EYy" target="_blank" rel="noreferrer">Get Help in CommuDAO Discord</a></div>
             </div>
         </div>

@@ -83,10 +83,6 @@ import swapABI from './jsons/swapcallABI.json'
 import swapJulpABI from './jsons/swapcallJulpABI.json'
 import farmJdaoABI from './jsons/masterchefJdaoABI.json'
 import bkcOracleABI from './jsons/bkcOracleABI.json'
-import tbridgeNFTABI from './jsons/tbridgeNFTABI.json'
-import nativeBridgeABI from './jsons/nativeBridgeABI.json'
-import uniTokensBridgeABI from './jsons/uniTokensBridgeABI.json'
-import uniNftBridgeABI from './jsons/uniNftBridgeABI.json'
 import veloPoolABI from './jsons/veloPoolABI.json'
 import velodromeRouterABI from './jsons/velodromeRouterABI.json'
 import velodromeCallerABI from './jsons/velodromeCallerABI.json'
@@ -411,7 +407,7 @@ const Main = () => {
                         {mode === 7 && <GameSwap config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} exchangeABI={exchangeABI} exchangeJulpABI={exchangeJulpABI} farmJdaoABI={farmJdaoABI} swapABI={swapABI} swapJulpABI={swapJulpABI} bkcOracleABI={bkcOracleABI} cmdaoAmmNpcABI={cmdaoAmmNpcABI} />}
                         {mode === 700 && <BKCGameSwap config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} setTxupdate={setTxupdate} txupdate={txupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} diamonLpABI={diamonLpABI} farmCmosABI={farmCmosABI} bkcOracleABI={bkcOracleABI} />}
                         {mode === 701 && <OpGameSwap config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} callMode={callMode} navigate={navigate} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} veloPoolABI={veloPoolABI} velodromeRouterABI={velodromeRouterABI} velodromeCallerABI={velodromeCallerABI} bkcOracleABI={bkcOracleABI} stcmdABI={stcmdABI} />}
-                        {mode === 8 && <TBridge config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} erc721Abi={erc721Abi} tbridgeNFTABI={tbridgeNFTABI} nativeBridgeABI={nativeBridgeABI} uniTokensBridgeABI={uniTokensBridgeABI} uniNftBridgeABI={uniNftBridgeABI} />}
+                        {mode === 8 && <TBridge config={wagmiAdapter.wagmiConfig} setisLoading={setisLoading} txupdate={txupdate} setTxupdate={setTxupdate} setisError={setisError} setErrMsg={setErrMsg} erc20Abi={erc20Abi} />}
                     </Suspense>
                     {mode === null &&
                         <div style={{minHeight: "80vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}} className="collection">
