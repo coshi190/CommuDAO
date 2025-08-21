@@ -1669,7 +1669,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img 
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u"
+                                    src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png"
                                     width="20"
                                     alt="$CMJ"
                                     style={{cursor: "crosshair"}}
@@ -1682,7 +1682,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: cmjToken,
                                                     symbol: 'CMJ',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u',
+                                                    image: '/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png',
                                                 },
                                             },
                                         })
@@ -1692,7 +1692,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img 
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm"
+                                    src="/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png"
                                     width="20"
                                     alt="$JTAO"
                                     style={{cursor: "crosshair"}}
@@ -1705,7 +1705,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: taomeme,
                                                     symbol: 'JTAO',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm',
+                                                    image: '/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png',
                                                 },
                                             },
                                         })
@@ -1719,7 +1719,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4"
+                                    src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png"
                                     width="20"
                                     alt="$WOOD"
                                     style={{cursor: "crosshair"}}
@@ -1732,7 +1732,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: woodField,
                                                     symbol: 'WOOD',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4',
+                                                    image: '/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png',
                                                 },
                                             },
                                         })
@@ -1742,7 +1742,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e"
+                                    src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png"
                                     width="20"
                                     alt="$stOPT"
                                     style={{cursor: "crosshair"}}
@@ -1755,7 +1755,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: stOPT,
                                                     symbol: 'stOPT',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e',
+                                                    image: '/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png',
                                                 },
                                             },
                                         })
@@ -1765,7 +1765,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq"
+                                    src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png"
                                     width="20"
                                     alt="$CU"
                                     style={{cursor: "crosshair"}}
@@ -1778,7 +1778,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: cuToken,
                                                     symbol: 'CU',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq',
+                                                    image: '/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png',
                                                 },
                                             },
                                         })
@@ -1788,7 +1788,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy"
+                                    src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png"
                                     width="20"
                                     alt="$JASP"
                                     style={{cursor: "crosshair"}}
@@ -1798,10 +1798,10 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                             params: {
                                                 type: 'ERC20',
                                                 options: {
-                                                    address: cuToken,
+                                                    address: dunJasper,
                                                     symbol: 'JASP',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy',
+                                                    image: '/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png',
                                                 },
                                             },
                                         })
@@ -1815,7 +1815,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe"
+                                    src="/tokens/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe.png"
                                     width="20"
                                     alt="$TUNA"
                                     style={{cursor: "crosshair"}}
@@ -1828,7 +1828,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: tunaField,
                                                     symbol: 'TUNA',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe',
+                                                    image: '/tokens/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe.png',
                                                 },
                                             },
                                         })
@@ -1838,7 +1838,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i"
+                                    src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png"
                                     width="20"
                                     alt="$MICE"
                                     style={{cursor: "crosshair"}}
@@ -1851,7 +1851,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: fieldMice,
                                                     symbol: 'MICE',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i',
+                                                    image: '/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png',
                                                 },
                                             },
                                         })
@@ -1861,7 +1861,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re"
+                                    src="/tokens/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re.png"
                                     width="20"
                                     alt="$VABAG"
                                     style={{cursor: "crosshair"}}
@@ -1874,7 +1874,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: vabag,
                                                     symbol: 'VABAG',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re',
+                                                    image: '/tokens/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re.png',
                                                 },
                                             },
                                         })
@@ -1884,7 +1884,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m"
+                                    src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png"
                                     width="20"
                                     alt="$ANGB"
                                     style={{cursor: "crosshair"}}
@@ -1897,7 +1897,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: dunANGB,
                                                     symbol: 'ANGB',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m',
+                                                    image: '/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png',
                                                 },
                                             },
                                         })
@@ -1907,7 +1907,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4"
+                                    src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png"
                                     width="20"
                                     alt="$GEAR"
                                     style={{cursor: "crosshair"}}
@@ -1920,7 +1920,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: gearField,
                                                     symbol: 'GEAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4',
+                                                    image: '/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png',
                                                 },
                                             },
                                         })
@@ -1930,7 +1930,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi"
+                                    src="/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png"
                                     width="20"
                                     alt="$DOIJIB"
                                     style={{cursor: "crosshair"}}
@@ -1943,7 +1943,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: doijibToken,
                                                     symbol: 'DOIJIB',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi',
+                                                    image: '/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png',
                                                 },
                                             },
                                         })
@@ -1957,7 +1957,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq"
+                                    src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png"
                                     width="20"
                                     alt="$BBQ"
                                     style={{cursor: "crosshair"}}
@@ -1970,7 +1970,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: bbqToken,
                                                     symbol: 'BBQ',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq',
+                                                    image: '/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png',
                                                 },
                                             },
                                         })
@@ -1980,7 +1980,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu"
+                                    src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png"
                                     width="20"
                                     alt="$PZA"
                                     style={{cursor: "crosshair"}}
@@ -1993,7 +1993,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: pzaLab,
                                                     symbol: 'PZA',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu',
+                                                    image: '/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png',
                                                 },
                                             },
                                         })
@@ -2003,7 +2003,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde"
+                                    src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png"
                                     width="20"
                                     alt="$SIL"
                                     style={{cursor: "crosshair"}}
@@ -2016,7 +2016,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: silToken,
                                                     symbol: 'SIL',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde',
+                                                    image: '/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png',
                                                 },
                                             },
                                         })
@@ -2026,7 +2026,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm"
+                                    src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png"
                                     width="20"
                                     alt="$GOLD"
                                     style={{cursor: "crosshair"}}
@@ -2039,7 +2039,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: goldToken,
                                                     symbol: 'GOLD',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm',
+                                                    image: '/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png',
                                                 },
                                             },
                                         })
@@ -2049,7 +2049,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa"
+                                    src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png"
                                     width="20"
                                     alt="$PLAT"
                                     style={{cursor: "crosshair"}}
@@ -2062,7 +2062,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: platToken,
                                                     symbol: 'PLAT',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa',
+                                                    image: '/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png',
                                                 },
                                             },
                                         })
@@ -2072,7 +2072,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw"
+                                    src="/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png"
                                     width="20"
                                     alt="$PLUTO"
                                     style={{cursor: "crosshair"}}
@@ -2085,7 +2085,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: plutoToken,
                                                     symbol: 'PLUTO',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw',
+                                                    image: '/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png',
                                                 },
                                             },
                                         })
@@ -2097,7 +2097,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC"
+                                    src="/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png"
                                     width="20"
                                     alt="$F.BTC"
                                     style={{cursor: "crosshair"}}
@@ -2110,7 +2110,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: fbtcToken,
                                                     symbol: 'F.BTC',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC',
+                                                    image: '/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png',
                                                 },
                                             },
                                         })
@@ -2120,7 +2120,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh"
+                                    src="/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png"
                                     width="20"
                                     alt="$X4"
                                     style={{cursor: "crosshair"}}
@@ -2133,7 +2133,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: x4Token,
                                                     symbol: 'X4',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh',
+                                                    image: '/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png',
                                                 },
                                             },
                                         })
@@ -2147,7 +2147,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i"
+                                    src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png"
                                     width="20"
                                     alt="$CTUNA"
                                     style={{cursor: "crosshair"}}
@@ -2160,7 +2160,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: ctunaLab,
                                                     symbol: 'CTUNA',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i',
+                                                    image: '/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png',
                                                 },
                                             },
                                         })
@@ -2170,7 +2170,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4"
+                                    src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png"
                                     width="20"
                                     alt="$SX31"
                                     style={{cursor: "crosshair"}}
@@ -2183,7 +2183,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: sx31Lab,
                                                     symbol: 'SX31',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4',
+                                                    image: '/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png',
                                                 },
                                             },
                                         })
@@ -2193,7 +2193,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi"
+                                    src="/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png"
                                     width="20"
                                     alt="$SWAR"
                                     style={{cursor: "crosshair"}}
@@ -2206,7 +2206,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: swarLab,
                                                     symbol: 'SWAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi',
+                                                    image: '/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png',
                                                 },
                                             },
                                         })
@@ -2216,7 +2216,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu"
+                                    src="/tokens/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu.png"
                                     width="20"
                                     alt="$STAR"
                                     style={{cursor: "crosshair"}}
@@ -2229,7 +2229,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: starLab,
                                                     symbol: 'AP-STAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu',
+                                                    image: '/tokens/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu.png',
                                                 },
                                             },
                                         })
@@ -2239,7 +2239,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q"
+                                    src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png"
                                     width="20"
                                     alt="$II"
                                     style={{cursor: "crosshair"}}
@@ -2252,7 +2252,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: iiLab,
                                                     symbol: 'TDM - II',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q',
+                                                    image: '/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png',
                                                 },
                                             },
                                         })
@@ -2262,7 +2262,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm"
+                                    src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png"
                                     width="20"
                                     alt="$EE"
                                     style={{cursor: "crosshair"}}
@@ -2275,7 +2275,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: dunEE,
                                                     symbol: 'TDM-EE',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm',
+                                                    image: '/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png',
                                                 },
                                             },
                                         })
@@ -2287,7 +2287,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ"
+                                    src="/tokens/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ.png"
                                     width="20"
                                     alt="$DOISTAR"
                                     style={{cursor: "crosshair"}}
@@ -2300,7 +2300,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                     address: doistarToken,
                                                     symbol: 'DOISTAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ',
+                                                    image: '/tokens/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ.png',
                                                 },
                                             },
                                         })
@@ -2316,18 +2316,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 {levelCraftBBQ >= 0 ? <div style={{position: "absolute", top: 15, right: 15, padding: "10px 20px", letterSpacing: 1, background: "transparent", border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="bold">LEVEL {levelCraftBBQ}</div> : <></>}
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                    {isCraftBBQ !== null || levelCraftBBQ < 4 ? <img src="./elements/BBQ_factory01_lv0.png" width="170" alt="$BBQ_Factory_lv0"/> : <></>}
+                                    {isCraftBBQ !== null || levelCraftBBQ < 4 ? <img src="/elements/BBQ_factory01_lv0.png" width="170" alt="$BBQ_Factory_lv0"/> : <></>}
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="18" alt="$WOOD"/>
+                                        <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="18" alt="$WOOD"/>
                                         <div style={{margin: "0 5px"}}>100</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" height="18" alt="$JBC"/>
+                                        <img src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" height="18" alt="$JBC"/>
                                         <div style={{margin: "0 5px"}}>0.01</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                        <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                         <div style={{margin: "0 5px"}}>
                                             {isCraftBBQ !== null ?
                                                 <>
@@ -2362,7 +2362,7 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                                 <div style={{marginTop: "10px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontSize: "15px", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-gavel"></i></div>
                                                     <div style={{display: "flex", flexDirection: "row"}}>
-                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="18" alt="$WOOD"/>
+                                                        <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="18" alt="$WOOD"/>
                                                         <div style={{margin: "0 5px"}}>
                                                             {isCraftBBQ !== null ?
                                                                 <>
@@ -2397,18 +2397,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmXQdWZs4VTcbUFJCv42onZCqXjhYJ4S1ek9fAZGfbeVSi" width="200" alt="Pizza_Factory"/>
+                                    <img src="/elements/QmXQdWZs4VTcbUFJCv42onZCqXjhYJ4S1ek9fAZGfbeVSi.png" width="200" alt="Pizza_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                        <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                         <div style={{margin: "0 5px"}}>10,000</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e" height="18" alt="$stOPT"/>
+                                        <img src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png" height="18" alt="$stOPT"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu" height="18" alt="$PZA"/>
+                                        <img src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png" height="18" alt="$PZA"/>
                                         <div style={{margin: "0 5px"}}>500</div>
                                     </div>
                                 </div>
@@ -2447,18 +2447,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmdpfkSTFj8BY8f6RjtLzp4e1P1eF76zWo9qngx9FPmogv" width="210" alt="$SIL_Factory"/>
+                                    <img src="/elements/QmdpfkSTFj8BY8f6RjtLzp4e1P1eF76zWo9qngx9FPmogv.png" width="210" alt="$SIL_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="18" alt="$CU"/>
+                                        <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="18" alt="$CU"/>
                                         <div style={{margin: "0 5px"}}>150,000</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" height="18" alt="$SIL"/>
+                                        <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" height="18" alt="$SIL"/>
                                         <div style={{margin: "0 5px"}}>5,000</div>
                                     </div>
                                 </div>
@@ -2500,18 +2500,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "95%", minHeight: "0", justifyContent: "flex-start", flexWrap: "nowrap", overflow: "scroll"}} className="collection noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmWhS1SzApFMZA9DGYyv6BcW48d8EEn97dnHmfs7cCNRLM" width="220" alt="$GOLD_Factory"/>
+                                    <img src="/elements/QmWhS1SzApFMZA9DGYyv6BcW48d8EEn97dnHmfs7cCNRLM.png" width="220" alt="$GOLD_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" height="18" alt="$SIL"/>
+                                        <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" height="18" alt="$SIL"/>
                                         <div style={{margin: "0 5px"}}>10,000</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4" height="18" alt="$SX31"/>
+                                        <img src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png" height="18" alt="$SX31"/>
                                         <div style={{margin: "0 5px"}}>5</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" height="18" alt="$GOLD"/>
+                                        <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" height="18" alt="$GOLD"/>
                                         <div style={{margin: "0 5px"}}>500</div>
                                     </div>
                                 </div>
@@ -2550,18 +2550,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmXuWRk4JQuepXzEM5N2f64StpwpypfEBtVzfjRqmHivUE" width="230" alt="$PLAT_Factory"/>
+                                    <img src="/elements/QmXuWRk4JQuepXzEM5N2f64StpwpypfEBtVzfjRqmHivUE.png" width="230" alt="$PLAT_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" height="18" alt="$GOLD"/>
+                                        <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" height="18" alt="$GOLD"/>
                                         <div style={{margin: "0 5px"}}>300</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i" height="18" alt="$CTUNA"/>
+                                        <img src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png" height="18" alt="$CTUNA"/>
                                         <div style={{margin: "0 5px"}}>5</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="18" alt="$PLAT"/>
+                                        <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="18" alt="$PLAT"/>
                                         <div style={{margin: "0 5px"}}>100</div>
                                     </div>
                                 </div>
@@ -2600,18 +2600,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmXEZM8Pm1puJwoxRzTBeeuxtyb81XJVL1A47mDEEtYpoG" width="230" alt="$PLUTO_Factory"/>
+                                    <img src="/elements/QmXEZM8Pm1puJwoxRzTBeeuxtyb81XJVL1A47mDEEtYpoG.png" width="230" alt="$PLUTO_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                         <div style={{margin: "0 5px"}}>100 GWEI</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>5</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw" height="18" alt="$PLUTO"/>
+                                        <img src="/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png" height="18" alt="$PLUTO"/>
                                         <div style={{margin: "0 5px"}}>5 GWEI</div>
                                     </div>
                                 </div>
@@ -2653,18 +2653,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "95%", minHeight: "0", justifyContent: "flex-start", flexWrap: "nowrap", overflow: "scroll"}} className="collection noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmctFaWmze1R6rKCFJkGBS6zBeABX5X6r3Nuv9M46AvJxr" width="200" alt="$F.BTC_Factory"/>
+                                    <img src="/elements/QmctFaWmze1R6rKCFJkGBS6zBeABX5X6r3Nuv9M46AvJxr.png" width="200" alt="$F.BTC_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw" height="18" alt="$PLUTO"/>
+                                        <img src="/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png" height="18" alt="$PLUTO"/>
                                         <div style={{margin: "0 5px"}}>20 GWEI</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ" height="18" alt="$DOISTAR"/>
+                                        <img src="/tokens/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ.png" height="18" alt="$DOISTAR"/>
                                         <div style={{margin: "0 5px"}}>10</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC" height="18" alt="$F.BTC"/>
+                                        <img src="/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png" height="18" alt="$F.BTC"/>
                                         <div style={{margin: "0 5px"}}>1 SAT</div>
                                     </div>
                                 </div>
@@ -2703,18 +2703,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px 10px 80px 10px"}}>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible"}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmReQu734pS2Dt474RBME1LYUec2f2XgE2EDWAKCeX5RJg" width="220" alt="$X4_Factory"/>
+                                    <img src="/elements/QmReQu734pS2Dt474RBME1LYUec2f2XgE2EDWAKCeX5RJg.png" width="220" alt="$X4_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC" height="18" alt="$F.BTC"/>
+                                        <img src="/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png" height="18" alt="$F.BTC"/>
                                         <div style={{margin: "0 5px"}}>10 SAT</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="18" alt="$PLATINUM"/>
+                                        <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="18" alt="$PLATINUM"/>
                                         <div style={{margin: "0 5px"}}>1,000</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh" height="18" alt="$X4"/>
+                                        <img src="/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png" height="18" alt="$X4"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                     </div>
                                 </div>
@@ -2758,22 +2758,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "95%", minHeight: "0", justifyContent: "flex-start", flexWrap: "nowrap", overflow: "scroll"}} className="collection noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center"}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4" width="30px" alt="CM" />
+                                    <img src="/maps/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4.png" width="30px" alt="CM" />
                                     <div className='light' style={{marginLeft: "10px"}}>CM Digital</div>
                                 </div>
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                    <img src="./elements/ctunafactory.png" width="200" alt="$CTUNA_Factory"/>
+                                    <img src="/elements/ctunafactory.png" width="200" alt="$CTUNA_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe" height="18" alt="$TUNA"/>
+                                        <img src="/tokens/bafkreifqroahbmxgnmsqdot5bzu3xbsa7y27mnlo6k45efgidmqxqrstbe.png" height="18" alt="$TUNA"/>
                                         <div style={{margin: "0 5px"}}>50</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>10</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i" height="18" alt="$CTUNA"/>
+                                        <img src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png" height="18" alt="$CTUNA"/>
                                         <div style={{margin: "0 5px"}}>50</div>
                                     </div>
                                 </div>
@@ -2812,22 +2812,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center"}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4" width="30px" alt="CM" />
+                                    <img src="/maps/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4.png" width="30px" alt="CM" />
                                     <div className='light' style={{marginLeft: "10px"}}>CM Digital</div>
                                 </div>
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                    <img src="./elements/sx31factory.png" width="200" alt="$SX31_Factory"/>
+                                    <img src="/elements/sx31factory.png" width="200" alt="$SX31_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" height="18" alt="$MICE"/>
+                                        <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" height="18" alt="$MICE"/>
                                         <div style={{margin: "0 5px"}}>50</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>9</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4" height="18" alt="$SX31"/>
+                                        <img src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png" height="18" alt="$SX31"/>
                                         <div style={{margin: "0 5px"}}>50</div>
                                     </div>
                                 </div>
@@ -2866,22 +2866,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4" width="30px" alt="CM" />
+                                    <img src="/maps/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4.png" width="30px" alt="CM" />
                                     <div className='light' style={{marginLeft: "10px"}}>CM Digital</div>
                                 </div>
                                 <div style={{width: "200px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmZmfbTakZsWQhZP7achSgqUJjqyajrziTq8YyNVndtuQ1" width="220" alt="Large_SX31_Factory"/>
+                                    <img src="/elements/QmZmfbTakZsWQhZP7achSgqUJjqyajrziTq8YyNVndtuQ1.png" width="220" alt="Large_SX31_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" height="18" alt="$MICE"/>
+                                        <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" height="18" alt="$MICE"/>
                                         <div style={{margin: "0 5px"}}>500</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>90</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4" height="18" alt="$SX31"/>
+                                        <img src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png" height="18" alt="$SX31"/>
                                         <div style={{margin: "0 5px"}}>500</div>
                                     </div>
                                 </div>
@@ -2923,22 +2923,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "95%", minHeight: "0", justifyContent: "flex-start", flexWrap: "nowrap", overflow: "scroll"}} className="collection noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeiaetddgerc54omjenjo65653ez37uezi4lgib64uc3uwsc522lcx4" width="220" alt="$SW_Factory"/>
+                                    <img src="/elements/bafybeiaetddgerc54omjenjo65653ez37uezi4lgib64uc3uwsc522lcx4.png" width="220" alt="$SW_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re" height="18" alt="$VABAG"/>
+                                        <img src="/tokens/bafkreia6rbj3o47qbw7o3vqd6ogylwjcjay5phsve5pixfvmw7nexwx3re.png" height="18" alt="$VABAG"/>
                                         <div style={{margin: "0 5px"}}>10</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi" height="18" alt="$SWAR"/>
+                                        <img src="/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png" height="18" alt="$SWAR"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                     </div>
                                 </div>
@@ -2977,22 +2977,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeib5uqywe3cpzmxofduwgii7ooawzcyoe62jys34rltqprxes5uhja" width="250" alt="$STAR_Factory"/>
+                                    <img src="/elements/bafybeib5uqywe3cpzmxofduwgii7ooawzcyoe62jys34rltqprxes5uhja.png" width="250" alt="$STAR_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m" height="18" alt="$ANGB"/>
+                                        <img src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png" height="18" alt="$ANGB"/>
                                         <div style={{margin: "0 5px"}}>40</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu" height="18" alt="$STAR"/>
+                                        <img src="/tokens/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu.png" height="18" alt="$STAR"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                     </div>
                                 </div>
@@ -3034,18 +3034,18 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus & DOIJIB</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmYdNTzX1mGY2Wuk5DVv8M9vJEQKR9MFxYGmcrx5S9GZP8" width="220" alt="$DOISTAR_Factory"/>
+                                    <img src="/elements/QmYdNTzX1mGY2Wuk5DVv8M9vJEQKR9MFxYGmcrx5S9GZP8.png" width="220" alt="$DOISTAR_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu" height="18" alt="$STAR"/>
+                                        <img src="/tokens/bafybeideve73vg6mtnwzjjmrol66idxoe3orfxrjbdairhwbumyj3a46eu.png" height="18" alt="$STAR"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi" height="18" alt="$DOIJIB"/>
+                                        <img src="/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png" height="18" alt="$DOIJIB"/>
                                         <div style={{margin: "0 5px"}}>100,000</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ" height="18" alt="$DOISTAR"/>
+                                        <img src="/tokens/QmVpWGEYVs1J27STXuFUVScpPSrJtRKHBjzWNADerykPEJ.png" height="18" alt="$DOISTAR"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                     </div>
                                 </div>
@@ -3087,22 +3087,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                         <div style={{width: "95%", minHeight: "0", justifyContent: "flex-start", flexWrap: "nowrap", overflow: "scroll"}} className="collection noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>Taodum & Taomeme</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmfQhrhSNw5Ldegjeu8vF2wSv432uWesQYe5kyW1cWgntV" width="170" alt="$II_Factory"/>
+                                    <img src="/elements/QmfQhrhSNw5Ldegjeu8vF2wSv432uWesQYe5kyW1cWgntV.png" width="170" alt="$II_Factory"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4" height="18" alt="$GEAR"/>
+                                        <img src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png" height="18" alt="$GEAR"/>
                                         <div style={{margin: "0 5px"}}>888</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm" height="18" alt="$JTAO"/>
+                                        <img src="/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png" height="18" alt="$JTAO"/>
                                         <div style={{margin: "0 5px"}}>8</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q" height="18" alt="$II"/>
+                                        <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="18" alt="$II"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                     </div>
                                 </div>
@@ -3141,22 +3141,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px 10px 80px 10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>Taodum & Taomeme</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeiabwndglvszkrvnpfgqfxuidtqa22zxdfkpiivkpvqpjiwe2cxrbu" width="210" alt="$II_Factory02"/>
+                                    <img src="/elements/bafybeiabwndglvszkrvnpfgqfxuidtqa22zxdfkpiivkpvqpjiwe2cxrbu.png" width="210" alt="$II_Factory02"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4" height="18" alt="$GEAR"/>
+                                        <img src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png" height="18" alt="$GEAR"/>
                                         <div style={{margin: "0 5px"}}>88,888</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm" height="18" alt="$JTAO"/>
+                                        <img src="/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png" height="18" alt="$JTAO"/>
                                         <div style={{margin: "0 5px"}}>128</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q" height="18" alt="$II"/>
+                                        <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="18" alt="$II"/>
                                         <div style={{margin: "0 5px"}}>8</div>
                                     </div>
                                 </div>
@@ -3195,22 +3195,22 @@ const Labs = ({ config, callMode, navigate, setisLoading, txupdate, setTxupdate,
                             </div>
                             <div className="nftCard" style={{position: "relative", justifyContent: "center", margin: "10px"}}>
                                 <div style={{position: "absolute", top: 15, right: 15, padding: "7.5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>Taodum & Taomeme</div>
                                 </div>
                                 <div style={{width: "350px", height: "218.18px", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "visible", zIndex: 2}}>
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeigs7ilnbpesbmxgnucbiqjsiy7dpovhjhkrkl2ubdczzteaqfn62e" width="220" alt="$PLAT_Factory02"/>
+                                    <img src="/elements/bafybeigs7ilnbpesbmxgnucbiqjsiy7dpovhjhkrkl2ubdczzteaqfn62e.png" width="220" alt="$PLAT_Factory02"/>
                                 </div>
                                 <div style={{marginTop: "30px", width: "320px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}} className="pixel">
                                     <div><i style={{fontSize: "18px", marginRight: "5px"}} className="fa fa-flask"></i></div>
                                     <div style={{display: "flex", flexDirection: "row", fontSize: "15px"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm" height="18" alt="$EE"/>
+                                        <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="18" alt="$EE"/>
                                         <div style={{margin: "0 5px"}}>888</div>
                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                         <div style={{margin: "0 5px"}}>1</div>
                                         <i style={{fontSize: "16px", margin: "2.5px 10px 2.5px 5px"}} className="fa fa-caret-right"></i>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="18" alt="$PLAT"/>
+                                        <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="18" alt="$PLAT"/>
                                         <div style={{margin: "0 5px"}}>10</div>
                                     </div>
                                 </div>
