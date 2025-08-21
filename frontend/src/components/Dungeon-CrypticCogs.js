@@ -832,12 +832,12 @@ const CrypticCogs = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                     </div>
                 </div>
             }
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('https://gateway.pinata.cloud/ipfs/bafybeiehjcwrzylly7xunlan4xqwe2aynokqkgtj65bwxxqq5wfnz4hcnq?img-quality=50')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
                     <div className="pixel" style={{fontSize: "75px", padding: "10px 20px", width: "fit-content", color: "#fff", background: "rgb(0, 0, 0, 0.6)", backdropFilter: "blur(10px)"}}>Cryptic Cogs</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=150&img-height=150" width="150" alt="$EE" />
+                    <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" width="150" alt="$EE" />
                 </div>
             </div>
             
@@ -896,14 +896,14 @@ const CrypticCogs = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     EE BALANCE
                                     <div style={{display: "flex", flexDirection: "row"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=150&img-height=150" height="20" alt="$EE"/>
+                                        <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="20" alt="$EE"/>
                                         <div style={{marginLeft: "5px"}}>{Number(eeBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                     </div>
                                 </div>
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     EE PENDING
                                     <div style={{display: "flex", flexDirection: "row", color: timeToRunout !== 0 && timeToRunout !== null  ? "#ff007a" : "#5f6476"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=150&img-height=150" height="20" alt="$EE"/>
+                                        <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="20" alt="$EE"/>
                                         <div style={{marginLeft: "5px"}}>{Number(angbPending).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                     </div>
                                 </div>
@@ -915,7 +915,7 @@ const CrypticCogs = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                     <div style={{display: "flex", flexDirection: "row"}}>
                                         {gasselected === "II" &&
                                             <>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q" height="20" alt="$II"/>
+                                                <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="20" alt="$II"/>
                                                 <div style={{marginLeft: "5px"}}>{Number(iiBalance).toLocaleString('en-US', {maximumFractionDigits:1})}</div>
                                             </>
                                         }
@@ -1051,7 +1051,7 @@ const CrypticCogs = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                 <div style={{backdropFilter: "blur(14px)", border: 0, justifyContent: "center", padding: "20px", margin: "10px"}} className="nftCard">
                                     {address !== null ?
                                         <>
-                                            <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                            <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                             <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                         </> :
                                         <>

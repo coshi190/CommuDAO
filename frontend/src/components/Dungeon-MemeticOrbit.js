@@ -2075,7 +2075,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                     </div>
                 </div>
             }
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('https://gateway.pinata.cloud/ipfs/QmYeJjdaanuuX27L1RyXLM957MitBQRQ5qr3W4hZJFoGjy')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('/maps/QmYeJjdaanuuX27L1RyXLM957MitBQRQ5qr3W4hZJFoGjy.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
                     <div className="pixel" style={{fontSize: "75px", color: "#fff", width: "fit-content"}}>Memetic Orbit</div>
                 </div>
@@ -2138,7 +2138,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                     REWARD BALANCE
                                     {!isEnd ? 
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="20" alt="$PLAT"/>
+                                            <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="20" alt="$PLAT"/>
                                             <div style={{marginLeft: "5px"}}>{Number(rewardBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                         </div> :
                                         <div style={{color: "#5f6476"}}>SS is over</div>
@@ -2148,7 +2148,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                     REWARD PENDING
                                     {!isEnd ? 
                                         <div style={{display: "flex", flexDirection: "row", color: timeToRunout !== 0 && timeToRunout !== null  ? "#ff007a" : "#5f6476"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="20" alt="$PLAT"/>
+                                            <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="20" alt="$PLAT"/>
                                             <div style={{marginLeft: "5px"}}>{Number(rewardPending).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                         </div> :
                                         <div style={{color: "#5f6476"}}>SS is over</div>
@@ -2160,7 +2160,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                         <div style={{display: "flex", flexDirection: "row"}}>
                                             {ss === 3 &&
                                                 <>
-                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="20" alt="$CU"/>
+                                                    <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="20" alt="$CU"/>
                                                     <div style={{marginLeft: "5px"}}>{Number(gasBalance).toLocaleString('en-US', {maximumFractionDigits:0})}</div>
                                                 </>
                                             }
@@ -2211,34 +2211,34 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {accSlot !== null ?
                                         <img src={accSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlotLevel !== null && <div className="slotlevel" style={{position: "absolute", top: "85px", padding: "2px", fontSize: "25px"}}>+{accSlotLevel}</div>}
                                     {accSlot2 !== null ?
                                         <img src={accSlot2} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlot2Level !== null && <div className="slotlevel" style={{position: "absolute", top: "237.5px", padding: "2px", fontSize: "25px"}}>+{accSlot2Level}</div> }
                                     {accSlot3 !== null ?
                                         <img src={accSlot3} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlot3Level !== null && <div className="slotlevel" style={{position: "absolute", top: "385px", padding: "2px", fontSize: "25px"}}>+{accSlot3Level}</div>}
                                 </div>
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 20px 20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {hatSlot !== null ?
                                         <img src={hatSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {hatSlotLevel !== null && <div className="slotlevel2" style={{position: "absolute", top: "85px", padding: "2px", fontSize: "25px"}}>+{hatSlotLevel}</div>}
                                     {clothSlot !== null ?
                                         <img src={clothSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {clothSlotLevel !== null && <div className="slotlevel2" style={{position: "absolute", top: "237.5px", padding: "2px", fontSize: "25px"}}>+{clothSlotLevel}</div>}
                                     {shoesSlot !== null ?
                                         <img src={shoesSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {shoesSlotLevel !== null && <div className="slotlevel2" style={{position: "absolute", top: "385px", padding: "2px", fontSize: "25px"}}>+{shoesSlotLevel}</div>}
                                 </div>
@@ -2246,12 +2246,12 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                     <div style={{position: "relative", width: "300px", height: "150px", padding: "0 20px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
                                         {soulSlot !== null ?
                                             <img src={soulSlot} width="100px" alt="Can not load metadata." /> :
-                                            <img src="https://gateway.pinata.cloud/ipfs/QmdSRjFFCUZJiLBxy5JUgVL4vezt4vXnux1JjFbQQgZCpP" width="100px" alt="Can not load metadata." />
+                                            <img src="/elements/QmdSRjFFCUZJiLBxy5JUgVL4vezt4vXnux1JjFbQQgZCpP.png" width="100px" alt="Can not load metadata." />
                                         }
                                         {soulSlotLevel !== null && <div style={{position: "absolute", top: "90px", right: "200px", padding: "2px", fontSize: "25px"}}>+{soulSlotLevel}</div>}
                                         {badgeSlot !== null ?
                                             <img src={badgeSlot} width="100px" alt="Can not load metadata." /> :
-                                            <img src="https://gateway.pinata.cloud/ipfs/QmQG17rt5uiChPpvHwivdZPX5Cm6PhoGyCYNzPyfs3ohT5" width="100px" alt="Can not load metadata." />
+                                            <img src="/elements/QmQG17rt5uiChPpvHwivdZPX5Cm6PhoGyCYNzPyfs3ohT5.png" width="100px" alt="Can not load metadata." />
                                         }
                                         {badgeSlotLevel !== null && <div style={{position: "absolute", top: "90px", right: "50px", padding: "2px", fontSize: "25px"}}>+{badgeSlotLevel}</div>}
                                     </div>
@@ -2269,7 +2269,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                                         <img src="https://gateway.pinata.cloud/ipfs/bafkreif5fecf5rqrlixcxtpzplo7frtftt3yh2cmx6oca4l2jxuryjju2m" width="300px" alt="Can not load metadata." />
                                                     }
                                                 </> :
-                                                <img src="https://gateway.pinata.cloud/ipfs/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC" width="300px" alt="Can not load metadata." />
+                                                <img src="/elements/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC.png" width="300px" alt="Can not load metadata." />
                                             }
                                         </> :
                                         <div style={{width: "300px", height: "300px", borderRadius: "16px", border: "1px solid gray", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -2278,40 +2278,40 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                     }
                                     {characterSlotLevel !== null && <div style={{position: "absolute", bottom: "15px", right: "20px", padding: "2px", fontSize: "25px", color: "#000"}}>Lv.{characterSlotLevel}</div>}
                                     {/*isOp && isStakeNow && !lastedSTOPT && isRunout &&
-                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e" height="18" alt="$stOPT"/></div>
+                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png" height="18" alt="$stOPT"/></div>
                                     */}
                                 </div>
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0 20px 20px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {accSlot4 !== null ?
                                         <img src={accSlot4} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlot4Level !== null && <div className="slotlevel" style={{position: "absolute", top: "85px", padding: "2px", fontSize: "25px"}}>+{accSlot4Level}</div>}
                                     {backSlot !== null ?
                                         <img src={backSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {backSlotLevel !== null && <div className="slotlevel" style={{position: "absolute", top: "237.5px", fontSize: "25px"}}>+{backSlotLevel}</div>}
                                     {weaponSlot !== null ?
                                         <img src={weaponSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {wpSlotLevel !== null && <div className="slotlevel" style={{position: "absolute", top: "385px", padding: "2px", fontSize: "25px"}}>+{wpSlotLevel}</div>}
                                 </div>
                                 <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {accSlot5 !== null ?
                                         <img src={accSlot5} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlot5Level !== null && <div className="slotlevel" style={{position: "absolute", top: "85px", padding: "2px", fontSize: "25px"}}>+{accSlot5Level}</div>}
                                     {accSlot6 !== null ?
                                         <img src={accSlot6} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlot6Level !== null && <div className="slotlevel" style={{position: "absolute", top: "237.5px", padding: "2px", fontSize: "25px"}}>+{accSlot6Level}</div>}
                                     {weaponSlot2 !== null ?
                                         <img src={weaponSlot2} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {wpSlot2Level !== null && <div className="slotlevel" style={{position: "absolute", top: "385px", padding: "2px", fontSize: "25px"}}>+{wpSlot2Level}</div>}
                                 </div>
@@ -2659,7 +2659,7 @@ const Memeticorbit = ({ config, intrasubModetext, navigate, callMode, setisLoadi
                                 <div style={{background: "#2f1a52", boxShadow: "none", border: 0, color: "#fff", justifyContent: "center", padding: "20px", margin: "10px", height: "500px"}} className="nftCard">
                                     {address !== null ?
                                         <>
-                                            <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                            <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                             <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                         </> :
                                         <>

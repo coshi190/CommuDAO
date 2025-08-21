@@ -3,7 +3,7 @@ import { readContract, readContracts, simulateContract, waitForTransactionReceip
 import { useAccount } from 'wagmi'
 import { useAppKit } from '@reown/appkit/react'
 import { ethers } from 'ethers'
-import { ThreeDots, Oval } from 'react-loading-icons'
+import { ThreeDots } from 'react-loading-icons'
 
 const cmjToken = "0xE67E280f5a354B4AcA15fA7f0ccbF667CF74F97b"
 const dunJasper = '0xe83567Cd0f3Ed2cca21BcE05DBab51707aff2860'
@@ -13,11 +13,9 @@ const osToken = '0xAc5299D92373E9352636559cca497d7683A47655'
 const hexajibjib = '0x20724DC1D37E67B7B69B52300fDbA85E558d8F9A'
 const enchantN1 = '0xc272A216B90483dAcb823213134D12ee11eF91fA'
 const enchantR = '0xeA32261d199a9C0458F431a885a1F1600bB58dEd'
-const cmdaoName = '0x9f3adB20430778f52C2f99c4FBed9637a49509F2'
-const questAmbass = '0x467eF538C90434D4F69cF8A8F40cd71a96e8424e'
 const providerJBC = new ethers.getDefaultProvider('https://rpc-l1.jibchain.net/')
 
-const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, setTxupdate, setisError, setErrMsg, enchantNABI, enchantRABI, osABI, erc721Abi, erc20Abi, questAmbassABI, cmdaoNameABI }) => {
+const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, setTxupdate, setisError, setErrMsg, enchantNABI, enchantRABI, osABI, erc721Abi, erc20Abi }) => {
     let { address, chain } = useAccount()
     if (address === undefined) {
         address = null
@@ -28,7 +26,6 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
     const [jaspBalance, setJaspBalance] = React.useState(0)
     const [cuBalance, setCuBalance] = React.useState(0)
     const [osBalance, setOsBalance] = React.useState(0)
-    const [rank, setRank] = React.useState([])
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -132,156 +129,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
             }
             if (nfts.length === 0) { nfts.push(null) }
 
-            const data2_0 = await readContract(config, {
-                address: questAmbass,
-                abi: questAmbassABI,
-                functionName: 'registCount',
-                chainId: 8899
-            })
-            const rankerDummy = []
-            for (let i = 1; i <= Number(data2_0); i++) {
-                rankerDummy.push(null)
-            }
-            const data2_00 = await readContracts(config, {
-                contracts: rankerDummy.map((item, i) => (
-                    {
-                        address: questAmbass,
-                        abi: questAmbassABI,
-                        functionName: 'referalData',
-                        args: [i+1],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr = []
-            for (let i = 0; i <= Number(data2_00.length - 1); i++) {
-                nameArr.push(data2_00[i].result[0])
-            }
-            const data2_001 = await readContracts(config, {
-                contracts: nameArr.map((item) => (
-                    {
-                        address: cmdaoName,
-                        abi: cmdaoNameABI,
-                        functionName: 'yourName',
-                        args: [item],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr2 = []
-            for (let i = 0; i <= Number(nameArr.length - 1); i++) {
-                nameArr2.push(Number(data2_001[i].result))
-            }
-            const data2_0011 = await readContracts(config, {
-                contracts: nameArr2.map((item) => (
-                    {
-                        address: cmdaoName,
-                        abi: cmdaoNameABI,
-                        functionName: 'tokenURI',
-                        args: [item],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr3 = []
-            for (let i = 0; i <= Number(nameArr.length - 1); i++) {
-                nameArr3.push(data2_0011[i].result)
-            }
-            const walletAllFilter = await cmdaonftSC.filters.Transfer(null, '0x0000000000000000000000000000000000000001', null)
-            const walletAllEvent = await cmdaonftSC.queryFilter(walletAllFilter, 3189363, 'latest')
-            const walletAllMap = await Promise.all(walletAllEvent.map(async (obj) => {return {from: String(obj.args.from), value: String(obj.args.tokenId)}}))
-            let allnft = []
-            for (let i = 0; i <= walletAllMap.length - 1; i++) {
-                if (String(walletAllMap[i].value).slice(0, 3) === "210") {
-                    let valN = 0
-                    let valR = 0
-                    let valSR = 0
-                    let valSSR = 0
-                    if (Number(walletAllMap[i].value) % 100000 === 250) { valN = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 300) { valN = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 400) { valN = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 550) { valR = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 650) { valR = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 750) { valR = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 950) { valR = 4
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1150) { valR = 5
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1550) { valR = 6
-                    }
-                    allnft.push({from: walletAllMap[i].from, scoreN: valN, scoreR: valR, scoreSR: valSR, scoreSSR: valSSR})
-                } else if (String(walletAllMap[i].value).slice(0, 3) === "410") {
-                    let valN = 0
-                    let valR = 0
-                    let valSR = 0
-                    let valSSR = 0
-                    if (Number(walletAllMap[i].value) % 100000 === 150) { valN = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 200) { valN = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 300) { valN = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 450) { valR = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 550) { valR = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 650) { valR = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 850) { valR = 4
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1050) { valR = 5
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1450) { valR = 6
-                    }
-                    allnft.push({from: walletAllMap[i].from, scoreN: valN, scoreR: valR, scoreSR: valSR, scoreSSR: valSSR})
-                } else if (String(walletAllMap[i].value).slice(0, 3) === "310" || String(walletAllMap[i].value).slice(0, 3) === "312" || String(walletAllMap[i].value).slice(0, 3) === "411" || String(walletAllMap[i].value).slice(0, 3) === "511" || String(walletAllMap[i].value).slice(0, 3) === "611" || String(walletAllMap[i].value).slice(0, 3) === "612" || String(walletAllMap[i].value).slice(0, 3) === "710" || String(walletAllMap[i].value).slice(0, 3) === "711" || String(walletAllMap[i].value).slice(0, 3) === "712") {
-                    let valN = 0
-                    let valR = 0
-                    let valSR = 0
-                    let valSSR = 0
-                    if (Number(walletAllMap[i].value) % 100000 === 250) { valN = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 500) { valN = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 750) { valN = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 550) { valR = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1000) { valR = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1450) { valR = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 2000) { valR = 4
-                    } else if (Number(walletAllMap[i].value) % 100000 === 2650) { valR = 5
-                    } else if (Number(walletAllMap[i].value) % 100000 === 3400) { valR = 6
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1050) { valSR = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 1800) { valSR = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 2750) { valSR = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 3900) { valSR = 4
-                    } else if (Number(walletAllMap[i].value) % 100000 === 5250) { valSR = 5
-                    } else if (Number(walletAllMap[i].value) % 100000 === 6800) { valSR = 6
-                    } else if (Number(walletAllMap[i].value) % 100000 === 8550) { valSR = 7
-                    } else if (Number(walletAllMap[i].value) % 100000 === 10500) { valSR = 8
-                    } else if (Number(walletAllMap[i].value) % 100000 === 2550) { valSSR = 1
-                    } else if (Number(walletAllMap[i].value) % 100000 === 3450) { valSSR = 2
-                    } else if (Number(walletAllMap[i].value) % 100000 === 4600) { valSSR = 3
-                    } else if (Number(walletAllMap[i].value) % 100000 === 5950) { valSSR = 4
-                    } else if (Number(walletAllMap[i].value) % 100000 === 7500) { valSSR = 5
-                    } else if (Number(walletAllMap[i].value) % 100000 === 9250) { valSSR = 6
-                    } else if (Number(walletAllMap[i].value) % 100000 === 11200) { valSSR = 7
-                    } else if (Number(walletAllMap[i].value) % 100000 === 13350) { valSSR = 8
-                    } else if (Number(walletAllMap[i].value) % 100000 === 18050) { valSSR = 9
-                    }
-                    allnft.push({from: walletAllMap[i].from, scoreN: valN, scoreR: valR, scoreSR: valSR, scoreSSR: valSSR})
-                }
-            }
-            const allNftMerged = allnft.reduce((prev, curr) => {
-                if (prev[curr.from.toUpperCase()]) {
-                   prev[curr.from.toUpperCase()].scoreN += curr.scoreN
-                   prev[curr.from.toUpperCase()].scoreR += curr.scoreR
-                   prev[curr.from.toUpperCase()].scoreSR += curr.scoreSR
-                   prev[curr.from.toUpperCase()].scoreSSR += curr.scoreSSR
-                } else {
-                   prev[curr.from.toUpperCase()] = curr
-                }
-                return prev
-            }, {})
-            const allNftRemoveDup = []
-            for (let i = 0; i <= nameArr.length -1; i++) {
-                for (let i2 = 0; i2 <= Object.values(allNftMerged).length -1; i2++) {
-                    if (nameArr[i].toUpperCase() === Object.values(allNftMerged)[i2].from.toUpperCase()) {
-                        Object.values(allNftMerged)[i2].name = nameArr3[i] !== undefined ? nameArr3[i] : Object.values(allNftMerged)[i2].from.slice(0, 4) + "..." + Object.values(allNftMerged)[i2].from.slice(-4)
-                        allNftRemoveDup.push(Object.values(allNftMerged)[i2])
-                    }
-                }
-            }
-            if (allNftRemoveDup.length === 0) { allNftRemoveDup.push(null) }
-
-            return [nfts, cmjBal, jaspBal, cuBal, osBal, allNftRemoveDup]
+            return [nfts, cmjBal, jaspBal, cuBal, osBal,]
         }
 
         const promise = thefetch()
@@ -299,10 +147,9 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
             setJaspBalance(ethers.utils.formatUnits(String(result[2]), "gwei"))
             setCuBalance(ethers.utils.formatEther(String(result[3])))
             setOsBalance(ethers.utils.formatEther(String(result[4])))
-            setRank(result[5])
         })
 
-    }, [config, address, erc20Abi, erc721Abi, txupdate, cmdaoNameABI, questAmbassABI])
+    }, [config, address, erc20Abi, erc721Abi, txupdate,])
 
     const enchantNHandle = async (_nftid, _enchantindex) => {
         setisLoading(true)
@@ -730,7 +577,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                     <div className="pixel" style={{fontSize: "75px", width: "fit-content"}}>Blacksmith House</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeiaovfcdl3edviln3dyucsmm57ciafqurxtnrdtfjhqsywh43mgmdy" height="200" alt="Blacksmith" />
+                    <img src="/elements/bafybeiaovfcdl3edviln3dyucsmm57ciafqurxtnrdtfjhqsywh43mgmdy.png" height="200" alt="Blacksmith" />
                 </div>
             </div>
 
@@ -750,123 +597,25 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                         <div style={{width: "250px", fontSize: "16px", letterSpacing: "1px"}} className="bold">Tokens</div>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll pixel">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="22" alt="$CMJ"/>
+                                <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="22" alt="$CMJ"/>
                                 <div style={{marginLeft: "10px"}}>{Number(cmjBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" width="22" alt="$CU"/>
+                                <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" width="22" alt="$CU"/>
                                 <div style={{marginLeft: "10px"}}>{Number(cuBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" width="22" alt="$JASP"/>
+                                <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" width="22" alt="$JASP"/>
                                 <div style={{marginLeft: "10px"}}>{Number(jaspBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" width="22" alt="$OS"/>
+                                <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" width="22" alt="$OS"/>
                                 <div style={{marginLeft: "10px"}}>{Number(osBalance).toFixed(3)}</div>
                             </div>
                         </div>
                     </div>
 
                     <div style={{textAlign: "left", margin: "20px 0 80px 0", minHeight: "600px", width: "85%", display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
-                        <div style={{width: "98%", marginBottom: "40px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>
-                            <div style={{padding: "25px", border: "1px solid rgb(54, 77, 94)", minWidth: "335px", width: "20%", height: "500px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap", overflow: "scroll"}} className="nftCard noscroll">
-                                <div style={{width: "100%", fontSize: "22.5px", color: "rgb(0, 227, 180)", marginBottom: "30px"}} className="pixel emp">Blacksmith Fellow [N Rarity]</div>
-                                {rank.length > 0 ?
-                                    <>
-                                        {rank[0] !== null &&
-                                            <div style={{width: "100%", minHeight: "550px"}}>
-                                                {rank.slice(0).sort((a, b) => {return b.scoreN-a.scoreN}).map((item, index) => (
-                                                    <div style={{width: "350px", marginRight: "50px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}} key={index}>
-                                                        <div style={{width: "200px", display: "flex", flexDirection: "row"}}>
-                                                            <div>{index+1}</div>
-                                                            <a style={{textDecoration: "none", color: "#000", marginLeft: "10px"}} href={"https://commudao.xyz/dungeon/jasper-cave/" + item.from} target="_blank" rel="noreferrer"><div className="bold">{item.name}</div></a>
-                                                        </div>
-                                                        <div>{item.scoreN}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        } 
-                                    </> :
-                                    <div style={{width: "100%", height: "inherit"}}>
-                                        <Oval stroke="#ff007a" strokeWidth="5px" />
-                                    </div>
-                                }
-                            </div>
-                            
-                            <div style={{background: "rgb(0, 26, 44)", padding: "25px", border: "1px solid rgb(54, 77, 94)", minWidth: "335px", width: "20%", height: "500px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap", overflow: "scroll"}} className="nftCard noscroll">
-                                <div style={{width: "100%", fontSize: "22.5px", color: "rgb(0, 227, 180)", marginBottom: "30px"}} className="pixel emp">Blacksmith Fellow [R Rarity]</div>
-                                {rank.length > 0 ?
-                                    <>
-                                        {rank[0] !== null &&
-                                            <div style={{width: "100%", minHeight: "550px"}}>
-                                                {rank.slice(0).sort((a, b) => {return b.scoreR-a.scoreR}).map((item, index) => (
-                                                    <div style={{width: "350px", marginRight: "50px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}} key={index}>
-                                                        <div style={{width: "200px", display: "flex", flexDirection: "row"}}>
-                                                            <div>{index+1}</div>
-                                                            <a style={{textDecoration: "none", color: "#fff", marginLeft: "10px"}} href={"https://commudao.xyz/dungeon/jasper-cave/" + item.from} target="_blank" rel="noreferrer"><div className="bold">{item.name}</div></a>
-                                                        </div>
-                                                        <div>{item.scoreR}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        }
-                                    </> :
-                                    <div style={{width: "100%", height: "inherit"}}>
-                                        <Oval stroke="#ff007a" strokeWidth="5px" />
-                                    </div>
-                                }
-                            </div>
-
-                            <div style={{background: "rgb(0, 26, 44)", padding: "25px", border: "1px solid rgb(54, 77, 94)", minWidth: "335px", width: "20%", height: "500px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap", overflow: "scroll"}} className="nftCard noscroll">
-                                <div style={{width: "100%", fontSize: "22.5px", color: "rgb(0, 227, 180)", marginBottom: "30px"}} className="pixel emp">Blacksmith Fellow [SR Rarity]</div>
-                                {rank.length > 0 ?
-                                    <>
-                                        {rank[0] !== null &&
-                                            <div style={{width: "100%", minHeight: "550px"}}>
-                                                {rank.slice(0).sort((a, b) => {return b.scoreSR-a.scoreSR}).map((item, index) => (
-                                                    <div style={{width: "350px", marginRight: "50px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}} key={index}>
-                                                        <div style={{width: "200px", display: "flex", flexDirection: "row"}}>
-                                                            <div>{index+1}</div>
-                                                            <a style={{textDecoration: "none", color: "#fff", marginLeft: "10px"}} href={"https://commudao.xyz/dungeon/jasper-cave/" + item.from} target="_blank" rel="noreferrer"><div className="bold">{item.name}</div></a>
-                                                        </div>
-                                                        <div>{item.scoreSR}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        }
-                                    </> :
-                                    <div style={{width: "100%", height: "inherit"}}>
-                                        <Oval stroke="#ff007a" strokeWidth="5px" />
-                                    </div>
-                                }
-                            </div>
-
-                            <div style={{padding: "25px", border: "1px solid rgb(54, 77, 94)", minWidth: "335px", width: "20%", height: "500px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap", overflow: "scroll"}} className="nftCard noscroll">
-                                <div style={{width: "100%", fontSize: "22.5px", color: "rgb(0, 227, 180)", marginBottom: "30px"}} className="pixel emp">Blacksmith Fellow [SSR Rarity]</div>
-                                {rank.length > 0 ?
-                                    <>
-                                        {rank[0] !== null &&
-                                            <div style={{width: "100%", minHeight: "550px"}}>
-                                                {rank.slice(0).sort((a, b) => {return b.scoreSSR-a.scoreSSR}).map((item, index) => (
-                                                    <div style={{width: "350px", marginRight: "50px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}} key={index}>
-                                                        <div style={{width: "200px", display: "flex", flexDirection: "row"}}>
-                                                            <div>{index+1}</div>
-                                                            <a style={{textDecoration: "none", color: "#000", marginLeft: "10px"}} href={"https://commudao.xyz/dungeon/jasper-cave/" + item.from} target="_blank" rel="noreferrer"><div className="bold">{item.name}</div></a>
-                                                        </div>
-                                                        <div>{item.scoreSSR}</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        }
-                                    </> :
-                                    <div style={{width: "100%", height: "inherit"}}>
-                                        <Oval stroke="#ff007a" strokeWidth="5px" />
-                                    </div>
-                                }
-                            </div>
-                        </div>
-
                         <div style={{fontSize: "16px", letterSpacing: "1px"}} className="bold">Upgradable NFTs <a className="emp" style={{textDecoration: "underline", marginLeft: "20px"}} href="https://demontocoshi.gitbook.io/commudao/functions/the-blacksmith-house" target="_blank" rel="noreferrer">📖 The Blacksmith Guidebook</a></div>
                         {nft !== undefined && nft.length > 0 ?
                             <>
@@ -1082,12 +831,12 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                 Enchanted resource
                                                             </div>
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="18" alt="$CU"/>
+                                                                <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="18" alt="$CU"/>
                                                                 {Number(item.Id) % 100000 === 250 ?
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1096,7 +845,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>1000</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1105,7 +854,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>1500</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1114,10 +863,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>2500</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>5</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </> :
                                                                     <></>
@@ -1126,10 +875,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>3000</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>6</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1138,10 +887,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>4000</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>8</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1150,10 +899,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>5000</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1162,10 +911,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>7500</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1174,10 +923,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>10000</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1186,10 +935,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>12500</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1460,12 +1209,12 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                 Enchanted resource
                                                             </div>
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                 {Number(item.Id) % 100000 === 150 ?
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.1 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1474,7 +1223,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.2 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1483,7 +1232,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.3 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                     </> :
                                                                     <></>
@@ -1492,10 +1241,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>5</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </> :
                                                                     <></>
@@ -1504,10 +1253,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.6 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>6</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1516,10 +1265,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>0.8 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>8</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1528,10 +1277,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>1 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1540,10 +1289,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1552,10 +1301,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>2 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -1564,10 +1313,10 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                                     <>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>100</div>
                                                                     </> :
                                                                     <></>
@@ -2121,304 +1870,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}}>
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -3009,304 +2758,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}}>
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 } 
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -3850,304 +3599,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}}>
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -4698,304 +4447,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -5546,304 +5295,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -6394,304 +6143,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -7242,304 +6991,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -8090,304 +7839,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -8938,304 +8687,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -9786,304 +9535,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -10634,304 +10383,304 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                 {Number(item.Id) % 100000 === 250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>0.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>150</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>10</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>300</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>1.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2000 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>2.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2650 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.0 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3400 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>
+                                                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>
                                                                         <div style={{margin: "0 5px"}}>3.5 GWEI</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>130</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>15</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>350</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 1800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>200</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2750 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>290</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3900 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>440</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 6800 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>970</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 8550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1450</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 10500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2170</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 2550 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>180</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>20</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>400</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 3450 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>260</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>25</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>450</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 4600 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>380</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>30</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>500</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 5950 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>560</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>35</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>550</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 7500 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>830</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>40</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>600</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 9250 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1240</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>45</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>650</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 11200 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>1850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>50</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>700</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 13350 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>2770</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>55</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>750</div>
                                                                     </>
                                                                 }
                                                                 {Number(item.Id) % 100000 === 18050 &&
                                                                     <>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                                         <div style={{margin: "0 5px"}}>3850</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                         <div style={{margin: "0 5px"}}>60</div>
                                                                         <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                         <div style={{margin: "0 5px"}}>800</div>
                                                                     </>
                                                                 }
@@ -11070,7 +10819,7 @@ const Npcblacksmith = ({ config, navigate, callMode, setisLoading, txupdate, set
                                                             Break down to
                                                         </div>
                                                         <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                            <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                             <div style={{margin: "0 5px"}}>{item.RewardPerSec}</div>
                                                         </div>
                                                     </div>

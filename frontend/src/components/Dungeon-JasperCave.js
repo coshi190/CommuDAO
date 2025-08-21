@@ -792,14 +792,14 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid rgba(255, 255, 255, 0.1)"}}>
                                     JASP BALANCE (GWEI UNIT)
                                     <div style={{display: "flex", flexDirection: "row"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="20" alt="$JASP"/>
+                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="20" alt="$JASP"/>
                                         <div style={{marginLeft: "5px"}}>{Number(jaspBalance).toLocaleString('en-US', {maximumFractionDigits:2})}</div>
                                     </div>
                                 </div>
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid rgba(255, 255, 255, 0.1)"}}>
                                     JASP PENDING (GWEI UNIT)
                                     <div style={{display: "flex", flexDirection: "row", color: timeToRunout !== 0 && timeToRunout !== null  ? "#ff007a" : "#5f6476"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="20" alt="$JASP"/>
+                                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="20" alt="$JASP"/>
                                         <div style={{marginLeft: "5px"}}>{Number(jasperPending).toLocaleString('en-US', {maximumFractionDigits:2})}</div>
                                     </div>
                                 </div>
@@ -813,21 +813,21 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                     <div style={{display: "flex", flexDirection: "row"}}>
                                         {gasselected === "CTUNA" &&
                                             <>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i" height="20" alt="$CTUNA"/>
+                                                <img src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png" height="20" alt="$CTUNA"/>
                                                 <div style={{marginLeft: "5px"}}>{Number(ctunaBalance).toLocaleString('en-US', {maximumFractionDigits:1})}</div>
                                                 <div style={{marginLeft: "5px"}}>/500</div>
                                             </>
                                         }
                                         {gasselected === "SX31" &&
                                             <>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4" height="20" alt="$SX31"/>
+                                                <img src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png" height="20" alt="$SX31"/>
                                                 <div style={{marginLeft: "5px"}}>{Number(sx31Balance).toLocaleString('en-US', {maximumFractionDigits:1})}</div>
                                                 <div style={{marginLeft: "5px"}}>/500</div>
                                             </>
                                         }
                                         {gasselected === "PIZZA" &&
                                             <>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu" height="20" alt="$PZA"/>
+                                                <img src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png" height="20" alt="$PZA"/>
                                                 {csIdEquip === '0' ? <><div style={{marginLeft: "5px"}}>{Number(pzaBalance).toLocaleString('en-US', {maximumFractionDigits:1})}</div>/5000</> : <>Free Gas Remain: {100 - csUsage}</>}
                                             </>
                                         }
@@ -870,21 +870,21 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{position: "relative", width: "150px", height: "400px", margin: "20px 20px 20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {hatSlot !== null ?
                                         <img src={hatSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {hatSlotLevel !== null &&
                                         <div className="slotlevel" style={{position: "absolute", top: "65px", padding: "2px", fontSize: "25px"}}>+{hatSlotLevel}</div>
                                     }
                                     {clothSlot !== null ?
                                         <img src={clothSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {clothSlotLevel !== null &&
                                         <div className="slotlevel"  style={{position: "absolute", top: "215px", padding: "2px", fontSize: "25px"}}>+{clothSlotLevel}</div>
                                     }
                                     {shoesSlot !== null ?
                                         <img src={shoesSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {shoesSlotLevel !== null &&
                                         <div className="slotlevel" style={{position: "absolute", top: "365px", padding: "2px", fontSize: "25px"}}>+{shoesSlotLevel}</div>
@@ -906,7 +906,7 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                                         <img src="https://gateway.pinata.cloud/ipfs/bafkreif5fecf5rqrlixcxtpzplo7frtftt3yh2cmx6oca4l2jxuryjju2m" width="300px" alt="Can not load metadata." />
                                                     }
                                                 </> :
-                                                <img src="https://gateway.pinata.cloud/ipfs/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC" width="300px" alt="Can not load metadata." />
+                                                <img src="/elements/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC.png" width="300px" alt="Can not load metadata." />
                                             }
                                         </> :
                                         <div style={{width: "300px", height: "300px", borderRadius: "16px", border: "1px solid gray", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -917,27 +917,27 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                         <div style={{position: "absolute", top: "300px", right: "20px", padding: "2px", fontSize: "25px", color: "#000"}}>Lv.{characterSlotLevel}</div>
                                     }
                                     {(isOp && isStakeNow && !lastedSTOPT && isRunout) &&
-                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="https://gateway.pinata.cloud/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e" height="18" alt="$stOPT"/></div>
+                                        <div style={{position: "absolute", top: "300px", left: 0, border: "1px solid rgb(70, 55, 169)", boxShadow: "6px 6px 0 #00000040", borderRadius: 0, background: "rgb(103, 186, 167)"}} className="button" onClick={mintStOPT}>Obtain stOPT <img src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png" height="18" alt="$stOPT"/></div>
                                     }
                                 </div>
                                 <div style={{position: "relative", width: "150px", height: "400px", margin: "20px 0 20px 20px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                     {accSlot !== null ?
                                         <img src={accSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {accSlotLevel !== null &&
                                         <div className="slotlevel"  style={{position: "absolute", top: "65px", padding: "2px", fontSize: "25px"}}>+{accSlotLevel}</div>
                                     }
                                     {backSlot !== null ?
                                         <img src={backSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {backSlotLevel !== null &&
                                         <div className="slotlevel" style={{position: "absolute", top: "215px", padding: "2px", fontSize: "25px"}}>+{backSlotLevel}</div>
                                     }
                                     {weaponSlot !== null ?
                                         <img src={weaponSlot} width="100px" alt="Can not load metadata." /> :
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9" width="100px" alt="Can not load metadata." />
+                                        <img src="/elements/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9.png" width="100px" alt="Can not load metadata." />
                                     }
                                     {wpSlotLevel !== null &&
                                         <div className="slotlevel" style={{position: "absolute", top: "365px", padding: "2px", fontSize: "25px"}}>+{wpSlotLevel}</div>
@@ -987,7 +987,7 @@ const Jaspercave = ({ config, intrasubModetext, navigate, callMode, setisLoading
                                 <div style={{background: "linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgb(11, 11, 34)", boxShadow: "none", border: 0, color: "#fff", justifyContent: "center", padding: "20px", margin: "10px"}} className="nftCard">
                                     {address !== null ?
                                         <>
-                                            <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                            <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                             <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                         </> :
                                         <>

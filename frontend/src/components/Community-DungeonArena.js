@@ -657,17 +657,17 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                             <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                 {hatSlotC !== null ?
                                     <img src={hatSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {hatSlotLevelC !== null && <div style={{position: "absolute", top: "85px", right: "30px", padding: "2px", fontSize: "25px"}}>+{hatSlotLevelC}</div>}
                                 {clothSlotC !== null ?
                                     <img src={clothSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {clothSlotLevelC !== null && <div style={{position: "absolute", top: "237.5px", right: "30px", padding: "2px", fontSize: "25px"}}>+{clothSlotLevelC}</div>}
                                 {shoesSlotC !== null ?
                                     <img src={shoesSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {shoesSlotLevelC !== null && <div style={{position: "absolute", top: "385px", right: "30px", padding: "2px", fontSize: "25px"}}>+{shoesSlotLevelC}</div> }
                             </div>
@@ -704,7 +704,7 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                                                     <img src="https://gateway.pinata.cloud/ipfs/bafkreif5fecf5rqrlixcxtpzplo7frtftt3yh2cmx6oca4l2jxuryjju2m" width="250px" alt="Can not load metadata." />
                                                 }
                                             </> :
-                                            <img src="https://gateway.pinata.cloud/ipfs/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC" width="300px" alt="Can not load metadata." />
+                                            <img src="/elements/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC.png" width="300px" alt="Can not load metadata." />
                                         }
                                     </> :
                                     <div style={{width: "250px", height: "250px", borderRadius: "16px", border: "1px solid gray", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -714,7 +714,7 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                                 {charSlotLevelC !== null && <div style={{position: "absolute", top: "237.5px", right: "40px", padding: "2px", fontSize: "25px"}} className="emp">Lv.{charSlotLevelC}</div>}
                                 <div style={{width: "80%", margin: "10px 0 5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>WIN: <div>{peerWin}</div></div>
                                 <div style={{width: "80%", margin: "5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>ATK: <div>{allPowerC * 1} - {allPowerC * 9}</div></div>
-                                <div style={{width: "80%", margin: "5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>BOUNTY: <div style={{display: "flex", alignItems: "center"}}><img style={{marginRight: "5px"}} src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/> {bountyC * 10}</div></div>
+                                <div style={{width: "80%", margin: "5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>BOUNTY: <div style={{display: "flex", alignItems: "center"}}><img style={{marginRight: "5px"}} src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/> {bountyC * 10}</div></div>
                                 <div style={{width: "80%", margin: "5px 0 10px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>AVAILABLE CHALLENGE: <div>{bountyC}</div></div>
                                 {isStakeNow && isStakeNowC && bountyC !== 0 && Number(jdaoBalance) >= 10 && challenger[challengerSlot].toUpperCase() !== address.toUpperCase() ?
                                     <div style={{alignSelf: "center", background: "#007aff"}} className="button" onClick={oneHit}>ONE-HIT CHALLENGE!</div> :
@@ -724,17 +724,17 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                             <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                 {accSlotC !== null ?
                                     <img src={accSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {accSlotLevelC !== null && <div style={{position: "absolute", top: "85px", right: "30px", padding: "2px", fontSize: "25px"}}>+{accSlotLevelC}</div>}
                                 {backSlotC !== null ?
                                     <img src={backSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {backSlotLevelC !== null && <div style={{position: "absolute", top: "237.5px", right: "30px", padding: "2px", fontSize: "25px"}}>+{backSlotLevelC}</div>}
                                 {weaponSlotC !== null ?
                                     <img src={weaponSlotC} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {wpSlotLevelC !== null && <div style={{position: "absolute", top: "385px", right: "30px", padding: "2px", fontSize: "25px"}}>+{wpSlotLevelC}</div>}
                             </div>
@@ -766,17 +766,17 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                             <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                 {hatSlot !== null ?
                                     <img src={hatSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmZvuiGgx38WFMGFtcrfU4NHf17Sg5nHRZRDoVsWufZjC9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {hatSlotLevel !== null && <div style={{position: "absolute", top: "85px", right: "30px", padding: "2px", fontSize: "25px"}}>+{hatSlotLevel}</div>}
                                 {clothSlot !== null ?
                                     <img src={clothSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmPiUeAzB1tbMCY4eYJ1EFNJfq8NxtgNFMidFi9RymiEjh.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {clothSlotLevel !== null && <div style={{position: "absolute", top: "237.5px", right: "30px", padding: "2px", fontSize: "25px"}}>+{clothSlotLevel}</div>}
                                 {shoesSlot !== null ?
                                     <img src={shoesSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmeLCpgvRG5AejKn6W1ZtHSMdGmJX14xrpnNYjns1kqQbS.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {shoesSlotLevel !== null && <div style={{position: "absolute", top: "385px", right: "30px", padding: "2px", fontSize: "25px"}}>+{shoesSlotLevel}</div>}
                             </div>
@@ -813,7 +813,7 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                                                     <img src="https://gateway.pinata.cloud/ipfs/bafkreif5fecf5rqrlixcxtpzplo7frtftt3yh2cmx6oca4l2jxuryjju2m" width="250px" alt="Can not load metadata." />
                                                 }
                                             </> :
-                                            <img src="https://gateway.pinata.cloud/ipfs/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC" width="300px" alt="Can not load metadata." />
+                                            <img src="/elements/Qmdm1Eg3n9aEbJuuYqsMoFex3WUMpHMxnnKmjwjpErCDMC.png" width="300px" alt="Can not load metadata." />
                                         }
                                     </> :
                                     <div style={{width: "250px", height: "250px", borderRadius: "16px", border: "1px solid gray", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -823,7 +823,7 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                                 {charSlotLevel !== null && <div style={{position: "absolute", top: "237.5px", right: "40px", padding: "2px", fontSize: "25px"}} className="emp">Lv.{charSlotLevel}</div>}
                                 <div style={{width: "80%", margin: "10px 0 5px 0", display: "flex", alignItems: "center", flexDirection: "row", justifyContent: "space-between"}}>WIN: <div>{yourWin}</div></div>
                                 <div style={{width: "80%", marginTop: "5px 0 10px 0", display: "flex", alignItems: "center", flexDirection: "row", justifyContent: "space-between"}}>ATK: <div>{allPower * 1} - {allPower * 9}</div></div>
-                                <div style={{width: "80%", margin: "5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>BOUNTY: <div style={{display: "flex", alignItems: "center"}}><img style={{marginRight: "5px"}} src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/> {bounty * 10}</div></div>
+                                <div style={{width: "80%", margin: "5px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>BOUNTY: <div style={{display: "flex", alignItems: "center"}}><img style={{marginRight: "5px"}} src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/> {bounty * 10}</div></div>
                                 <div style={{width: "80%", margin: "5px 0 10px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>AVAILABLE CHALLENGE: <div>{bounty}</div></div>
                                 {isStakeNow && Number(jdaoBalance) >= 10 && challenger.indexOf(address) > -1 ?
                                     <div style={{alignSelf: "center", background: "#67BAA7", width: "220px"}} className="button" onClick={addBounty}>ADD 10 BOUNTY JDAO</div> :
@@ -837,17 +837,17 @@ const DungeonArena = ({ config, setisLoading, callMode, navigate, txupdate, setT
                             <div style={{position: "relative", width: "150px", height: "400px", padding: "20px 0", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
                                 {accSlot !== null ?
                                     <img src={accSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmUCug7hrWCYwLfboWhtNvNAXmrzVfPaptBt2B8htcM7mt.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {accSlotLevel !== null && <div style={{position: "absolute", top: "85px", right: "30px", padding: "2px", fontSize: "25px"}}>+{accSlotLevel}</div>}
                                 {backSlot !== null ?
                                     <img src={backSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmeJWEps9kHZbcU3bYqbyUfyc8kWYXS5xBi1dnr8Basvk9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {backSlotLevel !== null && <div style={{position: "absolute", top: "237.5px", right: "30px", padding: "2px", fontSize: "25px"}}>+{backSlotLevel}</div>}
                                 {weaponSlot !== null ?
                                     <img src={weaponSlot} width="100px" alt="Can not load metadata." /> :
-                                    <img src="https://gateway.pinata.cloud/ipfs/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9" width="100px" alt="Can not load metadata." />
+                                    <img src="/elements/QmWYEwdpNYHCp4EZEJATQue72ndN162VTze9WDxzaLEqk9.png" width="100px" alt="Can not load metadata." />
                                 }
                                 {wpSlotLevel !== null && <div style={{position: "absolute", top: "385px", right: "30px", padding: "2px", fontSize: "25px"}}>+{wpSlotLevel}</div>}
                             </div>

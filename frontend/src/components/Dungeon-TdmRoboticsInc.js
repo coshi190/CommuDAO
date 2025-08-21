@@ -3,18 +3,16 @@ import { readContract, readContracts, simulateContract, waitForTransactionReceip
 import { useAccount } from 'wagmi'
 import { useAppKit } from '@reown/appkit/react'
 import { ethers } from 'ethers'
-import { ThreeDots, Oval } from 'react-loading-icons'
+import { ThreeDots } from 'react-loading-icons'
 
 const cmjToken = "0xE67E280f5a354B4AcA15fA7f0ccbF667CF74F97b"
 const dunEE = '0xF663c756b6D57724C3B41c8839aB9c7Af83c9751'
 const iiLab = '0x523AA3aB2371A6360BeC4fEea7bE1293adb32241'
 const narutaNft = '0x5e620d8980335167d9ef36cef5d9a6ea6607a8cb'
 const uniEnchanter = '0x2A7F88d4eACD6dbE8C255B54F8015eF40F5cfDE2'
-const cmdaoName = '0x9f3adB20430778f52C2f99c4FBed9637a49509F2'
-const questAmbass = '0x467eF538C90434D4F69cF8A8F40cd71a96e8424e'
 const providerJBC = new ethers.getDefaultProvider('https://rpc-l1.jibchain.net/')
 
-const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, setTxupdate, setisError, setErrMsg, uniEnchanterABI, erc721Abi, erc20Abi, questAmbassABI, cmdaoNameABI, dunEEABI }) => {
+const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, setTxupdate, setisError, setErrMsg, uniEnchanterABI, erc721Abi, erc20Abi, dunEEABI }) => {
     let { address, chain } = useAccount()
     if (address === undefined) {
         address = null
@@ -24,7 +22,6 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
     const [cmjBalance, setCmjBalance] = React.useState(0)
     const [iiBalance, setIiBalance] = React.useState(0)
     const [eeBalance, setEeBalance] = React.useState(0)
-    const [rank, setRank] = React.useState([])
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
@@ -122,86 +119,7 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
             }
             if (nfts.length === 0) { nfts.push(null) }
 
-            const data2_0 = await readContract(config, {
-                address: questAmbass,
-                abi: questAmbassABI,
-                functionName: 'registCount',
-                chainId: 8899
-            })
-            const rankerDummy = []
-            for (let i = 1; i <= Number(data2_0); i++) {
-                rankerDummy.push(null)
-            }
-            const data2_00 = await readContracts(config, {
-                contracts: rankerDummy.map((item, i) => (
-                    {
-                        address: questAmbass,
-                        abi: questAmbassABI,
-                        functionName: 'referalData',
-                        args: [i+1],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr = []
-            for (let i = 0; i <= Number(data2_00.length - 1); i++) {
-                nameArr.push(data2_00[i].result[0])
-            }
-            const data2_001 = await readContracts(config, {
-                contracts: nameArr.map((item) => (
-                    {
-                        address: cmdaoName,
-                        abi: cmdaoNameABI,
-                        functionName: 'yourName',
-                        args: [item],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr2 = []
-            for (let i = 0; i <= Number(nameArr.length - 1); i++) {
-                nameArr2.push(Number(data2_001[i].result))
-            }
-            const data2_0011 = await readContracts(config, {
-                contracts: nameArr2.map((item) => (
-                    {
-                        address: cmdaoName,
-                        abi: cmdaoNameABI,
-                        functionName: 'tokenURI',
-                        args: [item],
-                        chainId: 8899
-                    }
-                ))
-            })
-            const nameArr3 = []
-            for (let i = 0; i <= Number(nameArr.length - 1); i++) {
-                nameArr3.push(data2_0011[i].result)
-            }
-            const nftSTAT = await readContracts(config, {
-                contracts: nameArr.map((item) => (
-                    {
-                        address: dunEE,
-                        abi: dunEEABI,
-                        functionName: 'nftStatus',
-                        args: [item],
-                        chainId: 8899
-                    }
-                )),
-            })
-            const tdmpow = []
-            for (let i = 0; i <= Number(nameArr.length - 1); i++) {
-                tdmpow.push(Number(nftSTAT[i].result[7]))
-            }
-            const dataSuperPower = nameArr.map((item, i) => {
-                return {
-                    addr: item,
-                    name: nameArr3[i] !== undefined ? nameArr3[i] : item.slice(0, 4) + "..." + item.slice(-4),
-                    tdmxp: tdmpow[i]
-                }}
-            )
-            if (dataSuperPower.length === 0) { dataSuperPower.push(null) }
-
-            return [nfts, cmjBal, iiBal, eeBal, dataSuperPower]
+            return [nfts, cmjBal, iiBal, eeBal,]
         }
 
         const promise = thefetch()
@@ -218,11 +136,9 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
             setCmjBalance(ethers.utils.formatEther(String(result[1])))
             setIiBalance(ethers.utils.formatEther(String(result[2])))
             setEeBalance(ethers.utils.formatEther(String(result[3])))
-
-            setRank(result[4])
         })
 
-    }, [config, address, erc20Abi, erc721Abi, questAmbassABI, cmdaoNameABI, dunEEABI, txupdate])
+    }, [config, address, erc20Abi, erc721Abi, dunEEABI, txupdate])
 
     const enchantHandle = async (_nftid, _enchantindex) => {
         setisLoading(true)
@@ -319,7 +235,7 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
                     <div className="pixel" style={{fontSize: "75px", width: "fit-content"}}>TDM Robotics Inc.</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeigac5ws4lgz5pqdt45bdyiqrhsbohguyqng6d7jxsed2c5m3dehe4" height="230" alt="TDM-ROBOTICS-INC" />
+                    <img src="/elements/bafybeigac5ws4lgz5pqdt45bdyiqrhsbohguyqng6d7jxsed2c5m3dehe4.png" height="230" alt="TDM-ROBOTICS-INC" />
                 </div>
             </div>
 
@@ -339,54 +255,16 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
                         <div style={{width: "250px", fontSize: "16px", letterSpacing: "1px"}} className="bold">Tokens</div>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll pixel">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="22" alt="$CMJ"/>
+                                <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="22" alt="$CMJ"/>
                                 <div style={{marginLeft: "10px"}}>{Number(cmjBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q" width="22" alt="$II"/>
+                                <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" width="22" alt="$II"/>
                                 <div style={{marginLeft: "10px"}}>{Number(iiBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm" width="22" alt="$EE"/>
+                                <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" width="22" alt="$EE"/>
                                 <div style={{marginLeft: "10px"}}>{Number(eeBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style={{textAlign: "left", margin: "20px 0 40px 0", minHeight: "600px", width: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
-                        <div style={{padding: "50px", backdropFilter: "blur(20px)", border: "none", width: "940px", maxWidth: "75%", height: "300px", display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center", flexWrap: "wrap", fontSize: "14px"}} className="nftCard">
-                            <div style={{width: "98%", fontSize: "30px"}}>Leaderboard</div>
-                            <div style={{width: "98%", marginTop: "10px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>
-                                <div style={{width: "220px", marginRight: "10px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}}>
-                                    <div>Top TAO Superpower</div>
-                                    <div />
-                                </div>
-                            </div>
-                            <div style={{width: "98%", marginTop: "10px"}}>Snapshot on the last block of the month before 0.00 AM.</div>
-                        </div>
-
-                        <div style={{width: "98%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>
-                            <div style={{padding: "25px", border: "1px solid rgb(54, 77, 94)", minWidth: "335px", width: "25%", height: "700px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap", overflow: "scroll"}} className="nftCard noscroll">
-                                <div style={{width: "100%", fontSize: "22.5px", color: "rgb(0, 227, 180)", marginBottom: "30px"}} className="pixel emp">Top TAO Superpower</div>
-                                {rank.length > 0 ?
-                                    <>
-                                        {rank[0] !== null &&
-                                            <div style={{width: "100%", minHeight: "550px"}}>
-                                                {rank.slice(0).sort((a, b) => {return b.tdmxp-a.tdmxp}).map((item, index) => (
-                                                    <div style={{width: "350px", marginRight: "50px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px dotted"}} key={index}>
-                                                        <div style={{width: "200px", display: "flex", flexDirection: "row"}}>
-                                                            <div>{index+1}</div>
-                                                            <a style={{textDecoration: "none", color: "#000", marginLeft: "10px"}} href={"https://commudao.xyz/dungeon/cryptic-cogs/" + item.addr} target="_blank" rel="noreferrer"><div className="bold">{item.name}</div></a>
-                                                        </div>
-                                                        <div>{item.tdmxp} CMPOW</div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        } 
-                                    </> :
-                                    <div style={{width: "100%", height: "inherit"}}>
-                                        <Oval stroke="#ff007a" strokeWidth="5px" />
-                                    </div>
-                                }
                             </div>
                         </div>
                     </div>
@@ -604,7 +482,7 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
                                                                 Enchanted resource
                                                             </div>
                                                             <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q" height="18" alt="$II"/>
+                                                                <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="18" alt="$II"/>
                                                                 <div style={{margin: "0 5px"}}>
                                                                     {Number(item.Id) % 100000 === 18800 && '888'}
                                                                     {Number(item.Id) % 100000 === 22800 && '1,888'}
@@ -617,7 +495,7 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
                                                                     {Number(item.Id) % 100000 === 64800 && '8,888'}
                                                                 </div>
                                                                 <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm" height="18" alt="$EE"/>
+                                                                <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="18" alt="$EE"/>
                                                                 <div style={{margin: "0 5px"}}>
                                                                     {Number(item.Id) % 100000 === 18800 && '18,800'}
                                                                     {Number(item.Id) % 100000 === 22800 && '28,800'}
@@ -630,7 +508,7 @@ const TdmRoboticsInc = ({ config, setisLoading, navigate, callMode, txupdate, se
                                                                     {Number(item.Id) % 100000 === 64800 && '481,800'}
                                                                 </div>
                                                                 <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                 <div style={{margin: "0 5px"}}>1</div>
                                                             </div>
                                                         </div>

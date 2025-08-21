@@ -823,9 +823,9 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                         <div style={{background: "linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgb(11, 11, 34)", width: "350px", height: "500px", display: "flex", flexFlow: "column wrap", justifyContent: "space-around", padding: "50px", border: "none", marginRight: "20px"}} className='nftCard'>
                                             <div style={{width: "320px", textAlign: "left", fontSize: "18px", color: "#fff"}} className="bold" onClick={() => setMode(0)}>{slot1Owner}'s house Lv.{slot1Lv}</div>
                                             <div style={{width: "320px"}}>
-                                                {slot1Lv === 0 && <img src="https://gateway.pinata.cloud/ipfs/bafybeielpogfiry6r54yhzalsu2wmrp37oergq7v7r4w2qoljsesy6eoom" style={{filter: "grayscale(1)"}} height="200" alt="HOUSE.LV.1" />}
-                                                {(slot1Lv >= 1 && slot1Lv <= 5) && <img src="https://gateway.pinata.cloud/ipfs/bafybeielpogfiry6r54yhzalsu2wmrp37oergq7v7r4w2qoljsesy6eoom" height="200" alt="HOUSE.LV.1" />}
-                                                {(slot1Lv >= 6 && slot1Lv <= 10) && <img src="https://gateway.pinata.cloud/ipfs/Qmf7bVQFwz8tQ1eVJBqcMkq3jY4BQvDfdnZgLBY26Fb5RX" height="200" alt="HOUSE.LV.6" />}
+                                                {slot1Lv === 0 && <img src="/elements/bafybeielpogfiry6r54yhzalsu2wmrp37oergq7v7r4w2qoljsesy6eoom.png" style={{filter: "grayscale(1)"}} height="200" alt="HOUSE.LV.1" />}
+                                                {(slot1Lv >= 1 && slot1Lv <= 5) && <img src="/elements/bafybeielpogfiry6r54yhzalsu2wmrp37oergq7v7r4w2qoljsesy6eoom.png" height="200" alt="HOUSE.LV.1" />}
+                                                {(slot1Lv >= 6 && slot1Lv <= 10) && <img src="/elements/Qmf7bVQFwz8tQ1eVJBqcMkq3jY4BQvDfdnZgLBY26Fb5RX.png" height="200" alt="HOUSE.LV.6" />}
                                             </div>
                                             {llAddr !== null && address !== null && (String(llAddr).toUpperCase() === address.toUpperCase() || String(slot1Addr).toUpperCase() === address.toUpperCase()) ?
                                                 <div style={{width: "320px", textAlign: "left", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
@@ -833,7 +833,7 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                                         <div style={{fontSize: "12px"}} className="bold">BUILDING COSTS</div>
                                                         <div style={{marginTop: "10px", width: "fit-content", display: "flex", flexDirection: "row", fontSize: "20px", flexWrap: "wrap"}} className="bold">
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="30px" alt="$WOOD"/>
+                                                                <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="30px" alt="$WOOD"/>
                                                                 <div style={{margin: "0 30px 0 10px"}}>
                                                                     {slot1Lv === 0 && '100M'}
                                                                     {slot1Lv === 1 && '200M'}
@@ -846,8 +846,8 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                                                 </div>
                                                             </div>
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                {slot1Lv <= 4 && <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="30px" alt="$CU"/>}
-                                                                {(slot1Lv >= 5 && slot1Lv <= 9) && <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" height="30px" alt="$SIL"/>}
+                                                                {slot1Lv <= 4 && <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="30px" alt="$CU"/>}
+                                                                {(slot1Lv >= 5 && slot1Lv <= 9) && <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" height="30px" alt="$SIL"/>}
                                                                 <div style={{marginLeft: "10px"}}>
                                                                     {slot1Lv === 0 && '50,000'}
                                                                     {slot1Lv === 1 && '100,000'}
@@ -924,14 +924,14 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                             <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                                 OVERSOUL PENDING
                                                 <div style={{display: "flex", flexDirection: "row", color: "#ff007a"}}>
-                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="20" alt="$OS"/>
+                                                    <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="20" alt="$OS"/>
                                                     <div style={{marginLeft: "5px"}}>{allPendingReward.toLocaleString()}</div>
                                                 </div>
                                             </div>
                                             <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                                 AVAILABLE OS IN POOL
                                                 <div style={{display: "flex", flexDirection: "row"}}>
-                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="20" alt="$OS"/>
+                                                    <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="20" alt="$OS"/>
                                                     <div style={{marginLeft: "5px"}}>{Number(osPool).toFixed(3).toLocaleString()}</div>
                                                 </div>
                                             </div>
@@ -1314,7 +1314,7 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                         <div style={{background: "linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgb(11, 11, 34)", width: "350px", height: "500px", display: "flex", flexFlow: "column wrap", justifyContent: "space-around", padding: "50px", border: "none", marginRight: "20px"}} className='nftCard'>
                                             <div style={{width: "320px", textAlign: "left", fontSize: "18px", color: "#fff"}} className="bold" onClick={() => setMode(0)}>{slot1Owner}'s weapon depot Lv.{wdLv}</div>
                                             <div style={{width: "320px"}}>
-                                                {true && <img src="https://gateway.pinata.cloud/ipfs/QmcabCcVqCQhcXk19LFueSRDc62Z67aqfArTTWVb8shr7c" style={{filter: "grayscale(1)"}} height="200" alt="WEAPONDEPOT.LV.1" />}
+                                                {true && <img src="/elements/QmcabCcVqCQhcXk19LFueSRDc62Z67aqfArTTWVb8shr7c.png" style={{filter: "grayscale(1)"}} height="200" alt="WEAPONDEPOT.LV.1" />}
                                             </div>
                                             {llAddr !== null && address !== null && (String(llAddr).toUpperCase() === address.toUpperCase() || String(slot1Addr).toUpperCase() === address.toUpperCase()) &&
                                                 <div style={{width: "320px", textAlign: "left", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
@@ -1322,14 +1322,14 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                                         <div style={{fontSize: "12px"}} className="bold">BUILDING COSTS</div>
                                                         <div style={{marginTop: "10px", width: "fit-content", display: "flex", flexDirection: "row", fontSize: "20px", flexWrap: "wrap"}} className="bold">
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="30px" alt="$WOOD"/>
+                                                                <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="30px" alt="$WOOD"/>
                                                                 <div style={{margin: "0 30px 0 10px"}}>
                                                                     {wdLv === 0 && '100M'}
                                                                     {wdLv === 1 && 'TBD'}
                                                                 </div>
                                                             </div>
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="30px" alt="$CU"/>
+                                                                <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="30px" alt="$CU"/>
                                                                 <div style={{marginLeft: "10px"}}>
                                                                     {wdLv === 0 && '500,000'}
                                                                     {wdLv === 1 && 'TBD'}
@@ -1385,14 +1385,14 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                             <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                                 OVERSOUL PENDING
                                                 <div style={{display: "flex", flexDirection: "row", color: "#ff007a"}}>
-                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="20" alt="$OS"/>
+                                                    <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="20" alt="$OS"/>
                                                     <div style={{marginLeft: "5px"}}>{String(Number(allPendingRewardWD) * Number(wdBonus)).toLocaleString()}</div>
                                                 </div>
                                             </div>
                                             <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                                 AVAILABLE OS IN POOL
                                                 <div style={{display: "flex", flexDirection: "row"}}>
-                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="20" alt="$OS"/>
+                                                    <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="20" alt="$OS"/>
                                                     <div style={{marginLeft: "5px"}}>{Number(osPoolWD).toFixed(3).toLocaleString()}</div>
                                                 </div>
                                             </div>
@@ -1447,8 +1447,8 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                         <div style={{background: "linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgb(11, 11, 34)", width: "350px", height: "500px", display: "flex", flexFlow: "column wrap", justifyContent: "space-around", padding: "50px", border: "none", marginRight: "20px"}} className='nftCard'>
                                             <div style={{width: "320px", textAlign: "left", fontSize: "18px", color: "#fff"}} className="bold" onClick={() => setMode(0)}>{slot1Owner}'s transport hub Lv.{thubLv}</div>
                                             <div style={{width: "320px"}}>
-                                                {thubLv === 0 && <img src="https://gateway.pinata.cloud/ipfs/QmZMqFMzQwMcSBs7i8eemVRA2TgQ92L3Zh4xgfemAX1SFH" style={{filter: "grayscale(1)"}} height="200" alt="TRANSPORTHUB.LV.1" />}
-                                                {thubLv >= 1 && <img src="https://gateway.pinata.cloud/ipfs/QmZMqFMzQwMcSBs7i8eemVRA2TgQ92L3Zh4xgfemAX1SFH" height="200" alt="TRANSPORTHUB.LV.1" />}
+                                                {thubLv === 0 && <img src="/elements/QmZMqFMzQwMcSBs7i8eemVRA2TgQ92L3Zh4xgfemAX1SFH.png" style={{filter: "grayscale(1)"}} height="200" alt="TRANSPORTHUB.LV.1" />}
+                                                {thubLv >= 1 && <img src="/elements/QmZMqFMzQwMcSBs7i8eemVRA2TgQ92L3Zh4xgfemAX1SFH.png" height="200" alt="TRANSPORTHUB.LV.1" />}
                                             </div>
                                             {llAddr !== null && address !== null && (String(llAddr).toUpperCase() === address.toUpperCase() || String(slot1Addr).toUpperCase() === address.toUpperCase()) &&
                                                 <div style={{width: "320px", textAlign: "left", display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
@@ -1456,14 +1456,14 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                                         <div style={{fontSize: "12px"}} className="bold">BUILDING COSTS</div>
                                                         <div style={{marginTop: "10px", width: "fit-content", display: "flex", flexDirection: "row", fontSize: "20px", flexWrap: "wrap"}} className="bold">
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="30px" alt="$WOOD"/>
+                                                                <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="30px" alt="$WOOD"/>
                                                                 <div style={{margin: "0 30px 0 10px"}}>
                                                                     {thubLv === 0 && '3,200M'}
                                                                     {thubLv === 1 && 'TBD'}
                                                                 </div>
                                                             </div>
                                                             <div style={{display: "flex", flexDirection: "row"}}>
-                                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="30px" alt="$CU"/>
+                                                                <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="30px" alt="$CU"/>
                                                                 <div style={{marginLeft: "10px"}}>
                                                                     {thubLv === 0 && '1.6M'}
                                                                     {thubLv === 1 && 'TBD'}
@@ -1542,7 +1542,7 @@ const CmCityLand = ({ config, setisLoading, txupdate, setTxupdate, setisError, s
                                                             <div style={{background: "linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgb(11, 11, 34)", boxShadow: "none", border: 0, color: "#fff", justifyContent: "center", padding: "20px", margin: "10px"}} className="nftCard">
                                                                 {address !== null ?
                                                                     <>
-                                                                        <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                                                        <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                                                         <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                                                     </> :
                                                                     <>

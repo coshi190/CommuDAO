@@ -624,12 +624,12 @@ const Daemonworld = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                     </div>
                 </div>
             }
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('https://gateway.pinata.cloud/ipfs/bafybeicatk66gnfauhbytqbqbxlbu47hg2j3wzxiatzfs4xjwfhaozvpne')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
-                    <div className="pixel" style={{fontSize: "75px", color: "#fff", width: "fit-content"}}>Daemon World</div>
+                    <div className="pixel" style={{fontSize: "75px", width: "fit-content"}}>Daemon World</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m" width="150" alt="$ANGB" />
+                    <img src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png" width="150" alt="$ANGB" />
                 </div>
             </div>
             
@@ -691,14 +691,14 @@ const Daemonworld = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     ANGB BALANCE
                                     <div style={{display: "flex", flexDirection: "row"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m" height="20" alt="$ANGB"/>
+                                        <img src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png" height="20" alt="$ANGB"/>
                                         <div style={{marginLeft: "5px"}}>{Number(angbBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                     </div>
                                 </div>
                                 <div style={{width: "350px", display: "flex", flexDirection: "row", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                     ANGB PENDING
                                     <div style={{display: "flex", flexDirection: "row", color: timeToRunout !== 0 && timeToRunout !== null  ? "#ff007a" : "#5f6476"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m" height="20" alt="$ANGB"/>
+                                        <img src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png" height="20" alt="$ANGB"/>
                                         <div style={{marginLeft: "5px"}}>{Number(angbPending).toLocaleString('en-US', {maximumFractionDigits:3})}</div>
                                     </div>
                                 </div>
@@ -710,7 +710,7 @@ const Daemonworld = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                     <div style={{display: "flex", flexDirection: "row"}}>
                                         {gasselected === "SWAR" &&
                                             <>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi" height="20" alt="$SWAR"/>
+                                                <img src="/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png" height="20" alt="$SWAR"/>
                                                 <div style={{marginLeft: "5px"}}>{Number(swarBalance).toLocaleString('en-US', {maximumFractionDigits:2})}</div>
                                             </>
                                         }
@@ -856,7 +856,7 @@ const Daemonworld = ({ config, intrasubModetext, navigate, callMode, setisLoadin
                                 <div style={{backdropFilter: "blur(14px)", border: 0, justifyContent: "center", padding: "20px", margin: "10px"}} className="nftCard">
                                     {address !== null ?
                                         <>
-                                            <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                            <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                             <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                         </> :
                                         <>

@@ -918,7 +918,7 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                     <div className="pixel" style={{fontSize: "75px", width: "fit-content"}}>Evotionary Planet</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibb6sv46fa4as36s5pvb5lihvgdhry7jlsifnzca4qbgbvkej3cae" height="200" alt="Evo_Planet" />
+                    <img src="/elements/bafybeibb6sv46fa4as36s5pvb5lihvgdhry7jlsifnzca4qbgbvkej3cae.png" height="200" alt="Evo_Planet" />
                 </div>
             </div>
 
@@ -938,41 +938,41 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                         <div style={{width: "250px", ontSize: "16px", letterSpacing: "1px"}} className="bold">Tokens</div>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll pixel">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="22" alt="$CMJ"/>
+                                <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="22" alt="$CMJ"/>
                                 <div style={{marginLeft: "10px"}}>{Number(cmjBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" width="22" alt="$BBQ"/>
+                                <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" width="22" alt="$BBQ"/>
                                 <div style={{marginLeft: "10px"}}>{Number(bbqBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu" width="22" alt="$PZA"/>
+                                <img src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png" width="22" alt="$PZA"/>
                                 <div style={{marginLeft: "10px"}}>{Number(pzaBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" width="22" alt="$CU"/>
+                                <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" width="22" alt="$CU"/>
                                 <div style={{marginLeft: "10px"}}>{Number(cuBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" width="22" alt="$SIL"/>
+                                <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" width="22" alt="$SIL"/>
                                 <div style={{marginLeft: "10px"}}>{Number(silBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="22" alt="$GOLD"/>
+                                <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="22" alt="$GOLD"/>
                                 <div style={{marginLeft: "10px"}}>{Number(goldBalance).toFixed(3)}</div>
                             </div>
                         </div>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll pixel">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" width="22" alt="$PLAT"/>
+                                <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" width="22" alt="$PLAT"/>
                                 <div style={{marginLeft: "10px"}}>{Number(platBalance).toFixed(3)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" width="22" alt="$JASP"/>
+                                <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" width="22" alt="$JASP"/>
                                 <div style={{marginLeft: "10px"}}>{Number(jaspBalance).toFixed(0)}</div>
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" width="22" alt="$OS"/>
+                                <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" width="22" alt="$OS"/>
                                 <div style={{marginLeft: "10px"}}>{Number(osBalance).toFixed(3)}</div>
                             </div>
                         </div>
@@ -1059,7 +1059,7 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                     Evolution resource
                                                                 </div>
                                                                 <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                                                    <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {Number(item.Id) % 100000 === 100 ? <>10,000</> : <></>}
                                                                         {Number(item.Id) % 100000 === 200 ? <>10,000</> : <></>}
@@ -1082,9 +1082,9 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                         {Number(item.Id) % 100000 === 2800 ? <>1,310,720,000</> : <></>}
                                                                     </div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    {Number(item.Id) % 100000 <= 900 ? <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="18" alt="$CU"/> : <></>}
-                                                                    {Number(item.Id) % 100000 >= 1200 ? <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" height="18" alt="$SIL"/> : <></>}
-                                                                    {Number(item.Id) % 100000 === 1000 ? <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/> : <></>}
+                                                                    {Number(item.Id) % 100000 <= 900 ? <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="18" alt="$CU"/> : <></>}
+                                                                    {Number(item.Id) % 100000 >= 1200 ? <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" height="18" alt="$SIL"/> : <></>}
+                                                                    {Number(item.Id) % 100000 === 1000 ? <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/> : <></>}
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {Number(item.Id) % 100000 === 100 ? <>0</> : <></>}
                                                                         {Number(item.Id) % 100000 === 200 ? <>1,000</> : <></>}
@@ -1367,7 +1367,7 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                     Evolution resource
                                                                 </div>
                                                                 <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu" height="18" alt="$PZA"/>
+                                                                    <img src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png" height="18" alt="$PZA"/>
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {Number(item.Id) % 100000 === 500 && 250}
                                                                         {Number(item.Id) % 100000 === 540 && 300}
@@ -1420,12 +1420,12 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                         {Number(item.Id) % 100000 === 24500 && '1,895,924'}
                                                                     </div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    {Number(item.Id) % 100000 <= 1300 && <img src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" height="18" alt="$CU"/>}
-                                                                    {(Number(item.Id) % 100000 >= 1700 && Number(item.Id) % 100000 <= 4100) && <img src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde" height="18" alt="$SIL"/>}
-                                                                    {(Number(item.Id) % 100000 >= 4900 && Number(item.Id) % 100000 <= 8900) && <img src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" height="18" alt="$GOLD"/>}
-                                                                    {(Number(item.Id) % 100000 === 1500 || Number(item.Id) % 100000 === 4500 || Number(item.Id) % 100000 === 9500 || Number(item.Id) % 100000 === 16500) && <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>}
-                                                                    {(Number(item.Id) % 100000 >= 10100 && Number(item.Id) % 100000 <= 15700) && <img src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" height="18" alt="$PLAT"/>}
-                                                                    {(Number(item.Id) % 100000 >= 17300 && Number(item.Id) % 100000 <= 24500) && <img src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" height="18" alt="$JASP"/>}
+                                                                    {Number(item.Id) % 100000 <= 1300 && <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" height="18" alt="$CU"/>}
+                                                                    {(Number(item.Id) % 100000 >= 1700 && Number(item.Id) % 100000 <= 4100) && <img src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png" height="18" alt="$SIL"/>}
+                                                                    {(Number(item.Id) % 100000 >= 4900 && Number(item.Id) % 100000 <= 8900) && <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" height="18" alt="$GOLD"/>}
+                                                                    {(Number(item.Id) % 100000 === 1500 || Number(item.Id) % 100000 === 4500 || Number(item.Id) % 100000 === 9500 || Number(item.Id) % 100000 === 16500) && <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>}
+                                                                    {(Number(item.Id) % 100000 >= 10100 && Number(item.Id) % 100000 <= 15700) && <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" height="18" alt="$PLAT"/>}
+                                                                    {(Number(item.Id) % 100000 >= 17300 && Number(item.Id) % 100000 <= 24500) && <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" height="18" alt="$JASP"/>}
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {Number(item.Id) % 100000 === 500 && 0}
                                                                         {Number(item.Id) % 100000 === 540 && 500}
@@ -1644,21 +1644,21 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                     Evolution resource
                                                                 </div>
                                                                 <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                                                    <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {String(item.Id).slice(0, 4) === "1001" ? <>10,000</> : <></>}
                                                                         {String(item.Id).slice(0, 4) === "1002" ? <>15,000</> : <></>}
                                                                         {String(item.Id).slice(0, 4) === "1003" ? <>25,000</> : <></>}
                                                                     </div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                    <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {String(item.Id).slice(0, 4) === "1001" ? <>1</> : <></>}
                                                                         {String(item.Id).slice(0, 4) === "1002" ? <>2</> : <></>}
                                                                         {String(item.Id).slice(0, 4) === "1003" ? <>3</> : <></>}
                                                                     </div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                    <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                     <div style={{margin: "0 5px"}}>
                                                                         {String(item.Id).slice(0, 4) === "1001" ? <>10</> : <></>}
                                                                         {String(item.Id).slice(0, 4) === "1002" ? <>20</> : <></>}
@@ -1742,10 +1742,10 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                 <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
                                                                     <div style={{margin: "0 5px"}}>PEPE JA Vol.1 - 4 [Lv.3]</div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                                                    <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                                                     <div style={{margin: "0 5px"}}>15</div>
                                                                     <i style={{fontSize: "12px", margin: "5px 10px 5px 5px"}} className="fa fa-plus"></i>
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                    <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                     <div style={{margin: "0 5px"}}>150</div>
                                                                 </div>
                                                             </div>
@@ -1820,7 +1820,7 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                                     Salon resource
                                                                 </div>
                                                                 <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                                    <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" height="18" alt="$CMJ"/>
+                                                                    <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" height="18" alt="$CMJ"/>
                                                                     <div style={{margin: "0 5px"}}>10</div>
                                                                 </div>
                                                             </div>
@@ -1877,7 +1877,7 @@ const NpcEvolutionary = ({ config, navigate, callMode, setisLoading, txupdate, s
                                                             Removal resource
                                                         </div>
                                                         <div style={{marginTop: "10px", display: "flex", flexDirection: "row"}} className="pixel">
-                                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                                            <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                                             <div style={{margin: "0 5px"}}>10</div>
                                                         </div>
                                                     </div>
