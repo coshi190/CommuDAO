@@ -313,12 +313,12 @@ const OldWarehouse = ({ config, intrasubModetext, callMode, navigate, setisLoadi
                 </div>
             }
         
-            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('https://gateway.commudao.xyz/ipfs/bafybeiertqhm4rnoxp63hrz6g6rzama54pryx3dypv5fkizgfnukxv5dsu')", overflow: "scroll"}}>
+            <div className="fieldBanner" style={{display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "space-between", textAlign: "left", backgroundImage: "url('/maps/bafybeiertqhm4rnoxp63hrz6g6rzama54pryx3dypv5fkizgfnukxv5dsu.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover", overflow: "scroll"}}>
                 <div className="SubfieldBanner">
                     <div className="pixel" style={{padding: "5px", width: "fit-content", color: "#fff", background: "rgb(0, 0, 0, 0.6)", backdropFilter: "blur(10px)"}}>Old Warehouse</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="150" alt="$MICE" />
+                    <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="150" alt="$MICE" />
                 </div>
             </div>
             {address !== null && chain !== undefined && chain.id !== 8899 ?
@@ -342,14 +342,14 @@ const OldWarehouse = ({ config, intrasubModetext, callMode, navigate, setisLoadi
                             <div style={{marginBottom: "20px"}}>TOTAL DAILY REWARD</div>
                             <div style={{fontSize: "24px", marginBottom: "20px", padding: "2px 20px"}}>
                                 {nft.length > 0 && nft[0] !== null ? allDaily.toFixed(2) : 0}
-                                <img style={{marginLeft: "10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="24" alt="$MICE"/>
+                                <img style={{marginLeft: "10px"}} src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="24" alt="$MICE"/>
                             </div>
                         </div>
                         <div className="headfield bold">
                             <div style={{marginBottom: "20px"}}>TOTAL PENDING REWARD</div>
                             <div style={{fontSize: "24px", marginBottom: "20px", display: "flex", flexFlow: "row wrap", alignItems: "center", justifyContent: "center"}}>
                                 {nft.length > 0 && nft[0] !== null ? allReward.toFixed(3) : 0}
-                                <img style={{margin: "0 10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="24" alt="$MICE"/>
+                                <img style={{margin: "0 10px"}} src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="24" alt="$MICE"/>
                                 {address !== null && intrasubModetext !== undefined ?
                                     <>
                                         {address.toUpperCase() === intrasubModetext.toUpperCase() && allReward > 0 ?
@@ -365,7 +365,7 @@ const OldWarehouse = ({ config, intrasubModetext, callMode, navigate, setisLoadi
                             <div style={{marginBottom: "20px"}}>BALANCE</div>
                             <div style={{fontSize: "24px", marginBottom: "20px"}}>
                                 {nft.length > 0 ? Number(miceBalance).toFixed(3) : 0}
-                                <img style={{marginLeft: "10px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="24" alt="$MICE"/>
+                                <img style={{marginLeft: "10px"}} src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="24" alt="$MICE"/>
                             </div>
                         </div>
                     </div>
@@ -393,13 +393,13 @@ const OldWarehouse = ({ config, intrasubModetext, callMode, navigate, setisLoadi
                                                 <div>
                                                     Earn: {item.Bonus * 86400}
                                                     &nbsp;
-                                                    <img src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="12" alt="micepic"/>
+                                                    <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="12" alt="micepic"/>
                                                     &nbsp;MICE/DAY
                                                 </div>
                                                 <div style={{width: 300, padding: 20, border: "1px solid #dddade", borderRadius: 12, display: "flex", flexDirection: "row", alignItem: "center", justifyContent: "space-between"}}>
                                                     <div style={{lineHeight: 2, textAlign: "left"}}>
                                                         Pending Rewards<br></br>
-                                                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" width="12" alt="$MICE"/>
+                                                        <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" width="12" alt="$MICE"/>
                                                         &nbsp;{item.Reward}
                                                     </div>
                                                     {address !== null && intrasubModetext !== undefined ?
@@ -433,7 +433,7 @@ const OldWarehouse = ({ config, intrasubModetext, callMode, navigate, setisLoadi
                                     <div className="nftCard" style={{margin: "10px", padding: "30px 20px", justifyContent: "center"}}>
                                         {address !== null ?
                                             <>
-                                                <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                                <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                                 <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                             </> :
                                             <>

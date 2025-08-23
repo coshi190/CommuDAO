@@ -210,9 +210,9 @@ export default function Swap({ config, address, setisLoading, setTxupdate, setis
                 <div style={{width: "85%", textAlign: "left", fontSize: "20px"}} className="bold">Instant Swap</div>
                 <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                     <div style={{display: "flex"}}>
-                        {(swapMode === 0 || swapMode === 3) && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" alt="$JBC" />}
-                        {swapMode === 1 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" alt="$CMJ" />}
-                        {swapMode === 2 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" alt="$JUSDT" />}
+                        {(swapMode === 0 || swapMode === 3) && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" alt="$JBC" />}
+                        {swapMode === 1 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" alt="$CMJ" />}
+                        {swapMode === 2 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" alt="$JUSDT" />}
                         {swapMode === 0 || swapMode === 3 ?
                             <Select
                                 options={[]}
@@ -312,9 +312,9 @@ export default function Swap({ config, address, setisLoading, setTxupdate, setis
                 <div style={{cursor: "pointer"}} className="fa fa-arrow-down" onClick={swapModeChange}></div>
                 <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                     <div style={{display: "flex"}}>
-                        {swapMode === 0 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" alt="$CMJ" />}
-                        {(swapMode === 1 || swapMode === 2) && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" alt="$JBC" />}
-                        {swapMode === 3 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" alt="$JUSDT" />}
+                        {swapMode === 0 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" alt="$CMJ" />}
+                        {(swapMode === 1 || swapMode === 2) && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" alt="$JBC" />}
+                        {swapMode === 3 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" alt="$JUSDT" />}
                         {swapMode === 0 &&
                             <Select
                                 onChange={swapModeSelect2}

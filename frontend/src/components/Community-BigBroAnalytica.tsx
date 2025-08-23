@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { createPublicClient, http } from 'viem'
 import { jbc } from 'viem/chains' 
-import { getBalance, readContracts } from '@wagmi/core'
+import { readContracts } from '@wagmi/core'
 import { ThreeDots } from 'react-loading-icons'
 
 const cmj = '0xE67E280f5a354B4AcA15fA7f0ccbF667CF74F97b'
@@ -22,21 +22,11 @@ const x4 = '0x0DF9D160489440D630a247fBC830DA74779928b1'
 const infpow = '0xCCbb477D6c28892d6311ebb729b4c242C92f70FD'
 const os = '0xAc5299D92373E9352636559cca497d7683A47655'
 const jdao = '0x09bD3F5BFD9fA7dE25F7A2A75e1C317E4Df7Ef88'
-const cmd = '0x399fe73bb0ee60670430fd92fe25a0fdd308e142'
-const usdtOP = '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58'
 const genesis = '0x0000000000000000000000000000000000000000'
 const burn = '0x0000000000000000000000000000000000000001'
 const publicClient = createPublicClient({ chain: jbc, transport: http() })
 
 const BigBroAnalytica = ({ config, erc20Abi }) => {
-    const [cmdBbq, setCmdBbq] = React.useState(null)
-    const [cmdGov, setCmdGov] = React.useState(null)
-    const [cmdRev, setCmdRev] = React.useState(null)
-    const [cmdBurn, setCmdBurn] = React.useState(null)
-    const [usdtRev, setUsdtRev] = React.useState(null)
-    const [ethRev, setEthRev] = React.useState(null)
-    console.log(cmdRev, usdtRev, ethRev)
-    const [cmdCirculation, setCmdCirculation] = React.useState(null)
     const [cmjLocked, setCmjLocked] = React.useState(null)
     const [cmjReward, setCmjReward] = React.useState(null)
     const [cmjBurn, setCmjBurn] = React.useState(null)
@@ -760,58 +750,10 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                     },
                 ],
             })
-            const dataCMD = await readContracts(config, {
-                contracts: [
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0x84bbfa70a60bB31fB00F2E2241E3a87C63F8734f'],
-                        chainId: 10,
-                    },
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0xaA3Caad9e335a133d96EA3D5D73df2dcF9e360d4'],
-                        chainId: 10,
-                    },
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0xA41F70B283b8f097112ca3Bb63cB2718EE662e49'],
-                        chainId: 10,
-                    },
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0x3C72Fb1658E7A64fd4C88394De4474186A13460A'],
-                        chainId: 10,
-                    },
-                    {
-                        address: usdtOP,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0x1BeedD97fCD4E21754465d21c757A9DF43733187'],
-                        chainId: 10,
-                    },
-                    {
-                        address: cmd,
-                        abi: erc20Abi,
-                        functionName: 'balanceOf',
-                        args: ['0x000000000000000000000000000000000000dead'],
-                        chainId: 10,
-                    },
-                ],
-            })
-            const bbqCmdBal1 = await getBalance(config, { address: '0x1BeedD97fCD4E21754465d21c757A9DF43733187', chainId: 190 })
-            const ethBal1 = await getBalance(config, { address: '0x3C72Fb1658E7A64fd4C88394De4474186A13460A', chainId: 10 })
 
             return [
-                dataCMJ, dataWOOD, dataJDAO, dataBBQ, dataPZA, dataCTUNA, dataSX31, dataCU, dataSIL, dataGOLD, dataPLAT, dataJASP, dataOS, dataCMD, 
-                (Number(bbqCmdBal1.formatted) + Number(ethers.utils.formatEther(String(dataCMD[3].result)))), ethBal1.formatted, [woodMint, woodBurn], [jdaoMint, jdaoBurn], [osMint, osBurn], [bbqMint, bbqBurn], [pzaMint, pzaBurn], [ctunaMint, ctunaBurn], [sx31Mint, sx31Burn], [cuMint, cuBurn], [silMint, silBurn], [goldMint, goldBurn], [platMint, platBurn], [jaspMint, jaspBurn],
+                dataCMJ, dataWOOD, dataJDAO, dataBBQ, dataPZA, dataCTUNA, dataSX31, dataCU, dataSIL, dataGOLD, dataPLAT, dataJASP, dataOS, dataOS, 
+                dataOS, dataOS, [woodMint, woodBurn], [jdaoMint, jdaoBurn], [osMint, osBurn], [bbqMint, bbqBurn], [pzaMint, pzaBurn], [ctunaMint, ctunaBurn], [sx31Mint, sx31Burn], [cuMint, cuBurn], [silMint, silBurn], [goldMint, goldBurn], [platMint, platBurn], [jaspMint, jaspBurn],
                 [plutoMint, plutoBurn], dataPLUTO, [fbtcMint, fbtcBurn], dataFBTC, [x4Mint, x4Burn], dataX4, [infpowMint, infpowBurn], dataINFPOW,
             ]
         }
@@ -869,13 +811,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
             setOsLocked(ethers.utils.formatEther(String(result[12][4].result)))
             setOsBurn(Number(ethers.utils.formatEther(String(result[12][1].result))) + Number(ethers.utils.formatEther(String(result[12][2].result))) + Number(ethers.utils.formatEther(String(result[12][3].result))))
             setOsCirculation(Number(ethers.utils.formatEther(String(result[12][0].result))) - (Number(ethers.utils.formatEther(String(result[12][1].result))) + Number(ethers.utils.formatEther(String(result[12][2].result))) + Number(ethers.utils.formatEther(String(result[12][3].result))) + Number(ethers.utils.formatEther(String(result[12][4].result)))))
-            setCmdBbq(ethers.utils.formatEther(String(result[13][1].result)))
-            setCmdGov(ethers.utils.formatEther(String(result[13][2].result)))
-            setCmdRev((Number(result[14]) - 10) * 0.60)
-            setUsdtRev(Number(result[13][4].result) / 1e6)
-            setEthRev((Number(result[15])) * 0.60)
-            setCmdCirculation(100000000 - Number(ethers.utils.formatEther(String(result[13][5].result))) - Number(ethers.utils.formatEther(String(result[13][0].result))))
-            setCmdBurn(ethers.utils.formatEther(String(result[13][5].result)))
+          
             setWoodStat(result[16])
             setJdaoStat(result[17])
             setOsStat(result[18])
@@ -920,40 +856,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
             <div style={{background: "rgb(0, 19, 33", width: "100%", margin: "0", padding: "75px 0", minHeight: "fit-content", flexDirection: "row", alignItems: "flex-start", justifyContent: "flex-start", flexWrap: "row wrap", overflow: "scroll"}} className="collection noscroll">
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4" height="25" alt="$CMD"/>
-                        &nbsp;$CMD Tracker
-                    </div>
-                    <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
-                        <div style={{width: "100%", textAlign: "left", display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
-                            {cmdCirculation !== null ?
-                                <>
-                                    <div className="bold" style={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
-                                        <div>Max Supply:</div>
-                                        <div style={{color: "#fff"}}>{Number(100000000 - Number(cmdBurn)).toLocaleString('en-US', {maximumFractionDigits:2})} (100%)</div>
-                                    </div>
-                                    <div className="bold" style={{display: "flex", justifyContent: "space-between", marginBottom: "10px", paddingBottom: "10px", borderBottom: "1px dotted"}}>
-                                        <div>Circulating Supply:</div>
-                                        <div style={{color: "#fff"}}>{Number(cmdCirculation).toLocaleString('en-US', {maximumFractionDigits:0})} ({Number(cmdCirculation/1000000).toFixed(2)}%)</div>
-                                    </div>
-                                    <div className="bold" style={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
-                                        <div>On BBQ-chain:</div>
-                                        <div style={{color: "#fff"}}>{Number(cmdBbq).toLocaleString('en-US', {maximumFractionDigits:0})} ({Number(cmdBbq/1000000).toFixed(2)}%)</div>
-                                    </div>
-                                    <div className="bold" style={{display: "flex", justifyContent: "space-between", marginBottom: "10px"}}>
-                                        <div>In CMDAO Gov (CMD-ETH LP):</div>
-                                        <div style={{color: "#fff"}}>{Number(cmdGov).toLocaleString('en-US', {maximumFractionDigits:0})} ({Number(cmdGov/1000000).toFixed(2)}%)</div>
-                                    </div>
-                                </> :
-                                <div style={{width: "100%", height: "100px", display: "flex", justifyContent: "flex-start", alignItems: "center"}}>
-                                    <ThreeDots fill="#5f6476" />
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
-                    <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="25" alt="$CMJ" />
+                        <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="25" alt="$CMJ" />
                         &nbsp;$CMJ Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -990,7 +893,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" width="25" alt="$JDAO" />
+                        <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" width="25" alt="$JDAO" />
                         &nbsp;$JDAO Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1035,7 +938,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" width="25" alt="$OS" />
+                        <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" width="25" alt="$OS" />
                         &nbsp;$OS Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1084,7 +987,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" width="25" alt="$WOOD" />
+                        <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" width="25" alt="$WOOD" />
                         &nbsp;$WOOD Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1129,7 +1032,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" width="25" alt="$BBQ" />
+                        <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" width="25" alt="$BBQ" />
                         &nbsp;$BBQ Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1174,7 +1077,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu" width="25" alt="$PZA" />
+                        <img src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png" width="25" alt="$PZA" />
                         &nbsp;$PZA Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1219,7 +1122,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i" width="25" alt="$CTUNA" />
+                        <img src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png" width="25" alt="$CTUNA" />
                         &nbsp;$CTUNA Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1264,7 +1167,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4" width="25" alt="$SX31" />
+                        <img src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png" width="25" alt="$SX31" />
                         &nbsp;$SX31 Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1309,7 +1212,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" width="25" alt="$CU" />
+                        <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" width="25" alt="$CU" />
                         &nbsp;$CU Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1354,7 +1257,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq" width="25" alt="$SIL" />
+                        <img src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png" width="25" alt="$SIL" />
                         &nbsp;$SIL Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1403,7 +1306,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm" width="25" alt="$GOLD" />
+                        <img src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png" width="25" alt="$GOLD" />
                         &nbsp;$GOLD Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1448,7 +1351,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa" width="25" alt="$PLAT" />
+                        <img src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png" width="25" alt="$PLAT" />
                         &nbsp;$PLAT Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1497,7 +1400,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy" width="25" alt="$JASP" />
+                        <img src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png" width="25" alt="$JASP" />
                         &nbsp;$JASP Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1542,7 +1445,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw" width="25" alt="$PLUTO" />
+                        <img src="/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png" width="25" alt="$PLUTO" />
                         &nbsp;$PLUTO Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1587,7 +1490,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC" width="25" alt="$F.BTC" />
+                        <img src="/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png" width="25" alt="$F.BTC" />
                         &nbsp;$F.BTC Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1632,7 +1535,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh" width="25" alt="$X4" />
+                        <img src="/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png" width="25" alt="$X4" />
                         &nbsp;$X4 Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>
@@ -1677,7 +1580,7 @@ const BigBroAnalytica = ({ config, erc20Abi }) => {
                 </div>
                 <div style={{background: "rgb(0, 26, 44)", padding: "25px 50px", margin: "15px", border: "1px solid rgb(54, 77, 94)", width: "400px", height: "300px", display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start", flexWrap: "wrap"}} className="nftCard">
                     <div style={{width: "100%", paddingBottom: "20px", borderBottom: "1px solid rgb(54, 77, 94)", textAlign: "left", fontSize: "18px", display: "flex", alignItems: "center"}} className="bold">
-                        <img src="https://gateway.commudao.xyz/ipfs/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6" width="25" alt="$INF.POW" />
+                        <img src="/tokens/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6.png" width="25" alt="$INF.POW" />
                         &nbsp;$INF.POW Tracker
                     </div>
                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "14px"}}>

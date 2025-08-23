@@ -315,7 +315,7 @@ const OpGameSwap = ({ config, setisLoading, callMode, navigate, txupdate, setTxu
                                 <div style={{width: "85%", textAlign: "left", fontSize: "20px"}} className="bold">Add LP</div>
                                 <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                                     <div style={{display: "flex"}}>
-                                        <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://raw.githubusercontent.com/SmolDapp/tokenAssets/main/tokens/10/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/logo.svg" alt="$ETH" />
+                                        <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/eth.svg" alt="$ETH" />
                                         <Select
                                             options={[]}
                                             value={options[0]}
@@ -339,7 +339,7 @@ const OpGameSwap = ({ config, setisLoading, callMode, navigate, txupdate, setTxu
                                 <div className="fa fa-plus"></div>
                                 <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                                     <div style={{display: "flex"}}>
-                                        {liquidMode === 0 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4" alt="$CMD" />}
+                                        {liquidMode === 0 && <img style={{width: "38px", height: "38px", marginRight: "2.5px"}} src="/tokens/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4.png" alt="$CMD" />}
                                         {liquidMode === 0 &&
                                             <Select
                                                 onChange={liquidModeSelect}
@@ -377,7 +377,7 @@ const OpGameSwap = ({ config, setisLoading, callMode, navigate, txupdate, setTxu
                                         <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                                             <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                                                 <div style={{height: "25px", lineHeight: 1.75}}>POOLED</div>
-                                                <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="https://raw.githubusercontent.com/SmolDapp/tokenAssets/main/tokens/10/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/logo.svg" alt="$ETH" />
+                                                <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="/tokens/eth.svg" alt="$ETH" />
                                             </div>
                                             <div style={{marginLeft: "5px", height: "25px", lineHeight: 1.75}} className='bold'>
                                                 {ethPooled !== null ? <>{ethPooled.toLocaleString('en-US', {minimumFractionDigits:3})}</> : <>0.000</>}
@@ -386,7 +386,7 @@ const OpGameSwap = ({ config, setisLoading, callMode, navigate, txupdate, setTxu
                                         <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                                             <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                                                 <div style={{height: "25px", lineHeight: 1.75}}>POOLED</div>
-                                                <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4" alt="$CMD" />
+                                                <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="/tokens/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4.png" alt="$CMD" />
                                             </div>
                                             <div style={{marginLeft: "5px", height: "25px", lineHeight: 1.75}} className='bold'>
                                                 {cmdPooled !== null ? <>{cmdPooled.toLocaleString('en-US', {minimumFractionDigits:3})}</> : <>0.000</>}
@@ -419,8 +419,8 @@ const OpGameSwap = ({ config, setisLoading, callMode, navigate, txupdate, setTxu
                                 {liquidMode === 0 &&
                                     <div style={{width: "85%", display: "flex", justifyContent: "space-between"}}>
                                         <div style={{marginLeft: "5px", height: "25px"}}>
-                                            <img style={{width: "28px", height: "28px"}} src="https://raw.githubusercontent.com/SmolDapp/tokenAssets/main/tokens/10/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee/logo.svg" alt="$ETH" />
-                                            <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="https://gateway.commudao.xyz/ipfs/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4" alt="$CMD" />
+                                            <img style={{width: "28px", height: "28px"}} src="/tokens/eth.svg" alt="$ETH" />
+                                            <img style={{width: "28px", height: "28px", marginLeft: "7.5px"}} src="/tokens/bafkreidm3tpt3xpcmypzeaqicyxvihmygzu5mw3v74o6b2wve6ar5pdbs4.png" alt="$CMD" />
                                         </div>
                                         <div className='bold' style={{marginLeft: "5px", height: "25px", lineHeight: 2.5}}>
                                             {cmdwethLpBalance !== null ? <>Balance: {Number(cmdwethLpBalance).toLocaleString('en-US', {maximumFractionDigits:3})}</> : <>0.000</>}

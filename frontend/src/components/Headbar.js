@@ -93,8 +93,6 @@ const Headbar = ({ config, callMode, navigate, txupdate, erc20Abi }) => {
             }
             {chain !== undefined && (chain.id === 10) &&
               <> 
-                <div className="funcList" onClick={() => {callMode(31001); navigate('/dungeon/abandoned-temple-vault');}}>Dungeon</div>
-                <div className="funcList" onClick={() => {callMode(52); navigate('/mall/op');}}>Mall</div>
                 <div className="funcList" onClick={() => {callMode(701); navigate('/gameswap/op');}}>GameSwap</div>
                 <div className="funcList" onClick={() => {callMode(8); navigate('/tbridge');}}>tBridge</div>
               </>
@@ -105,7 +103,7 @@ const Headbar = ({ config, callMode, navigate, txupdate, erc20Abi }) => {
               <div id="jdaoBal" style={{width: "fit-content", height: "18px", background: "rgba(0, 0, 0, 0.02)", border: "1px solid rgba(0, 0, 0, 0.05)", borderRadius: "80px", marginRight: "5px", color: "rgb(70, 55, 169)", padding: "10px 20px", display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center", letterSpacing: "1px", textDecoration: "none"}}>
                 <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                   <img
-                    src="https://gateway.commudao.xyz/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq?img-width=100&img-height=100"
+                    src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png"
                     height="18"
                     alt="$JDAO"
                     style={{cursor: "crosshair"}}
@@ -118,7 +116,7 @@ const Headbar = ({ config, callMode, navigate, txupdate, erc20Abi }) => {
                             address: jdao,
                             symbol: 'JDAO',
                             decimals: 18,
-                            image: 'https://gateway.commudao.xyz/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq',
+                            image: '/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png',
                           },
                         },
                       })
@@ -132,7 +130,7 @@ const Headbar = ({ config, callMode, navigate, txupdate, erc20Abi }) => {
               <div id="jdaoBal" style={{width: "fit-content", height: "18px", background: "rgba(0, 0, 0, 0.02)", border: "1px solid rgba(0, 0, 0, 0.05)", borderRadius: "80px", marginRight: "5px", color: "rgb(70, 55, 169)", padding: "10px 20px", display: "flex", flexDirection: "row", textAlign: "center", justifyContent: "center", letterSpacing: "1px", textDecoration: "none"}}>
                 <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                   <img
-                    src="https://gateway.commudao.xyz/ipfs/bafkreidcxukia62wzaaes6wpsdgpw3yjshrjm7nwijwldxdthkepsebumq?img-width=100&img-height=100"
+                    src="/tokens/bafkreidcxukia62wzaaes6wpsdgpw3yjshrjm7nwijwldxdthkepsebumq.png"
                     height="18"
                     alt="$CMOS"
                     style={{cursor: "crosshair"}}
@@ -145,7 +143,7 @@ const Headbar = ({ config, callMode, navigate, txupdate, erc20Abi }) => {
                                   address: cmos,
                                   symbol: 'CMOS',
                                   decimals: 18,
-                                  image: 'https://gateway.commudao.xyz/ipfs/bafkreidcxukia62wzaaes6wpsdgpw3yjshrjm7nwijwldxdthkepsebumq',
+                                  image: '/tokens/bafkreidcxukia62wzaaes6wpsdgpw3yjshrjm7nwijwldxdthkepsebumq.png',
                                 },
                             },
                         })

@@ -241,7 +241,7 @@ const DumpsterHill = ({ config, setisLoading, callMode, navigate, txupdate, setT
                 <div style={{background: "rgb(0, 19, 33", margin: "0", minHeight: "inherit", alignItems: "flex-start"}} className="collection">
                     <div style={{marginTop: "35px", width: "90%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll bold">
                         <div style={{backgroundColor: "rgb(39, 56, 82)", color: "#fff", minWidth: "300px", height: "75px", margin: 0, border: "none", boxShadow: "3px 3px 0 #0d0a1f"}} className="items">
-                            <img src="https://gateway.commudao.xyz/ipfs/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e" width="22" alt="$stOPT"/>
+                            <img src="/tokens/bafkreibtp4almzmdovhvygxeyykw5fa6pqe76cbdum4quispehlddqgp2e.png" width="22" alt="$stOPT"/>
                             <div style={{marginLeft: "10px"}}>{Number(stOPTBalance).toFixed(5)}</div>
                         </div>
                     </div>
@@ -250,7 +250,7 @@ const DumpsterHill = ({ config, setisLoading, callMode, navigate, txupdate, setT
                         <div style={{display: "flex", flexDirection: "row"}}>
                             <div style={{backgroundColor: "rgb(39, 56, 82)", border: "none", color: "#fff", justifyContent: "space-around", marginRight: "40px", width: "300px", height: "fit-content", marginBottom: "10px", display: "flex", flexDirection: "column", textAlign: "left", flexWrap: "wrap"}} className="nftCard">
                                 <div>
-                                    <img src="https://gateway.commudao.xyz/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4" height="100" alt="$WOOD"/>
+                                    <img src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png" height="100" alt="$WOOD"/>
                                 </div>
                                 <div style={{fontSize: "28px", marginTop: "40px"}} className="pixel">{Number(woodBalance).toFixed(0)}</div>
                                 <input
@@ -272,7 +272,7 @@ const DumpsterHill = ({ config, setisLoading, callMode, navigate, txupdate, setT
 
                             <div style={{backgroundColor: "rgb(39, 56, 82)", border: "none", color: "#fff", justifyContent: "space-around", marginRight: "40px", width: "300px", height: "fit-content", marginBottom: "10px", display: "flex", flexDirection: "column", textAlign: "left", flexWrap: "wrap"}} className="nftCard">
                                 <div>
-                                    <img src="https://gateway.commudao.xyz/ipfs/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i" height="100" alt="$MICE"/>
+                                    <img src="/tokens/bafkreidcakmgzpqytuzlvvok72r2hg2n5tqb25jfwecymelylaysdzkd6i.png" height="100" alt="$MICE"/>
                                 </div>
                                 <div style={{fontSize: "28px", marginTop: "40px"}} className="pixel">{Number(miceBalance).toFixed(0)}</div>
                                 <input
@@ -316,7 +316,7 @@ const DumpsterHill = ({ config, setisLoading, callMode, navigate, txupdate, setT
                                 <>
                                 {address !== null ?
                                     <div style={{backgroundColor: "rgb(39, 56, 82)", border: "none", color: "#fff", justifyContent: "space-around", marginRight: "20px", width: "300px", height: "300px", marginBottom: "10px", display: "flex", flexDirection: "column", textAlign: "left", flexWrap: "wrap"}} className="nftCard">
-                                        <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                        <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                         <div style={{marginTop: "80px"}} className="bold">No Recyclable NFTs</div>
                                     </div> :
                                 <div style={{backgroundColor: "rgb(39, 56, 82)", border: "none", color: "#fff", justifyContent: "space-around", padding: "30px", marginRight: "20px", width: "300px", height: "300px", marginBottom: "10px", display: "flex", flexDirection: "column", textAlign: "left", flexWrap: "wrap"}} className="nftCard">
