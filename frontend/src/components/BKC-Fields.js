@@ -25,7 +25,7 @@ const BKCFields = ({ callMode, navigate }) => {
                         <div style={{height: "30px"}}></div>
                         <div className='light'>BADKUB LAUNCHPAD</div>
                     </div>
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeih6l2qo7pi2iulbi26wovgaq4dbilhncoyzweapznqzhbfqzgf7ji" height="230" alt="Field_BadMuseum" />
+                    <img src="/maps/bafybeih6l2qo7pi2iulbi26wovgaq4dbilhncoyzweapznqzhbfqzgf7ji.png" height="230" alt="Field_BadMuseum" />
                     <div style={{marginTop: "30px", width: "340px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontSize: "14px"}}>
                         <div className="light">
                             <i style={{fontSize: "14px", marginRight: "5px"}} className="fa fa-ticket"></i>
@@ -39,17 +39,17 @@ const BKCFields = ({ callMode, navigate }) => {
                             Earn
                         </div>
                         <div style={{color: "#000", borderBottom: "1px dashed"}} className="pixel">
-                            <img src="https://gateway.pinata.cloud/ipfs/bafkreidfaoq6ewqfoipdm66wapq4kijjhxdueztpo6tvdhayprueihefrm" style={{marginRight: "5px"}} width="12" alt="$BST"/>
+                            <img src="/tokens/bafkreidfaoq6ewqfoipdm66wapq4kijjhxdueztpo6tvdhayprueihefrm.png" style={{marginRight: "5px"}} width="12" alt="$BST"/>
                         </div>
                     </div>
                     <div style={{width: "220px", margin: "40px 130px 0 40px",border: "1px dashed #4637a9", justifyContent: "center"}} className="pixel hashtag" onClick={() => {callMode(15); navigate('/fields/bkc-bad-museum');}}>Go to Bad Musuem</div>
                 </div>
                 <div className="nftCard" style={{justifyContent: "center", margin: "10px", position: "relative", borderRadius: "5px", boxShadow: "none", border: "none", background: "rgba(0,0,0,.05)", fontSize: "12px"}}>
                     <div style={{position: "absolute", top: -25, right: -15, padding: "7.5px 20px", width: "150px", background: "rgb(255, 255, 255, 0.5)", letterSpacing: 1, border: "1px outset", display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <img src="https://gateway.pinata.cloud/ipfs/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4" width="30px" alt="CM" />
+                        <img src="/maps/bafybeifgqrnqujzsozg56l4wfvqwxgf72kgjjwtwq6aedeywwfmvlg7on4.png" width="30px" alt="CM" />
                         <div className='light' style={{marginLeft: "10px"}}>CM Digital</div>
                     </div>
-                    <img src="https://gateway.pinata.cloud/ipfs/bafybeieu6tyeea3bgzvvcxrylckaf674lqplpioghqvi2hudtfe4ux2fty" height="230" alt="Field_FraserRiver" />
+                    <img src="/maps/bafybeieu6tyeea3bgzvvcxrylckaf674lqplpioghqvi2hudtfe4ux2fty.png" height="230" alt="Field_FraserRiver" />
                     <div style={{marginTop: "30px", width: "340px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontSize: "14px"}}>
                         <div className="light">
                             <i style={{fontSize: "14px", marginRight: "5px"}} className="fa fa-ticket"></i>
@@ -63,9 +63,9 @@ const BKCFields = ({ callMode, navigate }) => {
                             Earn
                         </div>
                         <div style={{color: "#000", borderBottom: "1px dashed", display: "flex", flexDirection: "row"}} className="pixel">
-                            <img src="https://gateway.pinata.cloud/ipfs/bafkreicj63qksujn46s6skyyvqeny2fmptp2eu5u6hcicawalqjhtopm34" width="12" alt="$SALM"/>
+                            <img src="/tokens/bafkreicj63qksujn46s6skyyvqeny2fmptp2eu5u6hcicawalqjhtopm34.png" width="12" alt="$SALM"/>
                             &nbsp;+&nbsp;
-                            <img src="https://gateway.pinata.cloud/ipfs/bafkreiaayvrql643lox66vkdfv6uzaoq2c5aa5mq3jjp3c7v4asaxvvzla" width="16" alt="$CMM"/>
+                            <img src="/tokens/bafkreiaayvrql643lox66vkdfv6uzaoq2c5aa5mq3jjp3c7v4asaxvvzla.png" width="16" alt="$CMM"/>
                         </div>
                     </div>
                     <div style={{width: "220px", margin: "40px 130px 0 40px", border: "1px dashed #4637a9", justifyContent: "center"}} className="pixel hashtag" onClick={() => {callMode(16); navigate('/fields/bkc-fraser-river');}}>Go to Fraser River</div>

@@ -1021,7 +1021,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                 <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start"}}>
                                     <div style={{height: "30px", padding: "0 5px", marginRight: "10px", lineHeight: "32px"}} className="bold">SELL AS</div>
                                     <div style={{width: "fit-content", height: "30px", margin: 0, padding: "5px", border: "1px solid", borderRadius: "10px", fontSize: "12px"}} className="items bold">
-                                        {currencyselected === "CMJ" ? <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="20" alt="$CMJ"/> : <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" width="20" alt="$JUSDT"/>}
+                                        {currencyselected === "CMJ" ? <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="20" alt="$CMJ"/> : <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" width="20" alt="$JUSDT"/>}
                                         <select style={{padding: "5px", margin: "5px", fontSize: "16px", letterSpacing: "1px", border: "none"}} className="pixel" value={currencyselected} onChange={(event) => {setCurrencyselected(event.target.value)}}>
                                             <option value="CMJ">CMJ</option>
                                             <option value="JUSDT">JUSDT</option>
@@ -1046,7 +1046,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                     <div style={{fontSize: "17px", width: "fit-content", marginTop: "30px"}} className="pixel">NFTs Second-hand marketplace provided In DApp.</div>
                 </div>
                 <div className="SubfieldBanner">
-                    <img src="https://gateway.pinata.cloud/ipfs/QmcsFn3ZKhZTM7PvRLdCCuPERi1vDdHzQowsHWFSLcBCsr" width="150" alt="MKP_Logo" />
+                    <img src="/background/QmcsFn3ZKhZTM7PvRLdCCuPERi1vDdHzQowsHWFSLcBCsr.png" width="150" alt="MKP_Logo" />
                 </div>
             </div>
 
@@ -1174,7 +1174,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                                             <div className="pixel emp">{item.Name}</div>
                                                             <div className="pixel">{item.RewardPerSec} {item.Col === 1 || item.Col === 3 ? <>cmpow per sec</> : <>bonus per sec</>}</div>
                                                             <div style={{display: "flex", flexDirection: "row"}} className="pixel">
-                                                                {item.Currencyindex === 1 ? <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="20" alt="$CMJ"/> : <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" width="20" alt="$JUSDT"/>}
+                                                                {item.Currencyindex === 1 ? <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="20" alt="$CMJ"/> : <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" width="20" alt="$JUSDT"/>}
                                                                 <div style={{marginLeft: "5px"}}>{item.Price}</div>
                                                             </div>
                                                             <div style={{fontSize: "12px"}} className="light">[Seller : {item.Seller}]</div>
@@ -1199,7 +1199,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                                             <div className="pixel emp">{item.Name}</div>
                                                             <div className="pixel">{item.RewardPerSec} {item.Col === 1 || item.Col === 3 ? <>cmpow per sec</> : <>bonus per sec</>}</div>
                                                             <div style={{display: "flex", flexDirection: "row"}} className="pixel">
-                                                                {item.Currencyindex === 1 ? <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="20" alt="$CMJ"/> : <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" width="20" alt="$JUSDT"/>}
+                                                                {item.Currencyindex === 1 ? <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="20" alt="$CMJ"/> : <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" width="20" alt="$JUSDT"/>}
                                                                 <div style={{marginLeft: "5px"}}>{item.Price}</div>
                                                             </div>
                                                             <div style={{fontSize: "12px"}} className="light">[Seller : {item.Seller}]</div>
@@ -1216,7 +1216,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                 </div> :
                                 <>
                                     <div style={{padding: "20px", width: "300px", justifyContent: "center"}} className="nftCard">
-                                        <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                        <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                         <div style={{marginTop: "30px"}} className="bold">No items in Marketplace.</div>
                                     </div>
                                 </>
@@ -1227,11 +1227,11 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                     <div style={{marginTop: "20px", fontSize: "15px", letterSpacing: "1px"}} className="bold">Tokens</div>
                                     <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll pixel">
                                         <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u" width="20" alt="$CMJ"/>
+                                            <img src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png" width="20" alt="$CMJ"/>
                                             <div style={{marginLeft: "5px"}}>{Number(cmjBalance).toFixed(3)}</div>
                                         </div>
                                         <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px 20px 0", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" width="20" alt="$JUSDT"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" width="20" alt="$JUSDT"/>
                                             <div style={{marginLeft: "5px"}}>{Number(jusdtBalance).toFixed(3)}</div>
                                         </div>
                                     </div>
@@ -1265,7 +1265,7 @@ const Mkp = ({ config, subModeText, callMode, navigate, setisLoading, txupdate, 
                                             <>
                                                 {address !== null ?
                                                     <div style={{justifyContent: "center", padding: "20px", margin: "35px 28px 15px 0px"}} className="nftCard">
-                                                        <img src="https://l3img.b-cdn.net/ipfs/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA" width="150" alt="No_NFTs" />
+                                                        <img src="/background/QmUmf3MEZg99qqLJ6GsewESVum8sm72gfH3wyiVPZGH6HA.svg" width="150" alt="No_NFTs" />
                                                         <div style={{marginTop: "30px"}} className="bold">This wallet doesn't have NFTs.</div>
                                                     </div> :
                                                     <div style={{justifyContent: "center", padding: "20px", margin: "35px 28px 15px 0px"}} className="nftCard">

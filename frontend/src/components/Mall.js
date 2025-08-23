@@ -1119,7 +1119,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                 <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start"}}>
                                     <div style={{height: "30px", padding: "0 5px", lineHeight: "32px"}} className="bold">WRAPPED</div>
                                     <div style={{width: "fit-content", height: "30px", margin: 0, border: "none", fontSize: "12px"}} className="items bold">
-                                        <img src="https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" width="20" alt="$WJBC"/>
+                                        <img src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" width="20" alt="$WJBC"/>
                                     </div>
                                 </div>
                                 <div style={{margin: "10px 0", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-start"}}>
@@ -1177,7 +1177,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq"
+                                    src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png"
                                     width="20"
                                     alt="$WJBC"
                                     style={{cursor: "crosshair"}}
@@ -1190,7 +1190,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: wjbcToken,
                                                     symbol: 'WJBC',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq',
+                                                    image: '/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png',
                                                 },
                                             },
                                         })
@@ -1200,7 +1200,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u"
+                                    src="/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png"
                                     width="20"
                                     alt="$CMJ"
                                     style={{cursor: "crosshair"}}
@@ -1213,7 +1213,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: cmjToken,
                                                     symbol: 'CMJ',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u',
+                                                    image: '/tokens/bafkreiabbtn5pc6di4nwfgpqkk3ss6njgzkt2evilc5i2r754pgiru5x4u.png',
                                                 },
                                             },
                                         })
@@ -1223,7 +1223,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi"
+                                    src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png"
                                     width="20"
                                     alt="$JUSDT"
                                     style={{cursor: "crosshair"}}
@@ -1236,7 +1236,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: jusdtToken,
                                                     symbol: 'JUSDT',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi',
+                                                    image: '/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png',
                                                 },
                                             },
                                         })
@@ -1246,7 +1246,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img 
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm"
+                                    src="/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png"
                                     width="20"
                                     alt="$JTAO"
                                     style={{cursor: "crosshair"}}
@@ -1259,7 +1259,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: taomeme,
                                                     symbol: 'JTAO',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm',
+                                                    image: '/tokens/bafkreifydb6vy2dysudcg6x64p42enym3bhfneal62ctf33oapsmk6qjlm.png',
                                                 },
                                             },
                                         })
@@ -1273,7 +1273,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4"
+                                    src="/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png"
                                     width="20"
                                     alt="$WOOD"
                                     style={{cursor: "crosshair"}}
@@ -1286,7 +1286,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: woodToken,
                                                     symbol: 'WOOD',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4',
+                                                    image: '/tokens/bafkreidldk7skx44xwstwat2evjyp4u5oy5nmamnrhurqtjapnwqzwccd4.png',
                                                 },
                                             },
                                         })
@@ -1296,7 +1296,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq"
+                                    src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png"
                                     width="20"
                                     alt="$BBQ"
                                     style={{cursor: "crosshair"}}
@@ -1309,7 +1309,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: bbqToken,
                                                     symbol: 'BBQ',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq',
+                                                    image: '/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png',
                                                 },
                                             },
                                         })
@@ -1319,7 +1319,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu"
+                                    src="/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png"
                                     width="20"
                                     alt="$PZA"
                                     style={{cursor: "crosshair"}}
@@ -1332,7 +1332,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: pzaLab,
                                                     symbol: 'PZA',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu',
+                                                    image: '/tokens/bafkreifq5hc6oprfye7ha3q5lhly545rx6c4idua7v6mrpz5nqxcrefluu.png',
                                                 },
                                             },
                                         })
@@ -1342,7 +1342,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq"
+                                    src="/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png"
                                     width="20"
                                     alt="$CU"
                                     style={{cursor: "crosshair"}}
@@ -1355,7 +1355,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: dunCopper,
                                                     symbol: 'CU',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq',
+                                                    image: '/tokens/bafkreidau3s66zmqwtyp2oimumulxeuw7qm6apcornbvxbqmafvq3nstiq.png',
                                                 },
                                             },
                                         })
@@ -1365,7 +1365,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde"
+                                    src="/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png"
                                     width="20"
                                     alt="$SIL"
                                     style={{cursor: "crosshair"}}
@@ -1378,7 +1378,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: silToken,
                                                     symbol: 'SIL',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde',
+                                                    image: '/tokens/bafkreigld4xmmrmu763t2vsju3tqhcodgxxsrmgvrlfhdjktgujgcmpmde.png',
                                                 },
                                             },
                                         })
@@ -1388,7 +1388,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm"
+                                    src="/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png"
                                     width="20"
                                     alt="$GOLD"
                                     style={{cursor: "crosshair"}}
@@ -1401,7 +1401,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: goldToken,
                                                     symbol: 'GOLD',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm',
+                                                    image: '/tokens/bafkreia4zjqhbo4sbvbkvlgnit6yhhjmvo7ny4ybobuee74vqlmziskosm.png',
                                                 },
                                             },
                                         })
@@ -1414,7 +1414,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa"
+                                    src="/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png"
                                     width="20"
                                     alt="$PLAT"
                                     style={{cursor: "crosshair"}}
@@ -1427,7 +1427,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: platToken,
                                                     symbol: 'PLAT',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa',
+                                                    image: '/tokens/bafkreibf7vowyqjrcaeyslflrxxchel3b4qdpwxcxb34js2otg35vjkcaa.png',
                                                 },
                                             },
                                         })
@@ -1437,7 +1437,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy"
+                                    src="/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png"
                                     width="20"
                                     alt="$JASP"
                                     style={{cursor: "crosshair"}}
@@ -1450,7 +1450,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: dunJasper,
                                                     symbol: 'JASP',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy',
+                                                    image: '/tokens/bafkreidfl4mgyczqwl3gtunpherc5ri3qbfzm2vevdwcojmhpz3viubopy.png',
                                                 },
                                             },
                                         })
@@ -1460,7 +1460,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw"
+                                    src="/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png"
                                     width="20"
                                     alt="$PLUTO"
                                     style={{cursor: "crosshair"}}
@@ -1473,7 +1473,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: platToken,
                                                     symbol: 'PLUTO',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw',
+                                                    image: '/tokens/QmSd6B1WnUtzVqJPmEXqFSEudrdqCAE3LPkU64tttYeFPw.png',
                                                 },
                                             },
                                         })
@@ -1483,7 +1483,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC"
+                                    src="/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png"
                                     width="20"
                                     alt="$F.BTC"
                                     style={{cursor: "crosshair"}}
@@ -1496,7 +1496,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: fbtcToken,
                                                     symbol: 'F.BTC',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC',
+                                                    image: '/tokens/QmPieCpfHoce19DSB5Mv5GZmZeGHAUerJfgjX6NhgLYUVC.png',
                                                 },
                                             },
                                         })
@@ -1506,7 +1506,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh"
+                                    src="/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png"
                                     width="20"
                                     alt="$X4"
                                     style={{cursor: "crosshair"}}
@@ -1519,7 +1519,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: x4Token,
                                                     symbol: 'X4',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh',
+                                                    image: '/tokens/Qma5JyeNz8ME6H1XFxJCF4HmduDSC8mqLqmUs3SaMJbwzh.png',
                                                 },
                                             },
                                         })
@@ -1529,7 +1529,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6"
+                                    src="/tokens/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6.png"
                                     width="20"
                                     alt="$INF.POW"
                                     style={{cursor: "crosshair"}}
@@ -1542,7 +1542,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: infpowToken,
                                                     symbol: 'INF-POW-JBC',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6',
+                                                    image: '/tokens/QmbEWVgF3ZRvmDEF3RLKf7XDFr4SE5q4VEWR7taCqNnbU6.png',
                                                 },
                                             },
                                         })
@@ -1554,7 +1554,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0 10px 20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e"
+                                    src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png"
                                     width="20"
                                     alt="$OS"
                                     style={{cursor: "crosshair"}}
@@ -1567,7 +1567,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: osToken,
                                                     symbol: 'OS',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e',
+                                                    image: '/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png',
                                                 },
                                             },
                                         })
@@ -1581,7 +1581,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i"
+                                    src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png"
                                     width="20"
                                     alt="$CTUNA"
                                     style={{cursor: "crosshair"}}
@@ -1594,7 +1594,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: ctunaLab,
                                                     symbol: 'CTUNA',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i',
+                                                    image: '/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png',
                                                 },
                                             },
                                         })
@@ -1604,7 +1604,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4"
+                                    src="/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png"
                                     width="20"
                                     alt="$SX31"
                                     style={{cursor: "crosshair"}}
@@ -1617,7 +1617,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: sx31Lab,
                                                     symbol: 'SX31',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4',
+                                                    image: '/tokens/bafkreicldm4vbw2ywy7dyrsjbwd5mk6hno3pxpwggdvxjlocbneg5webx4.png',
                                                 },
                                             },
                                         })
@@ -1627,7 +1627,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi?img-width=50&img-height=50"
+                                    src="/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png"
                                     width="20"
                                     alt="$SWAR"
                                     style={{cursor: "crosshair"}}
@@ -1640,7 +1640,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: swarLab,
                                                     symbol: 'SWAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi',
+                                                    image: '/tokens/bafkreib4zlmwnydgolgzkfldaz2zsxh6pg3k4wemiigura7gbnj7i36ygi.png',
                                                 },
                                             },
                                         })
@@ -1650,7 +1650,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m?img-width=50&img-height=50"
+                                    src="/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png"
                                     width="20"
                                     alt="$ANGB"
                                     style={{cursor: "crosshair"}}
@@ -1663,7 +1663,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: dunAngb,
                                                     symbol: 'ANGB',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m',
+                                                    image: '/tokens/bafkreiev2kbirflwhlqbwd6zh6trd7gx62tijviekwewd6zaogm4vzrh7m.png',
                                                 },
                                             },
                                         })
@@ -1673,7 +1673,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q?img-width=50&img-height=50"
+                                    src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png"
                                     width="20"
                                     alt="$II"
                                     style={{cursor: "crosshair"}}
@@ -1686,7 +1686,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: iiLab,
                                                     symbol: 'TDM - II',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q',
+                                                    image: '/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png',
                                                 },
                                             },
                                         })
@@ -1696,7 +1696,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             </div>
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "20px 10px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=50&img-height=50"
+                                    src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png"
                                     width="20"
                                     alt="$EE"
                                     style={{cursor: "crosshair"}}
@@ -1709,7 +1709,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: dunEE,
                                                     symbol: 'TDM-EE',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm',
+                                                    image: '/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png',
                                                 },
                                             },
                                         })
@@ -1722,7 +1722,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0px 10px 20px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4?img-width=50&img-height=50"
+                                    src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png"
                                     width="20"
                                     alt="$GEAR"
                                     style={{cursor: "crosshair"}}
@@ -1735,7 +1735,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: gearToken,
                                                     symbol: 'GEAR',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4',
+                                                    image: '/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png',
                                                 },
                                             },
                                         })
@@ -1746,7 +1746,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div style={{width: "200px", minWidth: "200px", height: "55px", margin: "0px 10px 20px", fontSize: "15px", border: "1px solid #dddade", boxShadow: "3px 3px 0 #dddade"}} className="items">
                                 <img
-                                    src="https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi?img-width=50&img-height=50"
+                                    src="/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png"
                                     width="20"
                                     alt="$DOIJIB"
                                     style={{cursor: "crosshair"}}
@@ -1759,7 +1759,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                     address: doijibToken,
                                                     symbol: 'DOIJIB',
                                                     decimals: 18,
-                                                    image: 'https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi',
+                                                    image: '/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png',
                                                 },
                                             },
                                         })
@@ -1787,7 +1787,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{alignItems: "center", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{marginTop: "10px", width: "100%", maxHeight: "350px", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "space-between"}}>
                                     <div style={{height: "160px", width: "100%", display: "flex", alignItems: "flex-end", justifyContent: "center"}}>
-                                        <img src="https://gateway.pinata.cloud/ipfs/QmRW1q89QaD29zvC8h5bg4yZBcmsqj4aG8FPAe1RddvM6Y?img-width=400&img-height=400" width="230" alt="NPC_Gamy" />
+                                        <img src="/elements/QmRW1q89QaD29zvC8h5bg4yZBcmsqj4aG8FPAe1RddvM6Y.png" width="230" alt="NPC_Gamy" />
                                     </div>
                                     <div style={{maxHeight: "110px"}}>
                                         <div style={{fontSize: "20px", width: "380px"}} className="pixel">GAMY, THE PRESALE AGENT</div>
@@ -1800,8 +1800,8 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                                 </select>
                                                 <div style={{fontSize: "16px", marginLeft: "5px", display: "flex", alignItems: "center", letterSpacing: "1px"}} className="pixel">
                                                     &nbsp;
-                                                    {tokenselected === "DOIJIB" && <>10,000.00&nbsp;<img src="https://gateway.pinata.cloud/ipfs/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi" width="22" alt="$DOIJIB"/> &nbsp;=&nbsp; <div className="emp">1</div></>}
-                                                    &nbsp;<img src="https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" width="22" alt="$WJBC"/>
+                                                    {tokenselected === "DOIJIB" && <>10,000.00&nbsp;<img src="/tokens/bafybeicfkse4uvkhhkrhfwtap4h3v5msef6lg3t3xvb2hspw3xd5wegzfi.png" width="22" alt="$DOIJIB"/> &nbsp;=&nbsp; <div className="emp">1</div></>}
+                                                    &nbsp;<img src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" width="22" alt="$WJBC"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1824,7 +1824,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                         ></input>
                                         {tokenselected === "DOIJIB" && 
                                             <div style={{width: "30%", display: "flex", flexDirection: "row", alignItems: "center", cursor: "pointer"}} onClick={() => setInputBuy(wjbcBalance)}>
-                                                <img src="https://gateway.pinata.cloud/ipfs/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq" width="22" alt="$WJBC"/>
+                                                <img src="/tokens/bafkreih6o2px5oqockhsuer7wktcvoky36gpdhv7qjwn76enblpce6uokq.png" width="22" alt="$WJBC"/>
                                                 <div style={{marginLeft: "5px"}}>{Number(wjbcBalance).toLocaleString('en-US', {maximumFractionDigits:2})}</div>
                                             </div>
                                         }
@@ -1858,7 +1858,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Songkran Splasher</div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreifz2fgy43d4qigdwp35r3izgyvwip2rugswdvkkcj4xl5cytxs5ti?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreifz2fgy43d4qigdwp35r3izgyvwip2rugswdvkkcj4xl5cytxs5ti.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", height: "200px", fontSize: "15px", marginTop: "10px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -1886,7 +1886,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -1910,7 +1910,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Golden Dragon Armor </div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreibgzv6zcq4yuj2n44dw6o7ydwllepwry5nulqzdx4s2c7poabxwxa?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreibgzv6zcq4yuj2n44dw6o7ydwllepwry5nulqzdx4s2c7poabxwxa.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", marginTop: "10px", height: "200px", fontSize: "15px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -1938,7 +1938,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -1962,7 +1962,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Adventure's Muffler</div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreigeuohgaw2jvgromogakix34kit2ab6pclreddmbzubp22nkqmpma?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreigeuohgaw2jvgromogakix34kit2ab6pclreddmbzubp22nkqmpma.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", marginTop: "10px", height: "200px", fontSize: "15px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -1990,7 +1990,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -2016,7 +2016,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Golden Dragon Boots</div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreif4fk7tqca2vdovvtwufxyx2snoolbwofvdvjoqi35y6mvaahhkve?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreif4fk7tqca2vdovvtwufxyx2snoolbwofvdvjoqi35y6mvaahhkve.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", marginTop: "10px", height: "200px", fontSize: "15px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -2044,7 +2044,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -2068,7 +2068,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Golden Dragon Accessory</div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreiem7ixjm7xomcrhfkla73ye7ajah6d7xi7hw6a6seozclccaewipy?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreiem7ixjm7xomcrhfkla73ye7ajah6d7xi7hw6a6seozclccaewipy.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", marginTop: "10px", height: "200px", fontSize: "15px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -2096,7 +2096,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -2120,7 +2120,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: 20, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Guardian's Helm</div>
-                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="https://gateway.pinata.cloud/ipfs/bafkreigr33les3na44zns7nznxltedxluhor5klfsduzolpwinqzsrcc6q?img-width=400&img-height=400" height="150" alt="Can not load metadata."/>
+                                <img style={{alignSelf: "flex-start", marginTop: "20px"}} src="/elements/bafkreigr33les3na44zns7nznxltedxluhor5klfsduzolpwinqzsrcc6q.gif" height="150" alt="Can not load metadata."/>
                                 <div style={{alignSelf: "flex-start", marginTop: "10px", height: "200px", fontSize: "15px"}} className="pixel">
                                     <div style={{marginTop: "20px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Limited</div>
@@ -2148,7 +2148,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>15</div>
                                         </div>
                                     </div>
@@ -2192,7 +2192,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontSize: "14px", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="$JUSDT"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="$JUSDT"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2234,7 +2234,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontSize: "14px", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="$JUSDT"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="$JUSDT"/>
                                             <div style={{marginLeft: "7.5px"}}>2</div>
                                         </div>
                                     </div>
@@ -2261,7 +2261,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Angel Plus - Adventurer Card D +0 Vol.4</div>
@@ -2283,7 +2283,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2306,7 +2306,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Hero (Character)</div>
@@ -2326,7 +2326,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2349,7 +2349,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Claymore (Sword)</div>
@@ -2369,7 +2369,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2394,7 +2394,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Shield (Shield)</div>
@@ -2414,7 +2414,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2437,7 +2437,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Full Plate (Armor)</div>
@@ -2457,7 +2457,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2480,7 +2480,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Helm (Helmet)</div>
@@ -2500,7 +2500,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2525,7 +2525,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Crusader Boots (Boots)</div>
@@ -2545,7 +2545,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2568,7 +2568,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">Imperium Ring (Ring)</div>
@@ -2588,7 +2588,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -2611,7 +2611,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -20, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4?img-width=50&img-height=50" width="30px" alt="AngelPlus" />
+                                    <img src="/maps/bafybeibha4mwuymx4o5mp4n3hou3fryvka4wul53sawa4xtqvkrn32i7g4.png" width="30px" alt="AngelPlus" />
                                     <div className='light' style={{marginLeft: "10px"}}>Angel Plus</div>
                                 </div>
                                 <div style={{position: "absolute", top: 40, right: 30, padding: "10px 20px", background: "linear-gradient(93.06deg, rgb(255, 0, 199) 2.66%, rgb(255, 159, 251) 98.99%)", color: "#fff", fontSize: "14px", letterSpacing: 1, border: "1px solid #4637a9", boxShadow: "3px 3px 0 #0d0a1f"}} className="pixel">Gashapon</div>
@@ -2644,7 +2644,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2669,7 +2669,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - Naruta (Main Char)</div>
@@ -2689,7 +2689,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2712,7 +2712,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - TD-88 Blaster (Weapon)</div>
@@ -2732,7 +2732,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2755,7 +2755,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - X8 Haptic Bootsuit (Cloth)</div>
@@ -2775,7 +2775,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2800,7 +2800,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - Cosmo Crest (Hat)</div>
@@ -2820,7 +2820,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2843,7 +2843,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - Prism Propel Wings (Back)</div>
@@ -2863,7 +2863,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2886,7 +2886,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - Phoenix Phalanx Ring (Accessory)</div>
@@ -2906,7 +2906,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2931,7 +2931,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "16px", width: "380px"}} className="pixel">NARUTA NFT - Galactic Walkers (Shoes)</div>
@@ -2951,7 +2951,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="jusdt"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="jusdt"/>
                                             <div style={{marginLeft: "7.5px"}}>20</div>
                                         </div>
                                     </div>
@@ -2994,7 +2994,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi" height="18" alt="$JUSDT"/>
+                                            <img src="/tokens/bafkreif3vllg6mwswlqypqgtsh7i7wwap7zgrkvtlhdjoc63zjm7uv6vvi.png" height="18" alt="$JUSDT"/>
                                             <div style={{marginLeft: "7.5px"}}>10</div>
                                         </div>
                                     </div>
@@ -3038,7 +3038,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                            <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                             <div style={{marginLeft: "7.5px"}}>40,000</div>
                                         </div>
                                     </div>
@@ -3078,7 +3078,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                            <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                             <div style={{marginLeft: "7.5px"}}>40,000</div>
                                         </div>
                                     </div>
@@ -3117,7 +3117,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i" height="18" alt="$CTUNA"/>
+                                            <img src="/tokens/bafkreieyk6odnkrmghee3sc3nfnwxg7jhmyk2tgima3jkdmiy2oap2jc4i.png" height="18" alt="$CTUNA"/>
                                             <div style={{marginLeft: "7.5px"}}>2500</div>
                                         </div>
                                     </div>
@@ -3158,7 +3158,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq" height="18" alt="$JDAO"/>
+                                            <img src="/tokens/bafkreia2bjrh7yw2vp23e5lnc6u75weg6nq7dzkyruggsnjxid6qtofeeq.png" height="18" alt="$JDAO"/>
                                             <div style={{marginLeft: "7.5px"}}>1,000</div>
                                         </div>
                                     </div>
@@ -3197,7 +3197,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e" height="18" alt="$OS"/>
+                                            <img src="/tokens/bafkreico3y6ql5vudm35ttestwvffdacbp25h6t5ipbyncwr3qtzprrm5e.png" height="18" alt="$OS"/>
                                             <div style={{marginLeft: "7.5px"}}>5,500</div>
                                         </div>
                                     </div>
@@ -3236,7 +3236,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq" height="18" alt="$BBQ"/>
+                                            <img src="/tokens/bafkreibs763pgx6caw3vaqtzv6b2fmkqpwwzvxwe647gywkn3fsydkjlyq.png" height="18" alt="$BBQ"/>
                                             <div style={{marginLeft: "7.5px"}}>100M</div>
                                         </div>
                                     </div>
@@ -3264,7 +3264,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Water gun (Weapon)</div>
@@ -3284,7 +3284,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=50&img-height=50" height="18" alt="$EE"/>
+                                            <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="18" alt="$EE"/>
                                             <div style={{marginLeft: "7.5px"}}>444,444</div>
                                         </div>
                                     </div>
@@ -3312,7 +3312,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Raincoat (Cloth)</div>
@@ -3332,7 +3332,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q?img-width=50&img-height=50" height="18" alt="$II"/>
+                                            <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="18" alt="$II"/>
                                             <div style={{marginLeft: "7.5px"}}>22,222</div>
                                         </div>
                                     </div>
@@ -3360,7 +3360,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Goggles (Hat)</div>
@@ -3380,7 +3380,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4?img-width=50&img-height=50" height="18" alt="$GEAR"/>
+                                            <img src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png" height="18" alt="$GEAR"/>
                                             <div style={{marginLeft: "7.5px"}}>999,999,999</div>
                                         </div>
                                     </div>
@@ -3410,7 +3410,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                         <div style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: "flex-start", overflow: "scroll", marginBottom: "80px"}} className="noscroll">
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 0", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Ring (Accessory)</div>
@@ -3430,7 +3430,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm?img-width=50&img-height=50" height="18" alt="$EE"/>
+                                            <img src="/tokens/bafybeihg7schl77eo7b4amo22htmuscipo4dfioxmajxr4feuqloz2dolm.png" height="18" alt="$EE"/>
                                             <div style={{marginLeft: "7.5px"}}>444,444</div>
                                         </div>
                                     </div>
@@ -3458,7 +3458,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px 20px 20px 40px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Backpacks (ฺBack)</div>
@@ -3478,7 +3478,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q?img-width=50&img-height=50" height="18" alt="$II"/>
+                                            <img src="/tokens/bafybeiffepxbrj2zq2mrlik47tonb2mpp22ymvqmv7o5vpy57fjre4qn6q.png" height="18" alt="$II"/>
                                             <div style={{marginLeft: "7.5px"}}>22,222</div>
                                         </div>
                                     </div>
@@ -3506,7 +3506,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
 
                             <div className="nftCard" style={{position: "relative", justifyContent: "flex-start", height: "460px", margin: "20px", boxShadow: "6px 6px 0 #00000040", border: "1px solid rgb(227, 227, 227)"}}>
                                 <div style={{position: "absolute", top: -25, right: -15, padding: "5px 20px", width: "150px", background: "#fff", letterSpacing: 1, border: "1px solid rgb(227, 227, 227)", boxShadow: "6px 6px 0 #00000040", display: "flex", flexDirection: "row", alignItems: "center", zIndex: 1}} className="bold">
-                                    <img src="https://gateway.pinata.cloud/ipfs/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce?img-width=50&img-height=50" width="30px" alt="TAODUM-TAOMEME" />
+                                    <img src="/maps/bafybeifetzaiv2i5anifvhumtbnq6ayvyqvrjn6hmq63vggg3r26gvzxce.png" width="30px" alt="TAODUM-TAOMEME" />
                                     <div className='light' style={{marginLeft: "10px"}}>TAODUM & TAOMEME</div>
                                 </div>
                                 <div style={{alignSelf: "flex-start", fontSize: "14px", width: "380px"}} className="pixel">NARUTA NFT x Songkran 2024 - Boots (ฺShoes)</div>
@@ -3526,7 +3526,7 @@ const Mall = ({ config, setisLoading, callMode, navigate, txupdate, setTxupdate,
                                     <div style={{marginTop: "15px", width: "350px", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #d9d8df"}}>
                                         <div>Price</div>
                                         <div style={{display: "flex", flexDirection: "row"}}>
-                                            <img src="https://gateway.pinata.cloud/ipfs/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4?img-width=50&img-height=50" height="18" alt="$GEAR"/>
+                                            <img src="/tokens/bafybeiegwsyuqu5d47hobxpnuj5zdsy2fgzautcobr6imm3soc4r6uibg4.png" height="18" alt="$GEAR"/>
                                             <div style={{marginLeft: "7.5px"}}>999,999,999</div>
                                         </div>
                                     </div>
